@@ -542,7 +542,7 @@
                         @if ($mainNews)
                             <div class="col-lg-7 mb-4 mb-lg-0">
                                 <div class="main-news-card">
-                                    <img src="{{ $mainNews['image'] }}" alt="{{ $mainNews['title'] }}">
+                                    <img src="{{ $mainNews['image'] ? Storage::url($mainNews['image']) : asset('images/placeholder.png') }}" alt="{{ $mainNews['title'] }}">
                                     <div class="main-news-overlay">
                                         <h3 class="main-news-title">{{ $mainNews['title'] }}</h3>
                                         <div class="main-news-meta">
@@ -562,14 +562,13 @@
                                 </div>
                             </div>
                         @endif
-
                         <div class="col-lg-5">
                             <div class="small-news-grid">
                                 <div class="row g-3">
                                     @foreach ($otherNews as $item)
                                         <div class="col-md-6 col-12">
                                             <div class="small-news-card">
-                                                <img src="{{ $item['image'] }}" alt="{{ $item['title'] }}">
+                                                <img src="{{ $item['image'] ? Storage::url($item['image']) : asset('images/placeholder.png') }}" alt="{{ $item['title'] }}">
                                                 <div class="small-news-overlay">
                                                     <h5 class="small-news-title">{{ $item['title'] }}</h5>
                                                     <div class="small-news-meta">

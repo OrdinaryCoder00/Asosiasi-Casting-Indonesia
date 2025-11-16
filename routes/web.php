@@ -9,13 +9,14 @@ use App\Models\BoardOfOfficer;
 use App\Http\Controllers\CastingSubmissionController;
 use App\Http\Controllers\VideoStreamController;
 
+use function PHPSTORM_META\map;
 
 Route::get('/', function () {
 
     /*
     |--------------------------------------------------------------------------
     | TEAM / BOARD OF OFFICERS
-    |--------------------------------------------------------------------------
+    |-------------------------------------------------------------------
     */
     $team = BoardOfOfficer::with('films')
         ->orderBy('order')
@@ -32,7 +33,7 @@ Route::get('/', function () {
                 ];
             })->toArray();
 
-            // Completed Projects Text
+            // Completed Projects texsts
             $proyek_selesai = $officer->films->map(function ($film) {
                 return $film->title . ' (' . $film->year . ')';
             })->toArray();
@@ -51,7 +52,7 @@ Route::get('/', function () {
         });
 
     /*
-    |--------------------------------------------------------------------------
+    |--------------------------------------------------------------------
     | FILM SECTION
     |--------------------------------------------------------------------------
     */
@@ -77,18 +78,7 @@ Route::get('/', function () {
                     : 'https://via.placeholder.com/200x300',
             ];
         });
-        Route::get('/news', function () {
-        $news = News::orderBy('published_at', 'desc')->get();
-        return view('news.index', compact('news'));
-        });
-        Route::get('/news/{id}', function ($id) {
-            $news = News::findOrFail($id);
-            // Buat fetch json-nya soalnya kirim pake JSON
-            return response()->json($news);
-        });
-
-
-
+        $news = \App\Models\News::orderBy('published_at', 'desc')->take(10)->get()->toArray();
     return view('welcome', compact('team', 'film', 'news'));
 });
 Route::get('/casting-submission', [CastingSubmissionController::class, 'index'])->name('casting.form');
