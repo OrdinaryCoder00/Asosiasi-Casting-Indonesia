@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('author')->nullable();
             $table->string('image')->nullable();
             $table->date('published_date')->nullable();
+            $table->timestamp('published_at')->nullable();
             $table->enum('category', ['regular', 'announcement', 'highlight'])->default('regular');
             $table->timestamps();
         });
