@@ -1,0 +1,32 @@
+@font-face {
+    font-family: "Lemon Milk";
+    src: url("/fonts/LEMONMILK-Light.otf") format("opentype");
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: "Lemon Milk";
+    src: url("/fonts/LEMONMILK-Medium.otf") format("opentype");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "TCM";
+    src: url("/fonts/TCM_____.TTF") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "TCB";
+    src: url("/fonts/TCB_____.TTF") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
