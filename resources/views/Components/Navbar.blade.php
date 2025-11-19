@@ -1,4 +1,9 @@
 <style>
+    .navbar-expand-lg {
+        padding-inline: 5rem;
+        background-color: #ee0000;
+    }
+
     .navbar-title-text {
         font-size: 1.1rem;
         color: white;
@@ -36,7 +41,32 @@
 
     .offcanvas-body .nav-link {
         padding: 0.75rem 1rem;
-        border-bottom: 1px solid #eee;
+        color: white;
+    }
+
+    .offcanvas-body .nav-link:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white !important;
+    }
+
+    .offcanvas-body .nav-link.active {
+        color: white !important;
+        font-weight: 800;
+        background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .offcanvas-header {
+        background-color: #ee0000;
+        color: white;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .offcanvas-header .btn-close {
+        filter: brightness(0) invert(1);
+    }
+
+    #offcanvasNavbar {
+        width: 280px !important;
     }
 
     @media (max-width: 1200px) {
@@ -54,21 +84,13 @@
             font-size: 0.8rem;
         }
 
-        .nav-link {
-            color: #000
-        }
-
-        .navbar-nav .nav-link:hover {
-            color: #ee0000 !important;
-        }
-
-        .navbar-nav .nav-link.active {
-            color: #ee0000 !important;
+        .navbar-expand-lg {
+            padding-inline: 1rem;
         }
     }
 </style>
 
-<nav class="navbar navbar-expand-lg navbar-light px-lg-4" style="background-color: #ee0000;" id="mainNavbar">
+<nav class="navbar navbar-expand-lg navbar-light" id="mainNavbar">
     <div class="container-fluid">
         <a class="navbar-brand d-flex align-items-center gap-2" href="/">
             <img src="/img/logo-aci.png" alt="logo-aci" width="50" height="50"
@@ -112,36 +134,35 @@
     </div>
 </nav>
 
-<div class="offcanvas offcanvas-start bg-light" tabindex="-1" id="offcanvasNavbar"
-    aria-labelledby="offcanvasNavbarLabel">
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel"
+    style="background-color: #ee0000;">
     <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu Navigasi</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+        <ul class="navbar-nav justify-content-end align-items-end flex-grow-1 pe-3 gap-2">
             <li class="nav-item">
                 <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" aria-current="page"
                     href="{{ url('/') }}">HOME</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ request()->is('about') ? 'active' : '' }}" href="#">ABOUT</a>
+                <a class="nav-link {{ request()->is('about') ? 'active' : '' }}" href="/about">ABOUT</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ request()->is('our-team') ? 'active' : '' }}" href="#">OUR TEAM</a>
+                <a class="nav-link {{ request()->is('our-team') ? 'active' : '' }}" href="/our-team">OUR TEAM</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ request()->is('poster') ? 'active' : '' }}" href="#">POSTER</a>
+                <a class="nav-link {{ request()->is('poster') ? 'active' : '' }}" href="/poster">POSTER</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link {{ request()->is('casting-submission') ? 'active' : '' }}"
-                    href="{{ url('/casting-submission') }}" href="#">CASTING SUBMISSION</a>
+                    href="{{ url('/casting-submission') }}">CASTING SUBMISSION</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ request()->is('news') ? 'active' : '' }}" href="#">NEWS</a>
+                <a class="nav-link {{ request()->is('news') ? 'active' : '' }}" href="/news">NEWS</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ request()->is('contact') ? 'active' : '' }}" href="#">CONTACT</a>
+                <a class="nav-link {{ request()->is('contact') ? 'active' : '' }}" href="/contact">CONTACT</a>
             </li>
         </ul>
     </div>

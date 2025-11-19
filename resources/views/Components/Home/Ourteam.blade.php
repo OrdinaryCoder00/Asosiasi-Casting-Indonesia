@@ -5,11 +5,22 @@
         display: flex;
         overflow-x: auto;
         overflow-y: hidden;
-        padding: 2rem 1rem;
         gap: 1.5rem;
         max-height: 600px;
         -ms-overflow-style: none;
         scrollbar-width: none;
+    }
+
+    .title-ourteam {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: white;
+    }
+
+    .subtitle-ourteam {
+        font-size: 1.5rem;
+        font-weight: 400;
+        color: white;
     }
 
     .scrollable-cards-container::-webkit-scrollbar {
@@ -18,13 +29,13 @@
 
     .card-col {
         flex: 0 0 320px;
-        max-width: 320px;
-        min-width: 280px;
+        max-width: 400px;
+        min-width: 400px;
     }
 
     .team-card {
         position: relative;
-        height: 450px;
+        height: 530px;
         overflow: hidden;
         cursor: pointer;
         transition: transform 0.3s ease;
@@ -41,6 +52,7 @@
         height: 100%;
         object-fit: cover;
         object-position: center;
+        aspect-ratio: 1/1;
         transition: transform 0.5s ease;
         display: block;
     }
@@ -118,26 +130,23 @@
 
     .header-section {
         background: linear-gradient(135deg, #ee0000 0%, #c40506 100%);
-        min-height: 200px;
+        min-height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-inline: 5rem;
     }
 
     .our-team-btn {
-        background: transparent;
-        border: 2px solid white;
-        color: white;
-        padding: 0.75rem 2rem;
-        border-radius: 8px;
-        font-weight: 500;
-        transition: all 0.3s ease;
-        display: inline-flex;
+        font-size: 38px;
+        border: none;
+        background: none;
+        display: flex;
+        flex-direction: row;
         align-items: center;
-        gap: 0.5rem;
-        font-size: 1rem;
-    }
-
-    .our-team-btn:hover {
-        background: white;
-        color: #ee0000;
+        cursor: pointer;
+        color: white;
+        gap: 1rem;
     }
 
     .collapse-icon {
@@ -148,74 +157,94 @@
         transform: rotate(180deg);
     }
 
-    .modal-xl-custom {
+    .modal-content {
+        border-radius: 0 !important;
+        border: none !important;
+        height: 80vh;
+    }
+
+    .modal-dialog.modal-xl-custom {
         max-width: 1200px;
+        margin: 0.5rem auto;
     }
 
     .modal-body-custom {
         padding: 0;
-        max-height: 85vh;
-        overflow-y: auto;
+        max-height: 100%;
+        overflow-y: hidden;
+    }
+
+    .modal-right-container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 0;
     }
 
     .modal-left-image {
+        width: 100%;
         height: 100%;
-        min-height: 600px;
         object-fit: cover;
         object-position: center;
     }
 
-    .modal-right-content {
+    .modal-sticky-header {
+        background-color: black;
+        padding: 0.8rem 1rem;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .modal-scrollable-content {
         padding: 2.5rem;
+        overflow-y: auto;
+        flex-grow: 1;
     }
 
     .modal-member-name {
-        font-size: 2rem;
-        font-weight: 700;
-        color: #333;
-        padding-bottom: 1rem;
-        border-bottom: 2px solid #dee2e6;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #000;
         margin-bottom: 1.5rem;
+        font-weight: 700;
+        font-size: 40px;
     }
 
-    .modal-description {
-        font-size: 1rem;
-        color: #666;
-        line-height: 1.8;
-        margin-bottom: 2rem;
+    .watermark-overlay {
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        color: white;
+        z-index: 5;
     }
 
     .portfolio-scroll-container {
         display: flex;
         overflow-x: auto;
+        overflow-y: hidden;
         gap: 1rem;
         padding: 1rem 0;
         margin-bottom: 2rem;
         -ms-overflow-style: none;
-        scrollbar-width: thin;
-        border-bottom: 2px solid #252525;
+        scrollbar-width: none;
+        border-bottom: 1px solid #e0e0e0;
     }
 
     .portfolio-scroll-container::-webkit-scrollbar {
-        height: 6px;
-    }
-
-    .portfolio-scroll-container::-webkit-scrollbar-track {
-        background: #f1f1f1;
-        border-radius: 10px;
-    }
-
-    .portfolio-scroll-container::-webkit-scrollbar-thumb {
-        background: #c40506;
-        border-radius: 10px;
+        display: none;
     }
 
     .portfolio-card {
         flex: 0 0 200px;
         min-width: 200px;
-        border-radius: 8px;
+        border-radius: 0;
         overflow: hidden;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease;
     }
 
@@ -225,59 +254,47 @@
         object-fit: cover;
     }
 
-    .portfolio-card-title {
-        padding: 0.75rem;
-        background: white;
-        font-size: 0.9rem;
-        font-weight: 500;
-        text-align: center;
-        color: #333;
-    }
-
-    .completed-projects-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    .completed-projects-list li {
-        padding: 0.75rem 1rem;
-        border-left: 3px solid #c40506;
-        background: #f8f9fa;
-        margin-bottom: 0.5rem;
-        border-radius: 4px;
-        font-size: 0.95rem;
-        color: #555;
-        transition: all 0.3s ease;
-    }
-
-    .completed-projects-list li:hover {
-        background: #e9ecef;
-        border-left-width: 5px;
-    }
-
-    .modal-body-custom .col-md-5 {
-        height: 85vh;
-        overflow: hidden;
-    }
-
-    .modal-body-custom .col-md-7 {
-        height: 85vh;
-        overflow-y: auto;
-    }
-
-    @media (max-width: 768px) {
-        .modal-body-custom .col-md-5 {
-            overflow: auto;
+    /* Responsive styles untuk tablet */
+    @media (max-width: 992px) {
+        .header-section {
+            padding-inline: 2rem;
+            min-height: 250px;
         }
 
-        .modal-body-custom .col-md-7 {
-            overflow-y: hidden;
+        .our-team-btn {
+            font-size: 32px;
+        }
+
+        .modal-dialog.modal-xl-custom {
+            max-width: 90%;
+        }
+
+        .modal-content {
+            height: 85vh;
+        }
+
+        .modal-member-name {
+            font-size: 32px;
+        }
+
+        .modal-scrollable-content {
+            padding: 2rem;
+        }
+    }
+
+    /* Responsive styles untuk mobile */
+    @media (max-width: 768px) {
+        .header-section {
+            padding-inline: 1.5rem;
+            min-height: auto;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
         }
 
         .card-col {
             flex: 0 0 280px;
             min-width: 260px;
+            max-width: 300px;
         }
 
         .team-card {
@@ -285,25 +302,104 @@
         }
 
         .our-team-btn {
+            font-size: 28px;
             width: 100%;
             justify-content: center;
             padding: 0.875rem 1.5rem;
         }
 
-        .scrollable-cards-container {
-            padding: 1.5rem 1rem;
+
+        .modal-dialog.modal-xl-custom {
+            max-width: 95%;
+            margin: 0.5rem;
+        }
+
+        .modal-content {
+            height: auto;
+            max-height: 90vh;
+        }
+
+        .modal-body-custom {
+            overflow-y: auto;
+        }
+
+        .modal-right-container {
+            height: auto;
         }
 
         .modal-left-image {
-            min-height: 400px;
+            min-height: 100%;
+            height: 300px;
+            width: 100%;
         }
 
-        .modal-right-content {
+        .modal-scrollable-content {
             padding: 1.5rem;
+            overflow-y: visible;
         }
 
         .modal-member-name {
+            font-size: 28px;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-description {
+            font-size: 16px !important;
+        }
+
+        .modal-sticky-header {
+            display: none;
+        }
+
+
+
+        .watermark-overlay {
+            bottom: 10px;
+            left: 10px;
+        }
+
+        .watermark-logo {
+            width: 40px;
+        }
+
+        .watermark-text {
+            font-size: 0.7rem;
+        }
+    }
+
+    /* Extra small mobile */
+    @media (max-width: 576px) {
+        .header-section {
+            padding-inline: 1rem;
+        }
+
+        .title-ourteam {
             font-size: 1.5rem;
+        }
+
+        .subtitle-ourteam {
+            font-size: 1rem;
+            text-align: justify;
+        }
+
+        .our-team-btn {
+            font-size: 24px;
+            gap: 0.75rem;
+        }
+
+        .card-col {
+            flex: 0 0 260px;
+            min-width: 240px;
+        }
+
+        .team-card {
+            height: 350px;
+        }
+
+        .portfolio-scroll-container {
+            padding: 1rem 0;
+            gap: 0.75rem;
         }
 
         .portfolio-card {
@@ -314,75 +410,87 @@
         .portfolio-card img {
             height: 220px;
         }
-    }
 
-    @media (max-width: 576px) {
-        .card-col {
-            flex: 0 0 260px;
-            min-width: 240px;
+        .modal-dialog.modal-xl-custom {
+            margin: 0.25rem;
+            max-width: 98%;
         }
 
-        .team-card {
-            height: 380px;
+        .modal-content {
+            max-height: 95vh;
         }
 
-        .card-overlay {
-            padding: 1.5rem 1rem 1rem;
+        .modal-left-image {
+            min-height: 250px;
+            height: 250px;
         }
 
-        .card-overlay h5 {
-            font-size: 1.1rem;
+        .modal-scrollable-content {
+            padding: 1rem;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .modal-member-name {
+            font-size: 24px;
+        }
+
+        .modal-description {
+            font-size: 14px !important;
         }
     }
 </style>
 
 <div class="container-fluid p-0">
     <div class="header-section">
-        <div class="container-fluid">
-            <div class="row align-items-center p-3 p-md-4">
-                <div class="col-lg-5 col-md-7 mb-3 mb-md-0">
-                    <h2 class="text-white fw-bold mb-2 mb-md-3 fs-2 fs-md-3">ASOSIASI CASTING INDONESIA</h2>
-                    <p class="text-white mb-0 pe-lg-5 fs-5 fs-md-5 ">
-                        ACI casting director & associates is a member of the Indonesian film board that is certified
-                        and
-                        works globally to collaborate with filmmakers.
-                    </p>
-                </div>
-                <div class="col-lg-7 col-md-5 text-md-end">
-                    <button class="our-team-btn" type="button" data-bs-toggle="collapse" data-bs-target="#teamCollapse"
-                        aria-expanded="true" aria-controls="teamCollapse">
-                        <i class="fas fa-chevron-up collapse-icon"></i>
-                        <span>Our Team</span>
-                    </button>
-                </div>
+        <div class="row p-3 p-md-3">
+            <div class="col-12">
+                <h2 class="title-ourteam">
+                    ASOSIASI CASTING INDONESIA
+                </h2>
+            </div>
+        </div>
+
+        <div class="row align-items-center justify-content-between p-3 pt-0 p-md-3 pt-md-0">
+            <div class="col-12 col-lg-4 mb-3 mb-md-0">
+                <p class="subtitle-ourteam">
+                    ACI casting director & associates is a member of the Indonesian film board
+                    that is certified and works globally to collaborate with filmmakers.
+                </p>
+            </div>
+
+            <div class="col-12 col-md-auto text-center text-md-end d-none d-lg-block">
+                <button class="our-team-btn" type="button" data-bs-toggle="collapse" data-bs-target="#teamCollapse"
+                    aria-expanded="true" aria-controls="teamCollapse">
+                    <i class="fas fa-chevron-up collapse-icon"></i>
+                    <span>Our Team</span>
+                </button>
             </div>
         </div>
     </div>
 
     <div class="collapse show py-5 bg-white" id="teamCollapse">
-        <div class="container-fluid">
-            <div class="scrollable-cards-container">
 
-                @foreach ($team as $data)
-                    <div class="card-col">
-                        <div class="team-card" data-card-id="{{ $data['id'] }}">
-                            <div class="team-card-image-wrapper">
-                                <img src="{{ $data['image'] }}" alt="{{ $data['nama'] }}">
-                            </div>
-                            <div class="card-overlay">
-                                <h5 class="border-bottom">{{ $data['nama'] }}</h5>
-                                <p>{{ $data['pengenalan_singkat'] }}</p>
-                                <a href="#" class="btn-read-more" data-bs-toggle="modal"
-                                    data-bs-target="#teamModal{{ $data['id'] }}">
-                                    Read More <i class="fas fa-arrow-right ms-1"></i>
-                                </a>
-                            </div>
+        <div class="scrollable-cards-container">
+            @foreach ($team as $data)
+                <div class="card-col">
+                    <div class="team-card" data-card-id="{{ $data['id'] }}">
+                        <div class="team-card-image-wrapper">
+                            <img src="{{ $data['image'] }}" alt="{{ $data['nama'] }}">
+                        </div>
+                        <div class="card-overlay">
+                            <h5 class="border-bottom">{{ $data['nama'] }}</h5>
+                            <p>{{ $data['pengenalan_singkat'] }}</p>
+                            <a href="#" class="btn-read-more" data-bs-toggle="modal"
+                                data-bs-target="#teamModal{{ $data['id'] }}">
+                                Read More <i class="fas fa-arrow-right ms-1"></i>
+                            </a>
                         </div>
                     </div>
-                @endforeach
-
-            </div>
+                </div>
+            @endforeach
         </div>
+
     </div>
 </div>
 
@@ -390,24 +498,27 @@
 @foreach ($team as $data)
     <div class="modal fade" id="teamModal{{ $data['id'] }}" tabindex="-1"
         aria-labelledby="teamModalLabel{{ $data['id'] }}" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-xl-custom modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header border-0">
-                    <h3 class="modal-title" id="teamModalLabel{{ $data['id'] }}">Profile</h3>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
 
+        <div class="modal-dialog modal-xl modal-xl-custom modal-dialog-centered">
+            <div class="modal-content">
                 <div class="modal-body modal-body-custom">
-                    <div class="row g-0">
-                        <div class="col-md-5">
-                            <img src="{{ $data['image'] }}" alt="{{ $data['nama'] }}" class="modal-left-image w-100">
+                    <div class="row g-0 h-100">
+                        <div class="col-12 col-md-5 position-relative">
+                            <img src="{{ $data['image'] }}" alt="{{ $data['nama'] }}" class="modal-left-image">
                         </div>
 
-                        <div class="col-md-7">
-                            <div class="modal-right-content">
+                        <div class="col-12 col-md-7 modal-right-container">
+                            <div class="modal-sticky-header d-none d-md-flex">
+                                <button type="button" data-bs-dismiss="modal" aria-label="Close"
+                                    style="background: none; outline: none; border: none;">
+                                    <img src="/img/Icon-x.png" alt="X" width="30" height="30">
+                                </button>
+                            </div>
+
+                            <div class="modal-scrollable-content">
                                 <h2 class="modal-member-name">{{ $data['nama'] }}</h2>
 
-                                <div class="modal-description">
+                                <div class="modal-description" style="font-size: 18px">
                                     <p>{{ $data['deskripsi_lengkap'] ?? $data['pengenalan_singkat'] }}</p>
                                 </div>
 
@@ -416,8 +527,8 @@
                                         @if (isset($data['portfolio']) && count($data['portfolio']) > 0)
                                             @foreach ($data['portfolio'] as $portfolio)
                                                 <div class="portfolio-card">
-                                                    <img src="{{ $portfolio['poster'] }}" alt="{{ $portfolio['judul'] }}">
-                                                    <div class="portfolio-card-title">{{ $portfolio['judul'] }}</div>
+                                                    <img src="{{ $portfolio['poster'] }}"
+                                                        alt="{{ $portfolio['judul'] }}">
                                                 </div>
                                             @endforeach
                                         @else
@@ -426,7 +537,7 @@
                                     </div>
                                 </div>
 
-                                <div>
+                                <div style="border-top:2px solid #000; padding-top: 10px;font-size: 18px;">
                                     @if (isset($data['proyek_selesai']) && count($data['proyek_selesai']) > 0)
                                         <p class="completed-projects-list">
                                             {{ implode(', ', $data['proyek_selesai']) }}

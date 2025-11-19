@@ -1,26 +1,93 @@
 <style>
+    .main-footer {
+        background-color: #ee0000;
+        color: white;
+        padding: 30px 15px;
+        padding-inline: 5rem;
+    }
+
+    .logo-col {
+        padding-right: 15px;
+    }
+
+    @media (min-width: 768px) {
+
+        .logo-col .logo-content {
+            border-right-width: 1px !important;
+        }
+    }
+
+    .logo-img {
+        width: auto;
+        height: 50px;
+        filter: brightness(0) invert(1);
+        object-fit: contain;
+        object-position: center;
+        aspect-ratio: 1/1;
+    }
+
+    .logo-text {
+        font-size: 1.1rem;
+        line-height: 1.2;
+        margin-top: 5px;
+    }
+
+    .contact-col {
+        padding-left: 30px;
+
+    }
+
+    .contact-title {
+        border-bottom: 2px solid white;
+        padding-bottom: 5px;
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+    }
+
+    .contact-item {
+        margin-bottom: 10px;
+    }
+
+    .contact-icon {
+        margin-right: 10px;
+    }
+
+    .contact-link {
+        color: inherit;
+        text-decoration: none;
+    }
+
     @media (min-width: 768px) {
         .col-md-4>div {
             border-right-width: 1px !important;
         }
+
+        .main-footer {
+            padding-inline: 2rem;
+        }
+    }
+
+    @media (max-width: 538px) {
+        .main-footer {
+            padding-inline: 1rem;
+        }
     }
 </style>
 
-<footer style="background-color: #ee0000; color: white; padding: 30px 15px;">
+<footer class="main-footer">
     <div class="container-fluid">
         <div class="row d-flex align-items-stretch row-cols-1 row-cols-md-2">
 
-            <div class="col-md-4 col-lg-8 d-flex flex-column gap-2 align-items-center justify-content-center
-                        text-center text-md-start mb-4 mb-md-0"
-                style="padding-right: 15px;">
+            <div
+                class="col-md-6 col-lg-8 d-flex flex-column gap-2 align-items-center justify-content-center
+                            text-center text-md-start mb-4 mb-md-0 logo-col">
 
-                <div class="w-100 h-100 d-flex flex-column gap-2 align-items-md-center align-items-lg-start justify-content-center"
-                    style="border-right: none; border-right-style: solid; border-color: rgba(255, 255, 255, 0.3);">
+                <div
+                    class="w-100 h-100 d-flex flex-column gap-2 align-items-md-start align-items-lg-start justify-content-center logo-content">
 
                     <img src="/img/logo-aci.png" alt="logo-footer"
-                        style="width: auto; height: 50px; filter: brightness(0) invert(1); object-fit: contain; object-position: center; aspect-ratio: 1/1;"
-                        class="align-self-center align-self-md-center align-self-lg-start">
-                    <h3 style="font-size: 1.1rem; line-height: 1.2; margin-top: 5px;">
+                        class="align-self-center align-self-md-start align-self-lg-start logo-img">
+                    <h3 class="logo-tzext">
                         ASOSIASI<br>
                         CASTING<br>
                         INDONESIA
@@ -28,25 +95,23 @@
                 </div>
             </div>
 
-            <div class="col-md-8 col-lg-4" style="padding-left: 15px; padding-left: 30px;">
+            <div class="col-md-6 col-lg-4 contact-col">
 
-                <h3 class="text-uppercase"
-                    style="border-bottom: 2px solid white; padding-bottom: 5px; margin-bottom: 15px; font-size: 1.5rem;">
+                <h3 class="text-uppercase contact-title">
                     Contact Us!
                 </h3>
 
                 <div class="d-flex flex-column">
-                    <div style="margin-bottom: 10px;">
-                        <i class="fas fa-envelope" style="margin-right: 10px;"></i>
-                        <a href="mailto:asosiasicastingindonesia@gmail.com"
-                            style="color: inherit; text-decoration: none;">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope contact-icon"></i>
+                        <a href="mailto:asosiasicastingindonesia@gmail.com" class="contact-link">
                             <span>asosiasicastingindonesia@gmail.com</span>
                         </a>
                     </div>
 
-                    <div>
-                        <i class="fas fa-phone" style="margin-right: 10px;"></i>
-                        <a href="tel:+6281234568790" style="color: inherit; text-decoration: none;">
+                    <div class="contact-item">
+                        <i class="fas fa-phone contact-icon"></i>
+                        <a href="tel:+6281234568790" class="contact-link">
                             <span>+62 812-3456-8790</span>
                         </a>
                     </div>

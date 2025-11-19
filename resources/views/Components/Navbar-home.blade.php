@@ -1,4 +1,8 @@
 <style>
+    .navbar-expand-lg {
+        padding-inline: 5rem;
+    }
+
     .navbar-title-text {
         font-size: 1.1rem;
     }
@@ -30,9 +34,35 @@
         z-index: 1030;
     }
 
+    /* Styling untuk offcanvas */
     .offcanvas-body .nav-link {
         padding: 0.75rem 1rem;
-        border-bottom: 1px solid #eee;
+        color: white;
+    }
+
+    .offcanvas-body .nav-link:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white !important;
+    }
+
+    .offcanvas-body .nav-link.active {
+        color: white !important;
+        font-weight: 800;
+        background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .offcanvas-header {
+        background-color: #ee0000;
+        color: white;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .offcanvas-header .btn-close {
+        filter: brightness(0) invert(1);
+    }
+
+    #offcanvasNavbar {
+        width: 280px !important;
     }
 
     @media (max-width: 1200px) {
@@ -50,9 +80,15 @@
             font-size: 0.8rem;
         }
     }
+
+    @media(max-width: 768px) {
+        .navbar-expand-lg {
+            padding-inline: 1rem;
+        }
+    }
 </style>
 
-<nav class="navbar navbar-expand-lg navbar-light px-lg-4 bg-light" id="mainNavbar">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="mainNavbar">
     <div class="container-fluid">
         <a class="navbar-brand d-flex align-items-center gap-2" href="/">
             <img src="/img/logo-aci.png" alt="logo-aci" width="50" height="50"
@@ -69,62 +105,58 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav gap-xl-3">
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="/">HOME</a>
+                    <a class="nav-link" href="/">HOME</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('about') ? 'active' : '' }}" href="/about">ABOUT</a>
+                    <a class="nav-link" href="/about">ABOUT</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('our-team') ? 'active' : '' }}" href="/our-team">OUR TEAM</a>
+                    <a class="nav-link" href="/our-team">OUR TEAM</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('poster') ? 'active' : '' }}" href="/poster">POSTER</a>
+                    <a class="nav-link" href="/poster">POSTER</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('casting-submission') ? 'active' : '' }}"
-                        href="{{ url('/casting-submission') }}">CASTING SUBMISSION</a>
+                    <a class="nav-link active" href="{{ url('/casting-submission') }}">CASTING SUBMISSION</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('news') ? 'active' : '' }}" href="/news">NEWS</a>
+                    <a class="nav-link" href="/news">NEWS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('contact') ? 'active' : '' }}" href="/contact">CONTACT</a>
+                    <a class="nav-link" href="/contact">CONTACT</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
 
-<div class="offcanvas offcanvas-start bg-light" tabindex="-1" id="offcanvasNavbar"
-    aria-labelledby="offcanvasNavbarLabel">
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel"
+    style="background-color: #ee0000;">
     <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu Navigasi</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+        <ul class="navbar-nav justify-content-end align-items-end flex-grow-1 pe-3 gap-2">
             <li class="nav-item">
-                <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" aria-current="page"
-                    href="{{ url('/') }}">HOME</a>
+                <a class="nav-link" aria-current="page" href="{{ url('/') }}">HOME</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ request()->is('about') ? 'active' : '' }}" href="#">ABOUT</a>
+                <a class="nav-link" href="/about">ABOUT</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ request()->is('our-team') ? 'active' : '' }}" href="#">OUR TEAM</a>
+                <a class="nav-link" href="/our-team">OUR TEAM</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ request()->is('poster') ? 'active' : '' }}" href="#">POSTER</a>
+                <a class="nav-link" href="/poster">POSTER</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ request()->is('casting-submission') ? 'active' : '' }}"
-                    href="{{ url('/casting-submission') }}" href="#">CASTING SUBMISSION</a>
+                <a class="nav-link active" href="{{ url('/casting-submission') }}">CASTING SUBMISSION</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ request()->is('news') ? 'active' : '' }}" href="#">NEWS</a>
+                <a class="nav-link" href="/news">NEWS</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ request()->is('contact') ? 'active' : '' }}" href="#">CONTACT</a>
+                <a class="nav-link" href="/contact">CONTACT</a>
             </li>
         </ul>
     </div>

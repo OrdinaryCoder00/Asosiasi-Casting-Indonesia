@@ -1,0 +1,51 @@
+[
+    {
+        "id": 1,
+        "Nama_Film": "Petualangan Sherina 2",
+        "Deskripsi_singkat": "Sherina kembali dalam petualangan seru yang penuh dengan musik, persahabatan, dan tantangan yang menguji keberanian. Film ini menghadirkan nostalgia sekaligus cerita baru yang fresh untuk semua generasi.",
+        "image": "https://images.unsplash.com/photo-1594908900066-3f47337549d8?w=600&h=900&fit=crop",
+        "nama_casting_director": "Aditya Dwi Prasetya, Agung Setiawan"
+    },
+    {
+        "id": 2,
+        "Nama_Film": "Pengabdi Setan 2: Communion",
+        "Deskripsi_singkat": "Kelanjutan kisah horor yang menegangkan tentang keluarga yang dihantui masa lalu kelam. Dengan atmosfer mencekam dan plot twist yang tak terduga, film ini memberikan pengalaman menonton yang intens.",
+        "image": "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=600&h=900&fit=crop",
+        "nama_casting_director": "Aditya Dwi Prasetya, Agung Setiawan"
+    },
+    {
+        "id": 3,
+        "Nama_Film": "KKN di Desa Penari",
+        "Deskripsi_singkat": "Adaptasi dari thread viral yang menghebohkan, film ini mengangkat kisah mahasiswa yang melakukan KKN di desa terpencil penuh misteri dan teror supernatural yang menakutkan.",
+        "image": "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=600&h=900&fit=crop",
+        "nama_casting_director": "Aditya Dwi Prasetya, Agung Setiawan"
+    },
+    {
+        "id": 4,
+        "Nama_Film": "Mencuri Raden Saleh",
+        "Deskripsi_singkat": "Sebuah heist movie Indonesia yang mengisahkan aksi pencurian lukisan legendaris karya Raden Saleh. Kombinasi sempurna antara thriller, drama, dan aksi yang memukau dengan sinematografi yang memanjakan mata.",
+        "image": "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=600&h=900&fit=crop",
+        "nama_casting_director": "Aditya Dwi Prasetya, Agung Setiawan"
+    },
+    {
+        "id": 5,
+        "Nama_Film": "Dilan 1991",
+        "Deskripsi_singkat": "Kisah romantis yang mengharukan tentang Dilan dan Milea di tahun 1991. Film ini berhasil menangkap esensi cinta remaja dengan dialog-dialog ikonik yang memorable dan cinematography yang indah.",
+        "image": "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=600&h=900&fit=crop",
+        "nama_casting_director": "Aditya Dwi Prasetya, Agung Setiawan"
+    },
+    {
+        "id": 6,
+        "Nama_Film": "Gundala",
+        "Deskripsi_singkat": "Superhero Indonesia pertama yang hadir di layar lebar dengan kualitas internasional. Mengangkat tema keadilan sosial dengan visual effects yang memukau dan cerita yang kuat tentang perjuangan rakyat kecil.",
+        "image": "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=600&h=900&fit=crop",
+        "nama_casting_director": "Aditya Dwi Prasetya, Agung Setiawan"
+    },
+    {
+        "id": 7,
+        "Nama_Film": "Miracle in Cell No. 7",
+        "Deskripsi_singkat": "Remake dari film Korea yang menyentuh hati, mengisahkan cinta ayah dan anak yang terpisah karena kesalahpahaman hukum. Film drama yang penuh emosi dan menguras air mata dengan pesan moral yang mendalam.",
+        "image": "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=600&h=900&fit=crop",
+        "nama_casting_director": "Aditya Dwi Prasetya, Agung Setiawan"
+    }
+]

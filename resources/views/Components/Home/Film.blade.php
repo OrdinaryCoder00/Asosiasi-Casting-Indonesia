@@ -2,12 +2,17 @@
 
 <style>
     .film-poster-header {
-        min-height: 250px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         color: #fff;
         padding-top: 4rem;
+    }
+
+    .header-section-poster {
+        padding-inline: 5.7rem;
+        padding-bottom: 2rem;
+        background: transparent;
     }
 
     .section-title {
@@ -17,22 +22,26 @@
         letter-spacing: 1px;
     }
 
-    .section-description {
-        font-size: 1.125rem;
+    .subtitle-poster {
+        font-size: 1.5rem;
         line-height: 1.6;
         max-width: 800px;
         margin: 0 auto;
+        text-align: center;
     }
+
 
     .poster-scroll-container {
         display: flex;
         overflow-x: auto;
         overflow-y: hidden;
-        padding: 0 1rem;
+        padding: 0;
         gap: 2rem;
         max-height: 850px;
         -ms-overflow-style: none;
         scrollbar-width: none;
+        /* Padding kiri untuk membuat gambar pertama terpotong setengah */
+        /* transform: translateX(-10px) */
     }
 
     .poster-scroll-container::-webkit-scrollbar {
@@ -153,45 +162,68 @@
         transform: translateX(3px);
     }
 
-    /* Modal Styles */
-    .modal-xl-custom {
-        max-width: 1400px;
+    /* Modal Styles - Improved Responsive */
+    .modal-content {
+        border-radius: 0 !important;
+        border: none !important;
+        min-height: 80vh;
+        max-height: 90vh;
+    }
+
+    .modal-dialog.modal-xl-custom {
+        max-width: 1200px;
+        margin: 1.75rem auto;
+        height: calc(100vh - 3.5rem);
     }
 
     .modal-body-custom {
         padding: 0;
-        max-height: 85vh;
+        height: 100%;
         overflow: hidden;
     }
 
-    .modal-film-poster {
+    .film-modal-row {
         height: 100%;
-        min-height: 700px;
-        object-fit: cover;
-        object-position: center;
     }
 
+    /* Container Kanan (Konten) */
     .modal-film-content {
         display: flex;
         flex-direction: column;
         height: 100%;
-        min-height: 700px;
-        background: #f8f9fa;
+        overflow: hidden;
+    }
+
+    /* Poster Film (Gambar Kiri) */
+    .modal-film-poster {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    /* Header Sticky Hitam */
+    .modal-sticky-header-film {
+        background-color: black;
+        padding: 0.5rem 1rem;
+        position: sticky;
+        top: 0;
+        z-index: 11;
+        display: flex;
+        justify-content: flex-end;
+        flex-shrink: 0;
     }
 
     .modal-film-title {
         flex-shrink: 0;
-        padding: 2.5rem 3rem 1.5rem;
+        padding: 2.5rem 3rem 1rem;
         background: #fff;
-        border-bottom: 3px solid #ee0000;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        z-index: 10;
+        border-bottom: 2px solid #000;
     }
 
     .modal-film-title h2 {
         font-size: 2.5rem;
         font-weight: 700;
-        color: #333;
         margin: 0;
     }
 
@@ -199,75 +231,56 @@
         flex: 1;
         overflow-y: auto;
         padding: 2rem 3rem;
-        background: #f8f9fa;
+        font-size: 1.125rem;
+        line-height: 1.8;
     }
 
     .modal-film-description p {
-        font-size: 1.1rem;
-        color: #555;
-        line-height: 1.8;
-        text-align: justify;
         margin: 0;
     }
 
-    .modal-film-description::-webkit-scrollbar {
-        width: 8px;
-    }
-
-    .modal-film-description::-webkit-scrollbar-track {
-        background: #e9ecef;
-        border-radius: 10px;
-    }
-
-    .modal-film-description::-webkit-scrollbar-thumb {
-        background: #ee0000;
-        border-radius: 10px;
-    }
-
-    .modal-film-description::-webkit-scrollbar-thumb:hover {
-        background: #c40506;
-    }
-
+    /* Footer (Sticky di Bawah) */
     .modal-film-footer {
+        position: sticky;
+        bottom: 0;
         flex-shrink: 0;
         padding: 1.5rem 3rem;
         background: #fff;
         border-top: 2px solid #333;
         box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
-        z-index: 10;
+        z-index: 11;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
     .footer-item {
-        flex: 1;
+        font-size: 1rem;
     }
 
     .footer-label {
-        font-size: 0.85rem;
-        color: #888;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        margin-bottom: 0.5rem;
-        font-weight: 500;
+        font-size: 0.9rem;
+        color: #666;
+        margin-bottom: 0.25rem;
     }
 
     .footer-value {
-        font-size: 1.1rem;
-        color: #333;
-        font-weight: 600;
+        font-weight: bold;
         margin: 0;
     }
 
     .footer-link {
-        color: #ee0000;
         text-decoration: none;
+        color: #000;
+        font-weight: bold;
         transition: color 0.3s ease;
     }
 
     .footer-link:hover {
-        color: #c40506;
-        text-decoration: underline;
+        color: #ee0000;
     }
 
+    /* Responsive Design */
     @media (max-width: 1200px) {
         .poster-card-col {
             flex: 0 0 400px;
@@ -283,16 +296,8 @@
             font-size: 2rem;
         }
 
-        .modal-film-content {
-            min-height: 600px;
-        }
-
-        .modal-film-poster {
-            min-height: 600px;
-        }
-
         .modal-film-title {
-            padding: 2rem 2.5rem 1.25rem;
+            padding: 2rem 2.5rem 1rem;
         }
 
         .modal-film-title h2 {
@@ -301,10 +306,47 @@
 
         .modal-film-description {
             padding: 1.5rem 2.5rem;
+            font-size: 1rem;
         }
 
         .modal-film-footer {
             padding: 1.25rem 2.5rem;
+        }
+    }
+
+    @media (max-width: 992px) {
+        .header-section-poster {
+            padding-inline: 2rem;
+        }
+
+        .modal-dialog.modal-xl-custom {
+            max-width: 95%;
+            margin: 1rem auto;
+            height: calc(100vh - 2rem);
+        }
+
+        .modal-content {
+            min-height: 70vh;
+        }
+
+        /* Stack layout untuk tablet */
+        .film-modal-row {
+            flex-direction: column;
+        }
+
+        .film-modal-row .col-md-5,
+        .film-modal-row .col-md-7 {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .modal-film-poster {
+            height: 350px;
+            max-height: 350px;
+        }
+
+        .modal-film-title h2 {
+            font-size: 1.75rem;
         }
     }
 
@@ -314,13 +356,23 @@
             padding: 1.5rem 0;
         }
 
+        .header-section-poster {
+            padding-inline: 1rem;
+        }
+
         .section-title {
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
         }
 
-        .section-description {
-            font-size: 0.95rem;
+        .subtitle-poster {
+            font-size: 1rem;
+            text-align: start;
+        }
+
+        /* Carousel untuk mobile */
+        .poster-scroll-container {
+            gap: 1.5rem;
         }
 
         .poster-card-col {
@@ -331,11 +383,6 @@
 
         .poster-card {
             height: 480px;
-        }
-
-        .poster-scroll-container {
-            padding: 2rem 1rem;
-            gap: 1.5rem;
         }
 
         .poster-info-overlay {
@@ -352,46 +399,59 @@
             margin-bottom: 1.25rem;
         }
 
-        .modal-film-content {
+        /* Modal Mobile */
+        .modal-dialog.modal-xl-custom {
+            margin: 0.5rem;
+            height: calc(100vh - 1rem);
+            max-width: calc(100% - 1rem);
+        }
+
+        .modal-content {
             min-height: auto;
+            max-height: calc(100vh - 1rem);
         }
 
         .modal-film-poster {
-            min-height: 400px;
+            height: 250px;
+            max-height: 250px;
         }
 
         .modal-film-title {
-            padding: 1.5rem 2rem 1rem;
+            padding: 1.5rem 1.5rem 1rem;
         }
 
         .modal-film-title h2 {
-            font-size: 1.75rem;
+            font-size: 1.5rem;
         }
 
         .modal-film-description {
-            padding: 1.25rem 2rem;
-        }
-
-        .modal-film-description p {
-            font-size: 1rem;
+            padding: 1.25rem 1.5rem;
+            font-size: 0.95rem;
         }
 
         .modal-film-footer {
-            padding: 1rem 2rem;
+            padding: 1rem 1.5rem;
             flex-direction: column;
             gap: 1rem;
+            align-items: flex-start;
         }
 
         .footer-item {
-            text-align: center;
+            width: 100%;
+        }
+
+        .footer-item.text-end {
+            text-align: left !important;
         }
 
         .footer-value {
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
     }
 
-    @media (max-width: 576px) {
+    @media (max-width: 480px) {
+
+
         .poster-card-col {
             flex: 0 0 280px;
             min-width: 280px;
@@ -402,88 +462,68 @@
             height: 420px;
         }
 
-        .poster-info-overlay {
-            padding: 1.5rem 1.25rem 1.25rem;
+        .modal-film-poster {
+            height: 200px;
+            max-height: 200px;
         }
 
-        .poster-title {
-            font-size: 1.1rem;
-        }
-
-        .poster-description {
-            font-size: 0.85rem;
-        }
-
-        .btn-read-more {
-            padding: 0.55rem 1.25rem;
-            font-size: 0.875rem;
+        .poster-scroll-container {
+            padding-block: 1rem;
         }
 
         .modal-film-title h2 {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
         }
 
         .modal-film-description {
+            font-size: 0.9rem;
             padding: 1rem 1.5rem;
         }
 
-        .modal-film-description p {
-            font-size: 0.95rem;
-        }
-
-        .footer-label {
-            font-size: 0.75rem;
-        }
-
-        .footer-value {
-            font-size: 0.9rem;
+        .subtitle-poster {
+            text-align: justify;
         }
     }
 </style>
 
 <div class="container-fluid p-0">
     <div class="film-poster-header">
-        <div class="container-fluid">
-            <div class="row align-items-center px-3 px-md-4">
-                <div class="col-lg-2 col-md-3 mb-3 mb-lg-0">
+        <div class="header-section-poster pt-lg-0 pt-3">
+            <div class="row align-items-center p-0">
+                <div class="col-lg-2 col-md-3 mb-lg-0 mb-3">
                     <h2 class="section-title mb-0">Film</h2>
                 </div>
 
-                <div class="col-lg-8 col-md-6 mb-3 mb-lg-0">
-                    <p class="section-description text-md-center mb-0 fs-5">
+                <div class="col-lg-8 col-md-6">
+                    <p class="subtitle-poster">
                         This section showcases films featuring talents cast through ACI, representing
                         the creative results of collaborations between casting directors and filmmakers.
                     </p>
                 </div>
 
-                <div class="col-lg-2 col-md-3 text-md-end">
+                <div class="col-lg-2 col-md-3 text-md-end d-none d-lg-block">
                     <h2 class="section-title mb-0">Poster</h2>
                 </div>
             </div>
         </div>
-        <div class="container-fluid mt-5">
-            <div class="poster-scroll-container">
-
-                @foreach ($film as $item)
-                    <div class="poster-card-col">
-                        <div class="poster-card" data-card-id="{{ $item['id'] ?? $loop->index }}">
-                            <!-- Tambahkan wrapper untuk image -->
-                            <div class="poster-card-image-wrapper">
-                                <img src="{{ $item['image'] }}" alt="{{ $item['Nama_Film'] }}">
-                            </div>
-                            <div class="poster-info-overlay">
-                                <h5 class="poster-title">{{ $item['Nama_Film'] }}</h5>
-                                <p class="poster-description">{{ $item['Deskripsi_singkat'] }}</p>
-                                <a href="#" class="btn-read-more" data-bs-toggle="modal"
-                                    data-bs-target="#filmModal{{ $item['id'] ?? $loop->index }}">
-                                    Read More <i class="fas fa-arrow-right"></i>
-                                </a>
-                            </div>
+        <div class="poster-scroll-container">
+            @foreach ($film as $item)
+                <div class="poster-card-col">
+                    <div class="poster-card" data-card-id="{{ $item['id'] ?? $loop->index }}">
+                        <div class="poster-card-image-wrapper">
+                            <img src="{{ $item['image'] }}" alt="{{ $item['Nama_Film'] }}">
+                        </div>
+                        <div class="poster-info-overlay">
+                            <h5 class="poster-title">{{ $item['Nama_Film'] }}</h5>
+                            <p class="poster-description">{{ $item['Deskripsi_singkat'] }}</p>
+                            <a href="#" class="btn-read-more" data-bs-toggle="modal"
+                                data-bs-target="#filmModal{{ $item['id'] ?? $loop->index }}">
+                                Read More <i class="fas fa-arrow-right"></i>
+                            </a>
                         </div>
                     </div>
-                @endforeach
-
-            </div>
+                </div>
+            @endforeach
         </div>
     </div>
 </div>
@@ -492,21 +532,25 @@
 @foreach ($film as $item)
     <div class="modal fade" id="filmModal{{ $item['id'] ?? $loop->index }}" tabindex="-1"
         aria-labelledby="filmModalLabel{{ $item['id'] ?? $loop->index }}" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-xl-custom modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header border-0">
-                    <h3 class="modal-title" id="filmModalLabel{{ $item['id'] ?? $loop->index }}">Film Details</h3>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
 
+        <div class="modal-dialog modal-xl modal-xl-custom modal-dialog-centered">
+
+            <div class="modal-content">
                 <div class="modal-body modal-body-custom">
-                    <div class="row g-0">
+                    <div class="row g-0 h-100 film-modal-row">
+
                         <div class="col-md-5">
-                            <img src="{{ $item['image'] }}" alt="{{ $item['Nama_Film'] }}"
-                                class="modal-film-poster w-100">
+                            <img src="{{ $item['image'] }}" alt="{{ $item['Nama_Film'] }}" class="modal-film-poster">
                         </div>
+
                         <div class="col-md-7">
                             <div class="modal-film-content">
+
+                                <div class="modal-sticky-header-film">
+                                    <button type="button" class="" data-bs-dismiss="modal" aria-label="Close"
+                                        style="background: none; outline: none; border: none;"><img
+                                            src="/img/Icon-x.png" alt="X" width="30" height="30"></button>
+                                </div>
 
                                 <div class="modal-film-title">
                                     <h2>{{ $item['Nama_Film'] }}</h2>
@@ -515,16 +559,17 @@
                                     <p>{{ $item['Deskripsi_lengkap'] ?? $item['Deskripsi_singkat'] }}</p>
                                 </div>
 
-                                <div class="modal-film-footer d-flex justify-content-between align-items-center">
+                                <div class="modal-film-footer">
                                     <div class="footer-item">
                                         <div class="footer-label">Casting Director</div>
-                                        <p class="footer-value">{{ $item['nama_casting_director'] ?? 'N/A' }}</p>
+                                        <p class="footer-value">
+                                            {{ $item['nama_casting_director'] ?? 'N/A' }}</p>
                                     </div>
                                     <div class="footer-item text-end">
-                                        <div class="footer-label">Read More</div>
+                                        <div class="footer-label">Read More :</div>
                                         <p class="footer-value">
                                             <a href="#" class="footer-link">
-                                                View Portfolio <i class="fas fa-arrow-right ms-1"></i>
+                                                {{ $item['nama_casting_director'] ?? 'N/A' }}
                                             </a>
                                         </p>
                                     </div>
@@ -532,12 +577,14 @@
 
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 @endforeach
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const posterCards = document.querySelectorAll('.poster-card');

@@ -1,0 +1,183 @@
+[
+    {
+        "id": 1,
+        "nama": "Direktur Casting",
+        "pengenalan_singkat": "Pengalaman luas dalam memilih bakat untuk berbagai produksi film internasional dan nasional.",
+        "deskripsi_lengkap": "Dengan pengalaman lebih dari 15 tahun di industri perfilman Indonesia dan internasional, saya telah terlibat dalam lebih dari 50 produksi film dan serial TV. Keahlian saya meliputi talent scouting, audisi, dan pengembangan karakter untuk berbagai genre film. Saya berkomitmen untuk menemukan dan mengembangkan bakat-bakat terbaik yang sesuai dengan visi sutradara dan produser.",
+        "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop",
+        "portfolio": [
+            {
+                "judul": "Pengabdi Setan 2",
+                "poster": "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=300&h=400&fit=crop"
+            },
+            {
+                "judul": "KKN di Desa Penari",
+                "poster": "https://images.unsplash.com/photo-1594908900066-3f47337549d8?w=300&h=400&fit=crop"
+            },
+            {
+                "judul": "Miracle in Cell No.7",
+                "poster": "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=300&h=400&fit=crop"
+            },
+            {
+                "judul": "Gundala",
+                "poster": "https://images.unsplash.com/photo-1616530940355-351fabd9524b?w=300&h=400&fit=crop"
+            }
+        ],
+        "proyek_selesai": [
+            "Pengabdi Setan 2 - Joko Anwar (2022)",
+            "KKN di Desa Penari - Awi Suryadi (2022)",
+            "Miracle in Cell No.7 - Hanung Bramantyo (2022)",
+            "Gundala - Joko Anwar (2019)",
+            "Perempuan Tanah Jahanam - Joko Anwar (2019)",
+            "The Night Comes For Us - Timo Tjahjanto (2018)"
+        ]
+    },
+    {
+        "id": 2,
+        "nama": "Asisten Produksi",
+        "pengenalan_singkat": "Mengurus logistik dan jadwal audisi dengan efisien serta koordinasi tim produksi.",
+        "deskripsi_lengkap": "Sebagai asisten produksi yang berpengalaman, saya mengelola seluruh aspek logistik dan penjadwalan dalam proses casting. Kemampuan saya dalam multitasking dan koordinasi memastikan setiap audisi berjalan lancar dan tepat waktu. Saya juga bertanggung jawab dalam komunikasi antara tim casting, produser, dan talent.",
+        "image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=600&fit=crop",
+        "portfolio": [
+            {
+                "judul": "Yuni",
+                "poster": "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=300&h=400&fit=crop"
+            },
+            {
+                "judul": "Seperti Dendam",
+                "poster": "https://images.unsplash.com/photo-1574267432644-f410f8ec4b85?w=300&h=400&fit=crop"
+            },
+            {
+                "judul": "Mudik",
+                "poster": "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=300&h=400&fit=crop"
+            }
+        ],
+        "proyek_selesai": [
+            "Yuni - Kamila Andini (2021)",
+            "Seperti Dendam, Rindu Harus Dibayar Tuntas - Edwin (2021)",
+            "Mudik - Rizki Balki (2022)",
+            "Ali & Ratu Ratu Queens - Lucky Kuswandi (2021)",
+            "Losmen Bu Broto (Series) - Ifa Isfansyah (2021)"
+        ]
+    },
+    {
+        "id": 3,
+        "nama": "Spesialis Bakat",
+        "pengenalan_singkat": "Mencari dan mengembangkan aktor/aktris baru potensial di seluruh Indonesia.",
+        "deskripsi_lengkap": "Fokus saya adalah menemukan permata tersembunyi di berbagai daerah Indonesia. Dengan jaringan luas dan pemahaman mendalam tentang karakter lokal, saya telah berhasil menemukan dan mengembangkan puluhan aktor baru yang kini aktif di industri film nasional. Passion saya adalah memberikan kesempatan kepada talent yang belum terjamah industri mainstream.",
+        "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=600&fit=crop",
+        "portfolio": [
+            {
+                "judul": "Nanti Kita Cerita",
+                "poster": "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=300&h=400&fit=crop"
+            },
+            {
+                "judul": "Imperfect",
+                "poster": "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=300&h=400&fit=crop"
+            },
+            {
+                "judul": "Dua Garis Biru",
+                "poster": "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=300&h=400&fit=crop"
+            }
+        ],
+        "proyek_selesai": [
+            "Nanti Kita Cerita Tentang Hari Ini - Angga Dwimas Sasongko (2020)",
+            "Imperfect - Ernest Prakasa (2019)",
+            "Dua Garis Biru - Gina S. Noer (2019)",
+            "Susah Sinyal - Ernest Prakasa (2017)",
+            "Filosofi Kopi 2: Ben & Jody - Angga Dwimas Sasongko (2017)"
+        ]
+    },
+    {
+        "id": 4,
+        "nama": "Humas",
+        "pengenalan_singkat": "Menjaga relasi baik dengan klien dan media untuk mengembangkan jaringan bisnis.",
+        "deskripsi_lengkap": "Dengan latar belakang di bidang komunikasi dan public relations, saya membangun dan memelihara hubungan strategis dengan stakeholder industri film. Peran saya mencakup negosiasi kontrak, media relations, dan memastikan reputasi perusahaan tetap positif di mata publik dan industri perfilman.",
+        "image": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=600&fit=crop",
+        "portfolio": [
+            {
+                "judul": "Warkop DKI Reborn",
+                "poster": "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=300&h=400&fit=crop"
+            },
+            {
+                "judul": "Keluarga Cemara",
+                "poster": "https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?w=300&h=400&fit=crop"
+            }
+        ],
+        "proyek_selesai": [
+            "Warkop DKI Reborn Series - Falcon Pictures (2016-2019)",
+            "Keluarga Cemara - Yandy Laurens (2019)",
+            "Habibie & Ainun 3 - BJ Habibi (2019)",
+            "Critical Eleven - Monty Tiwa (2017)"
+        ]
+    },
+    {
+        "id": 5,
+        "nama": "Admin",
+        "pengenalan_singkat": "Bertanggung jawab atas data dan dokumentasi casting serta administrasi harian.",
+        "deskripsi_lengkap": "Sebagai tulang punggung operasional, saya mengelola seluruh database talent, dokumentasi audisi, kontrak, dan arsip proyek. Sistem administrasi yang terorganisir memungkinkan tim untuk bekerja efisien dan mengakses informasi dengan cepat. Detail oriented dan teliti adalah kekuatan utama saya.",
+        "image": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=600&fit=crop",
+        "portfolio": [
+            {
+                "judul": "Sistem Database",
+                "poster": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=300&h=400&fit=crop"
+            },
+            {
+                "judul": "Dokumentasi Audisi",
+                "poster": "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=300&h=400&fit=crop"
+            }
+        ],
+        "proyek_selesai": [
+            "Database Management - 500+ Talent Profiles",
+            "Audit Documentation - 100+ Film Projects",
+            "Contract Administration - 200+ Agreements",
+            "Filing System Optimization (2020-2024)"
+        ]
+    },
+    {
+        "id": 6,
+        "nama": "Koordinator",
+        "pengenalan_singkat": "Mengkoordinasikan seluruh kegiatan casting dan memastikan semua berjalan lancar.",
+        "deskripsi_lengkap": "Sebagai koordinator, saya memastikan sinergi antara semua divisi dalam tim casting. Dari perencanaan hingga eksekusi, saya memantau setiap tahap proses untuk memastikan timeline terpenuhi dan kualitas tetap terjaga. Problem solving dan leadership adalah core competency saya.",
+        "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=600&fit=crop",
+        "portfolio": [
+            {
+                "judul": "Project Management",
+                "poster": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=300&h=400&fit=crop"
+            },
+            {
+                "judul": "Team Coordination",
+                "poster": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=300&h=400&fit=crop"
+            }
+        ],
+        "proyek_selesai": [
+            "Multi-Project Coordination - 30+ Productions (2023)",
+            "Casting Process Optimization Initiative (2022)",
+            "Remote Audition System Implementation (2021)",
+            "Cross-Departmental Workflow Integration (2020)"
+        ]
+    },
+    {
+        "id": 7,
+        "nama": "Staf Pendukung",
+        "pengenalan_singkat": "Mendukung operasional harian tim casting dengan dedikasi dan profesionalisme tinggi.",
+        "deskripsi_lengkap": "Sebagai staf pendukung, saya membantu kelancaran operasional harian mulai dari persiapan venue audisi, koordinasi dengan talent, hingga support teknis. Dedikasi dan kerja keras adalah nilai yang saya junjung tinggi untuk memastikan setiap anggota tim dapat bekerja dengan maksimal.",
+        "image": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=600&fit=crop",
+        "portfolio": [
+            {
+                "judul": "Logistic Support",
+                "poster": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=300&h=400&fit=crop"
+            },
+            {
+                "judul": "Venue Management",
+                "poster": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=300&h=400&fit=crop"
+            }
+        ],
+        "proyek_selesai": [
+            "Audition Venue Setup - 100+ Sessions",
+            "Talent Transportation Coordination",
+            "Equipment & Technical Support",
+            "General Operational Support (2020-2024)"
+        ]
+    }
+]

@@ -7,9 +7,13 @@
         flex-direction: column;
         justify-content: center;
         color: #fff;
-        /* padding: 2rem 0; */
         position: relative;
         overflow: hidden;
+    }
+
+    .news-header {
+        padding-inline: 5rem;
+        background: transparent;
     }
 
     .section-title {
@@ -22,15 +26,14 @@
     .section-description {
         font-size: 1.125rem;
         line-height: 1.6;
-        max-width: 800px;
     }
 
     .news-btn {
         background: transparent;
         border: 2px solid white;
         color: white;
-        padding: 0.75rem 2rem;
-        border-radius: 8px;
+        padding: 0.7rem 1.75rem;
+        border-radius: 50px;
         font-weight: 500;
         transition: all 0.3s ease;
         display: inline-flex;
@@ -41,14 +44,20 @@
     }
 
     .news-btn:hover {
-        background: white;
-        color: #ee0000;
+        background: #ffffff56;
     }
 
     .news-container {
-        padding: 0rem 1rem;
         position: relative;
         overflow: visible;
+    }
+
+    .img-filter {
+        filter: brightness(0) invert(1);
+        width: 20px;
+        height: auto;
+        aspect-ratio: 1/1;
+        object-fit: contain;
     }
 
     .news-content {
@@ -57,6 +66,10 @@
         display: flex;
         flex-direction: column;
         gap: 2rem;
+    }
+
+    .news-wrapper {
+        padding-inline: 5rem;
     }
 
     .filter-sheet-container {
@@ -73,7 +86,6 @@
         box-shadow: -5px 0 30px rgba(0, 0, 0, 0.3);
         transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 100;
-        /* border-radius: 12px 0 0 12px; */
         overflow: hidden;
         display: flex;
         flex-direction: column;
@@ -89,7 +101,6 @@
         left: 0;
         width: 100%;
         height: 100%;
-        /* background: rgba(0, 0, 0, 0.2); */
         opacity: 0;
         visibility: hidden;
         transition: all 0.4s ease;
@@ -135,7 +146,6 @@
         border-radius: 6px;
     }
 
-
     .filter-sheet-content {
         padding: 1rem;
         overflow-y: auto;
@@ -161,25 +171,26 @@
         margin-inline: auto;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: end;
         gap: 0.5rem;
     }
 
     .filter-group-title {
+        background: transparent;
+        border: 2px solid white;
         color: white;
+        padding: 0.5rem 1.5rem;
+        border-radius: 50px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        align-items: center;
+        gap: 0.5rem;
         font-size: 1rem;
-        font-weight: 600;
-        letter-spacing: 1px;
-        margin-bottom: 0.75rem;
-        padding: 0.75rem;
-        border: 1px solid #dee2e6;
-        border-radius: 18px;
-        display: inline-block;
+        margin-bottom: 0.7rem;
     }
 
     .filter-item {
-        padding: 0.5rem 1rem;
-        margin-bottom: 0.2.5rem;
+        margin-bottom: 0.5rem;
         cursor: pointer;
         transition: all 0.2s ease;
         display: flex;
@@ -197,55 +208,21 @@
         transition: border-bottom 0.2s ease-in-out;
     }
 
-    .filter-item-icon {
-        width: 36px;
-        height: 36px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: rgba(238, 0, 0, 0.15);
-        border-radius: 6px;
-        color: #ee0000;
-        font-size: 1rem;
-        flex-shrink: 0;
-    }
-
-    .filter-item.active .filter-item-icon {
-        background: #ee0000;
-        color: white;
-    }
-
     .filter-item-content {
         flex: 1;
     }
 
     .filter-item-label {
         color: #fff;
-        font-size: 0.95rem;
+        font-size: 1.2rem;
         font-weight: 500;
         margin: 0;
         display: block;
     }
 
-    .filter-item-desc {
-        color: rgba(255, 255, 255, 0.5);
-        font-size: 0.8rem;
-        margin: 0.25rem 0 0 0;
-    }
-
-    .filter-item-check {
-        color: #ee0000;
-        font-size: 1.1rem;
-        opacity: 0;
-        transition: opacity 0.2s ease;
-    }
-
-    .filter-item.active .filter-item-check {
-        opacity: 1;
-    }
-
+    /* News Card Styles */
     .main-news-card {
-        height: 700px;
+        height: 740px;
         position: relative;
         overflow: hidden;
         cursor: pointer;
@@ -275,7 +252,7 @@
 
     .main-news-title {
         color: #fff;
-        font-size: 2rem;
+        font-size: 2.5rem;
         font-weight: 700;
         margin-bottom: 1rem;
         line-height: 1.3;
@@ -284,8 +261,8 @@
 
     .main-news-description {
         color: rgba(255, 255, 255, 0.95);
-        font-size: 1rem;
-        line-height: 1.6;
+        font-size: 1.5rem;
+        line-height: 1.25;
         margin-bottom: 1.5rem;
         display: -webkit-box;
         -webkit-line-clamp: 3;
@@ -293,22 +270,8 @@
         overflow: hidden;
     }
 
-    .main-news-meta {
-        display: flex;
-        gap: 1.5rem;
-        color: rgba(255, 255, 255, 0.8);
-        font-size: 0.9rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .meta-item {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-
     .small-news-grid {
-        max-height: 700px;
+        max-height: 740px;
         overflow-y: auto;
         padding-right: 0.5rem;
     }
@@ -328,14 +291,13 @@
     }
 
     .small-news-card {
-        height: 335px;
+        height: 355px;
         position: relative;
         overflow: hidden;
         cursor: pointer;
         margin-bottom: 1.5rem;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
-
     }
 
     .small-news-card img {
@@ -370,35 +332,138 @@
         overflow: hidden;
     }
 
-    .small-news-meta {
+    /* Modal Styles untuk News */
+    .modal-content {
+        border-radius: 0 !important;
+        border: none !important;
+        height: 80vh;
+    }
+
+    .modal-dialog.modal-xl-custom {
+        max-width: 1200px;
+        margin: 0.5rem auto;
+    }
+
+    .modal-body-custom {
+        padding: 0;
+        max-height: 100%;
+        overflow-y: hidden;
+    }
+
+    .modal-news-content {
         display: flex;
-        gap: 1rem;
-        color: rgba(255, 255, 255, 0.7);
-        font-size: 0.85rem;
+        flex-direction: column;
+        height: 100%;
+        min-height: 700px;
     }
 
-    .btn-read-more {
-        background-color: #f3f3f3;
-        color: #000;
+    .modal-news-poster {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .modal-sticky-header-news {
+        background-color: black;
+        padding: 0.5rem 1rem;
+        position: sticky;
+        top: 0;
+        z-index: 11;
+        display: flex;
+        justify-content: flex-end;
+        flex-shrink: 0;
+    }
+
+    .modal-sticky-header-news button {
+        background: none;
+        outline: none;
         border: none;
-        padding: 0.65rem 1.5rem;
-        border-radius: 8px;
-        font-size: 0.95rem;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        text-decoration: none;
-        display: inline-flex;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+    }
+
+    .modal-sticky-header-news button:hover {
+        transform: scale(1.1);
+    }
+
+    .modal-news-title {
+        flex-shrink: 0;
+        margin: 2.5rem 3rem 0.5rem;
+        background: #fff;
+        border-bottom: 2px solid #000;
+        z-index: 1;
+    }
+
+    .modal-news-title h2 {
+        font-size: 40px;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    .modal-news-description {
+        flex: 1;
+        overflow-y: auto;
+        margin: 2rem 3rem;
+        font-size: 18px;
+        line-height: 1.6;
+    }
+
+    .modal-news-description::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .modal-news-description::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    .modal-news-description::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 4px;
+    }
+
+    .modal-news-description::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
+    .modal-news-footer {
+        position: sticky;
+        bottom: 0;
+        flex-shrink: 0;
+        margin: 1.5rem 3rem;
+        padding-top: 1.5rem;
+        background: #fff;
+        border-top: 2px solid #333;
+        box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+        z-index: 11;
+    }
+
+    .modal-news-meta {
+        display: flex;
+        justify-content: space-between;
         align-items: center;
-        gap: 0.5rem;
+        gap: 1rem;
     }
 
-    .btn-read-more:hover {
-        background-color: #ee0000;
-        color: white;
-        transform: translateX(5px);
-        box-shadow: 0 4px 12px rgba(238, 0, 0, 0.3);
+    .meta-item {
+        display: flex;
+        flex-direction: column;
     }
 
+    .meta-label {
+        font-size: 0.875rem;
+        color: #666;
+        margin-bottom: 0.25rem;
+    }
+
+    .meta-value {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #000;
+        margin: 0;
+    }
+
+    /* Responsive Styles */
     @media (max-width: 992px) {
         .main-news-card {
             height: 500px;
@@ -418,9 +483,30 @@
             width: 280px;
             right: -280px;
         }
+
+        .modal-news-content {
+            min-height: 600px;
+        }
+
+        .modal-news-title h2 {
+            font-size: 32px;
+        }
+
+        .modal-news-description {
+            font-size: 16px;
+            overflow-y: auto;
+        }
     }
 
     @media (max-width: 768px) {
+        .news-header {
+            padding-inline: 2rem;
+        }
+
+        .news-wrapper {
+            padding-inline: 2rem;
+        }
+
         .section-title {
             font-size: 1.8rem;
         }
@@ -450,7 +536,6 @@
             border-radius: 0;
             z-index: 100;
             border-radius: 12px 0 0 12px;
-
         }
 
         .filter-sheet.show {
@@ -465,6 +550,100 @@
 
         .filter-sheet-header {
             display: none;
+        }
+
+        /* Modal Responsive */
+        .modal-dialog.modal-xl-custom {
+            margin: 1rem;
+            overflow-y: hidden;
+        }
+
+        .modal-content {
+            height: 70vh;
+        }
+
+        .modal-news-content {
+            min-height: auto;
+        }
+
+        .modal-news-title {
+            margin: 1.5rem 1.5rem 0.5rem;
+        }
+
+        .modal-news-title h2 {
+            font-size: 24px;
+        }
+
+        .modal-news-description {
+            margin: 1.5rem;
+            font-size: 14px;
+            overflow-y: auto;
+        }
+
+        .modal-news-footer {
+            margin: 1rem 1.5rem;
+        }
+
+        .modal-news-meta {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .modal-news-description {
+            margin: 1rem 1.5rem;
+            font-size: 14px;
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+
+        }
+
+        .modal-sticky-header-news {
+            display: none;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .news-content {
+            padding-block: 2rem;
+        }
+
+        .news-header {
+            padding-inline: 1rem;
+        }
+
+        .news-wrapper {
+            padding-inline: 1rem;
+        }
+
+        .modal-news-poster {
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .modal-body-custom .col-md-7 {
+            height: 60%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-btn {
+            border: 1px solid white;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 16px;
+            cursor: pointer;
+            padding-inline: 12px;
+            padding-block: 2px;
+            gap: 4px;
+            width: 80px;
+            justify-content: center
+        }
+
+        .img-filter {
+            width: 14px;
+            height: 14px;
         }
     }
 </style>
@@ -490,7 +669,7 @@
                     <div class="filter-sheet-content">
                         <div class="filter-group">
                             <div class="filter-group-title">
-                                <i class="fa-solid fa-filter"></i>
+                                <img src="/svg/filter.svg" alt="icon-filter" class="img-filter">
                                 filter
                             </div>
 
@@ -516,9 +695,9 @@
                 </div>
 
                 <div class="news-content">
-                    <div class="container-fluid">
-                        <div class="row align-items-center px-3 px-md-4 mb-4">
-                            <div class="col-lg-2 col-md-3 mb-3 mb-md-0">
+                    <div class="news-header d-lg-block d-none">
+                        <div class="row align-items-center mb-4">
+                            <div class="col-lg-2 col-md-3 mb-3 mb-md-0 title-news">
                                 <h2 class="section-title mb-0">News</h2>
                             </div>
 
@@ -531,30 +710,41 @@
 
                             <div class="col-lg-2 col-md-3 text-md-end">
                                 <button class="news-btn" type="button" onclick="toggleFilter()">
-                                    <i class="fa-solid fa-filter"></i>
+                                    <img src="/svg/filter.svg" alt="icon-filter" class="img-filter">
                                     <span>Filter</span>
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="news-header d-block d-lg-none">
+                        <div class="row align-items-center mb-4">
+                            <div class="d-flex justify-content-between">
+                                <h2 class="">News</h2>
+                                <button class="news-btn " type="button" onclick="toggleFilter()">
+                                    <img src="/svg/filter.svg" alt="icon-filter" class="img-filter">
+                                    <span>Filter</span>
+                                </button>
+                            </div>
+
+                            <div class="mt-2">
+                                <p class="section-description mb-0" style="text-align: justify;">
+                                    Featuring the latest news, updates, and collaborations from ACI
+                                    capturing movements and moments within the Indonesian film industry
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row news-wrapper">
                         @if ($mainNews)
-                            <div class="col-lg-7 mb-4 mb-lg-0">
-                                <div class="main-news-card">
-                                    <img src="{{ $mainNews['image'] ? Storage::url($mainNews['image']) : asset('images/placeholder.png') }}" alt="{{ $mainNews['title'] }}">
+                            <div class="col-lg-6 mb-4 mb-lg-0">
+                                <div class="main-news-card" data-bs-toggle="modal"
+                                    data-bs-target="#newsModal{{ $mainNews['id'] ?? 0 }}">
+                                    <img src="{{ $mainNews['image'] }}" alt="{{ $mainNews['title'] }}">
                                     <div class="main-news-overlay">
                                         <h3 class="main-news-title">{{ $mainNews['title'] }}</h3>
-                                        <div class="main-news-meta">
-                                            <div class="meta-item">
-                                                <i class="far fa-calendar"></i>
-                                                <span>{{ \Carbon\Carbon::parse($mainNews['created_at'])->format('d M Y') }}</span>
-                                            </div>
-                                            <div class="meta-item">
-                                                <i class="far fa-user"></i>
-                                                <span>{{ $mainNews['author'] ?? 'Admin ACI' }}</span>
-                                            </div>
-                                        </div>
                                         @if (isset($mainNews['description']))
                                             <p class="main-news-description">{{ $mainNews['description'] }}</p>
                                         @endif
@@ -562,20 +752,22 @@
                                 </div>
                             </div>
                         @endif
-                        <div class="col-lg-5">
+
+                        <div class="col-lg-6">
                             <div class="small-news-grid">
                                 <div class="row g-3">
                                     @foreach ($otherNews as $item)
                                         <div class="col-md-6 col-12">
-                                            <div class="small-news-card">
-                                                <img src="{{ $item['image'] ? Storage::url($item['image']) : asset('images/placeholder.png') }}" alt="{{ $item['title'] }}">
+                                            <div class="small-news-card" data-bs-toggle="modal"
+                                                data-bs-target="#newsModal{{ $item['id'] ?? $loop->index + 1 }}">
+                                                <img src="{{ $item['image'] }}" alt="{{ $item['title'] }}">
                                                 <div class="small-news-overlay">
                                                     <h5 class="small-news-title">{{ $item['title'] }}</h5>
-                                                    <div class="small-news-meta">
-                                                        <span><i class="far fa-calendar"></i>
-                                                            {{ \Carbon\Carbon::parse($item['created_at'])->format('d M') }}
-                                                        </span>
-                                                    </div>
+
+                                                    <span
+                                                        style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                                                        {{ $item['description'] }}
+                                                    </span>
                                                 </div>
                                             </div>
                                         </div>
@@ -587,9 +779,64 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
+
+@foreach ($news as $item)
+    <div class="modal fade" id="newsModal{{ $item['id'] ?? $loop->index }}" tabindex="-1"
+        aria-labelledby="newsModalLabel{{ $item['id'] ?? $loop->index }}" aria-hidden="true">
+
+        <div class="modal-dialog modal-xl modal-xl-custom modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body modal-body-custom">
+                    <div class="row g-0 h-100">
+
+                        <div class="col-md-5">
+                            <img src="{{ $item['image'] ?? 'https://via.placeholder.com/400x600' }}"
+                                alt="{{ $item['title'] }}" class="modal-news-poster">
+                        </div>
+
+                        <div class="col-md-7">
+                            <div class="modal-news-content">
+
+                                <div class="modal-sticky-header-news">
+                                    <button type="button" data-bs-dismiss="modal" aria-label="Close">
+                                        <img src="/img/Icon-x.png" alt="Close" width="30" height="30">
+                                    </button>
+                                </div>
+
+                                <div class="modal-news-title">
+                                    <h2>{{ $item['title'] ?? 'No title available.' }}</h2>
+                                </div>
+
+                                <div class="modal-news-description">
+                                    <p>{{ $item['description'] ?? 'No description available.' }}</p>
+
+                                    @if (isset($item['content']))
+                                        <p>{{ $item['content'] }}</p>
+                                    @endif
+                                </div>
+
+                                <div class="modal-news-footer">
+                                    <div class="modal-news-meta">
+                                        <div class="meta-item">
+                                            <span class="meta-label">Published By</span>
+                                            <p class="meta-value">
+                                                {{ $item['published_by'] ?? 'Unknown' }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endforeach
 
 <script>
     function toggleFilter() {
