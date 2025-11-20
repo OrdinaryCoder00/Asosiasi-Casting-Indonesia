@@ -2,20 +2,13 @@
     .main-footer {
         background-color: #ee0000;
         color: white;
-        padding: 30px 15px;
-        padding-inline: 5rem;
     }
 
     .logo-col {
         padding-right: 15px;
     }
 
-    @media (min-width: 768px) {
 
-        .logo-col .logo-content {
-            border-right-width: 1px !important;
-        }
-    }
 
     .logo-img {
         width: auto;
@@ -55,21 +48,29 @@
     .contact-link {
         color: inherit;
         text-decoration: none;
+        font-size: 1.25rem;
     }
 
     @media (min-width: 768px) {
+
+        .logo-col .logo-content {
+            border-right-width: 1px !important;
+        }
+
         .col-md-4>div {
             border-right-width: 1px !important;
         }
 
         .main-footer {
-            padding-inline: 2rem;
+            padding-inline: 5rem;
+            padding-block: 4rem;
         }
     }
 
     @media (max-width: 538px) {
         .main-footer {
             padding-inline: 1rem;
+            padding-block: 2rem;
         }
     }
 </style>

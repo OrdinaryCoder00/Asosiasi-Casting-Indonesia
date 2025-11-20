@@ -546,7 +546,7 @@
                         <div class="col-md-7">
                             <div class="modal-film-content">
 
-                                <div class="modal-sticky-header-film">
+                                <div class="modal-sticky-header-film d-md-block d-none">
                                     <button type="button" class="" data-bs-dismiss="modal" aria-label="Close"
                                         style="background: none; outline: none; border: none;"><img
                                             src="/img/Icon-x.png" alt="X" width="30" height="30"></button>

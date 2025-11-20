@@ -24,7 +24,7 @@
     }
 
     .section-description {
-        font-size: 1.125rem;
+        font-size: 1.5rem;
         line-height: 1.6;
     }
 
@@ -512,7 +512,7 @@
         }
 
         .section-description {
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
 
         .main-news-title {
