@@ -25,7 +25,7 @@
 
     .section-description {
         font-size: 1.5rem;
-        line-height: 1.6;
+        /* line-height: 1.6; */
     }
 
     .news-btn {
@@ -62,7 +62,7 @@
 
     .news-content {
         padding-inline: 0.6rem;
-        padding-block: 6rem;
+        padding-block: 5rem;
         display: flex;
         flex-direction: column;
         gap: 2rem;
@@ -222,7 +222,7 @@
 
     /* News Card Styles */
     .main-news-card {
-        height: 740px;
+        height: 720px;
         position: relative;
         overflow: hidden;
         cursor: pointer;
@@ -234,6 +234,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+        aspect-ratio: 1/1;
         transition: transform 0.5s ease;
     }
 
@@ -252,17 +253,17 @@
 
     .main-news-title {
         color: #fff;
-        font-size: 2.5rem;
+        font-size: 2rem;
         font-weight: 700;
         margin-bottom: 1rem;
-        line-height: 1.3;
+        /* line-height: 1.3; */
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
 
     .main-news-description {
         color: rgba(255, 255, 255, 0.95);
         font-size: 1.5rem;
-        line-height: 1.25;
+        /* line-height: 1.25; */
         margin-bottom: 1.5rem;
         display: -webkit-box;
         -webkit-line-clamp: 3;
@@ -271,7 +272,7 @@
     }
 
     .small-news-grid {
-        max-height: 740px;
+        max-height: 720px;
         overflow-y: auto;
         padding-right: 0.5rem;
     }
@@ -291,7 +292,6 @@
     }
 
     .small-news-card {
-        height: 355px;
         position: relative;
         overflow: hidden;
         cursor: pointer;
@@ -304,6 +304,8 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+        object-position: center;
+        aspect-ratio: 1/1;
         transition: transform 0.5s ease;
     }
 
@@ -322,21 +324,20 @@
 
     .small-news-title {
         color: #fff;
-        font-size: 1.1rem;
+        font-size: 1.5rem;
         font-weight: 600;
         margin-bottom: 0.5rem;
-        line-height: 1.3;
+        /* line-height: 1.3; */
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
     }
 
-    /* Modal Styles untuk News */
     .modal-content {
         border-radius: 0 !important;
         border: none !important;
-        height: 80vh;
+        height: 70vh;
     }
 
     .modal-dialog.modal-xl-custom {
@@ -402,11 +403,11 @@
     }
 
     .modal-news-description {
-        flex: 1;
+        max-height: 300px;
         overflow-y: auto;
-        margin: 2rem 3rem;
+        margin: 1.5rem 3rem;
         font-size: 18px;
-        line-height: 1.6;
+        /* line-height: 1.6; */
     }
 
     .modal-news-description::-webkit-scrollbar {
@@ -515,16 +516,40 @@
             font-size: 1rem;
         }
 
+
+        .main-news-overlay {
+            padding: 1.5rem;
+        }
+
         .main-news-title {
             font-size: 1.5rem;
+            font-weight: 600;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .main-news-description {
+            font-size: 1rem;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .modal-news-description {
+            overflow-y: auto;
+            margin: 1.5rem 3rem;
+            font-size: 18px;
+            /* line-height: 1.6; */
         }
 
         .main-news-card {
-            height: 450px;
+            height: 320px;
         }
 
         .small-news-card {
-            height: 280px;
+            height: 320px;
         }
 
         .filter-sheet {
@@ -592,10 +617,9 @@
         .modal-news-description {
             margin: 1rem 1.5rem;
             font-size: 14px;
-            flex: 1;
+            max-height: 25%;
             overflow-y: auto;
             overflow-x: hidden;
-            -webkit-overflow-scrolling: touch;
 
         }
 
@@ -618,12 +642,12 @@
         }
 
         .modal-news-poster {
-            height: 250px;
+            height: 200px;
             object-fit: cover;
+            object-position: center;
         }
 
         .modal-body-custom .col-md-7 {
-            height: 60%;
             display: flex;
             flex-direction: column;
         }
@@ -644,6 +668,10 @@
         .img-filter {
             width: 14px;
             height: 14px;
+        }
+
+        .modal-news-footer {
+            padding-bottom: 12px;
         }
     }
 </style>
@@ -696,7 +724,7 @@
 
                 <div class="news-content">
                     <div class="news-header d-lg-block d-none">
-                        <div class="row align-items-center mb-4">
+                        <div class="row align-items-center mb-lg-4">
                             <div class="col-lg-2 col-md-3 mb-3 mb-md-0 title-news">
                                 <h2 class="section-title mb-0">News</h2>
                             </div>
@@ -739,12 +767,12 @@
 
                     <div class="row news-wrapper">
                         @if ($mainNews)
-                            <div class="col-lg-6 mb-4 mb-lg-0">
+                            <div class="col-lg-5 mb-4 mb-lg-0">
                                 <div class="main-news-card" data-bs-toggle="modal"
                                     data-bs-target="#newsModal{{ $mainNews['id'] ?? 0 }}">
                                     <img src="{{ $mainNews['image'] }}" alt="{{ $mainNews['title'] }}">
                                     <div class="main-news-overlay">
-                                        <h3 class="main-news-title">{{ $mainNews['title'] }}</h3>
+                                        <h3 class="main-news-title text-uppercase">{{ $mainNews['title'] }}</h3>
                                         @if (isset($mainNews['description']))
                                             <p class="main-news-description">{{ $mainNews['description'] }}</p>
                                         @endif
@@ -753,7 +781,7 @@
                             </div>
                         @endif
 
-                        <div class="col-lg-6">
+                        <div class="col-lg-7">
                             <div class="small-news-grid">
                                 <div class="row g-3">
                                     @foreach ($otherNews as $item)
@@ -762,7 +790,8 @@
                                                 data-bs-target="#newsModal{{ $item['id'] ?? $loop->index + 1 }}">
                                                 <img src="{{ $item['image'] }}" alt="{{ $item['title'] }}">
                                                 <div class="small-news-overlay">
-                                                    <h5 class="small-news-title">{{ $item['title'] }}</h5>
+                                                    <h5 class="small-news-title text-uppercase">{{ $item['title'] }}
+                                                    </h5>
 
                                                     <span
                                                         style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
@@ -789,6 +818,12 @@
         <div class="modal-dialog modal-xl modal-xl-custom modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-body modal-body-custom">
+                    <div class="modal-sticky-header d-flex d-lg-none ">
+                        <button type="button" data-bs-dismiss="modal" aria-label="Close"
+                            style="background: none; outline: none; border: none;">
+                            <img src="/img/Icon-x.png" alt="X" width="30" height="30">
+                        </button>
+                    </div>
                     <div class="row g-0 h-100">
 
                         <div class="col-md-5">

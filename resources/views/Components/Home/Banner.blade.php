@@ -12,7 +12,7 @@
     .banner-img {
         position: absolute;
         bottom: 0;
-        right: 0;
+        right: 9vw;
         width: 100%;
         height: 750px;
         object-fit: contain;
@@ -21,18 +21,21 @@
     }
 
     .wrap {
+        position: absolute;
+        bottom: 0;
+        left: 4vw;
         z-index: 2;
         color: white;
-        padding: 0;
+        padding: 0px;
         width: 100%;
     }
 
     .title {
         font-family: 'Lemon Milk', sans-serif;
-        font-size: clamp(2rem, 18vw, 14rem);
-        font-weight: 300;
+        font-size: clamp(5rem, 22vw, 24rem);
+        font-weight: 500;
         margin: 0;
-        line-height: 1;
+        /* line-height: 1; */
         text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
         padding-left: 1rem;
     }
@@ -59,6 +62,18 @@
         .banner-img {
             object-fit: contain;
             object-position: bottom;
+            right: 0vw;
+
+        }
+
+        .wrap {
+            position: absolute;
+            bottom: 0;
+            left: 4vw;
+            z-index: 2;
+            color: white;
+            padding: 0px;
+            width: 100%;
         }
 
         .title {

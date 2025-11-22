@@ -1,6 +1,6 @@
 <style>
     .navbar-expand-lg {
-        padding-inline: 5rem;
+        padding-right: 5rem;
         background-color: #ee0000;
     }
 
@@ -15,7 +15,7 @@
         font-size: 0.95rem;
         text-transform: uppercase;
         padding-left: 0.5rem;
-        color: #dfdfdf;
+        color: #f1f1f1;
         padding-right: 0.5rem;
     }
 
@@ -45,14 +45,13 @@
     }
 
     .offcanvas-body .nav-link:hover {
-        background-color: rgba(255, 255, 255, 0.1);
         color: white !important;
     }
 
     .offcanvas-body .nav-link.active {
         color: white !important;
         font-weight: 800;
-        background-color: rgba(255, 255, 255, 0.15);
+        font-family: 'TCB', sans-serif;
     }
 
     .offcanvas-header {
@@ -100,8 +99,8 @@
         </a>
 
         <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas"
-            style="border:1px solid white; outline: none;" data-bs-target="#offcanvasNavbar"
-            aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+            style="border:none; outline: none;" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"
+            aria-label="Toggle navigation">
             <i class="fa-solid fa-bars text-white"></i>
         </button>
 

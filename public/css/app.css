@@ -12,6 +12,13 @@
 }
 
 @font-face {
+    font-family: "Lemon Milk";
+    src: url("/fonts/LEMONMILK-Bold.otf") format("opentype");
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
     font-family: "TCM";
     src: url("/fonts/TCM_____.TTF") format("truetype");
     font-weight: normal;

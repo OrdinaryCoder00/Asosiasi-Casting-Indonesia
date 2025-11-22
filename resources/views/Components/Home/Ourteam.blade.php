@@ -1,6 +1,10 @@
 @props(['team'])
 
 <style>
+    #teamCollapse {
+        padding-block: 4rem;
+    }
+
     .scrollable-cards-container {
         display: flex;
         overflow-x: auto;
@@ -90,17 +94,16 @@
         pointer-events: none !important;
     }
 
-    .card-overlay h5 {
+    .card-overlay h4 {
         color: #fff;
         font-weight: 600;
         margin-bottom: 0.75rem;
-        font-size: 1.25rem;
     }
 
     .card-overlay p {
         color: rgba(255, 255, 255, 0.9);
         font-size: 0.9rem;
-        line-height: 1.4;
+        /* line-height: 1.4; */
         margin-bottom: 1rem;
         display: -webkit-box;
         -webkit-line-clamp: 2;
@@ -138,7 +141,8 @@
     }
 
     .our-team-btn {
-        font-size: 38px;
+        font-size: 3rem;
+        font-weight: 600;
         border: none;
         background: none;
         display: flex;
@@ -149,6 +153,11 @@
         gap: 1rem;
     }
 
+    .our-team-btn:focus {
+        outline: none;
+
+    }
+
     .collapse-icon {
         transition: transform 0.3s ease;
     }
@@ -157,11 +166,6 @@
         transform: rotate(180deg);
     }
 
-    .modal-content {
-        border-radius: 0 !important;
-        border: none !important;
-        height: 80vh;
-    }
 
     .modal-dialog.modal-xl-custom {
         max-width: 1200px;
@@ -170,7 +174,7 @@
 
     .modal-body-custom {
         padding: 0;
-        max-height: 100%;
+        height: 100%;
         overflow-y: hidden;
     }
 
@@ -270,7 +274,7 @@
         }
 
         .modal-content {
-            height: 85vh;
+            height: 70vh;
         }
 
         .modal-member-name {
@@ -324,7 +328,7 @@
         }
 
         .modal-right-container {
-            height: auto;
+            height: 100% !important;
         }
 
         .modal-left-image {
@@ -416,10 +420,6 @@
             max-width: 98%;
         }
 
-        .modal-content {
-            max-height: 95vh;
-        }
-
         .modal-left-image {
             min-height: 250px;
             height: 250px;
@@ -453,23 +453,26 @@
 
         <div class="row align-items-center justify-content-between p-3 pt-0 p-md-3 pt-md-0">
             <div class="col-12 col-lg-4 mb-3 mb-md-0">
-                <p class="subtitle-ourteam">
-                    ACI casting director & associates is a member of the Indonesian film board
-                    that is certified and works globally to collaborate with filmmakers.
+                <p class="subtitle-ourteam mb-0">
+                    ACI casting director & associates is a member
                 </p>
+                <p class="subtitle-ourteam mb-0">of the Indonesian film board
+                    that is certified</p>
+                <p class="subtitle-ourteam mb-0"> and works globally to collaborate with filmmakers.</p>
+
             </div>
 
             <div class="col-12 col-md-auto text-center text-md-end d-none d-lg-block">
                 <button class="our-team-btn" type="button" data-bs-toggle="collapse" data-bs-target="#teamCollapse"
                     aria-expanded="true" aria-controls="teamCollapse">
                     <i class="fas fa-chevron-up collapse-icon"></i>
-                    <span>Our Team</span>
+                    <span class="text-uppercase">Our Team</span>
                 </button>
             </div>
         </div>
     </div>
 
-    <div class="collapse show py-5 bg-white" id="teamCollapse">
+    <div class="collapse show bg-white" id="teamCollapse">
 
         <div class="scrollable-cards-container">
             @foreach ($team as $data)
@@ -479,7 +482,7 @@
                             <img src="{{ $data['image'] }}" alt="{{ $data['nama'] }}">
                         </div>
                         <div class="card-overlay">
-                            <h5 class="border-bottom">{{ $data['nama'] }}</h5>
+                            <h4 class="border-bottom">{{ $data['nama'] }}</h4>
                             <p>{{ $data['pengenalan_singkat'] }}</p>
                             <a href="#" class="btn-read-more" data-bs-toggle="modal"
                                 data-bs-target="#teamModal{{ $data['id'] }}">
@@ -501,9 +504,16 @@
 
         <div class="modal-dialog modal-xl modal-xl-custom modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-body modal-body-custom">
+                <div class="modal-body modal-body-custom ">
+                    <div class="modal-sticky-header d-flex d-lg-none ">
+                        <button type="button" data-bs-dismiss="modal" aria-label="Close"
+                            style="background: none; outline: none; border: none;">
+                            <img src="/img/Icon-x.png" alt="X" width="30" height="30">
+                        </button>
+                    </div>
                     <div class="row g-0 h-100">
-                        <div class="col-12 col-md-5 position-relative">
+
+                        <div class="col-12 col-md-5 position-relative d-lg-block d-none ">
                             <img src="{{ $data['image'] }}" alt="{{ $data['nama'] }}" class="modal-left-image">
                         </div>
 

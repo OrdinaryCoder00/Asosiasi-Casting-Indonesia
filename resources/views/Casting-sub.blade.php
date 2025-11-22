@@ -11,7 +11,7 @@
         padding: .375rem .75rem;
         font-size: 1rem;
         font-weight: 400;
-        line-height: 1.5;
+        /* line-height: 1.5; */
         color: #212529;
         background-color: #fff;
         background-clip: padding-box;
@@ -19,6 +19,7 @@
         border-radius: 4px;
         transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
         border-bottom: 2px solid #dee2e6;
+        font-size: 20px
     }
 
     .form-control-custom:focus {
@@ -30,7 +31,7 @@
 
     .form-control-custom::placeholder {
         color: #adb5bd;
-        font-size: 14px;
+        font-size: 18px;
     }
 
     .input-wrapper {
@@ -61,7 +62,7 @@
         cursor: pointer;
         background: #f8f9fa;
         margin-bottom: 20px;
-        min-height: 280px;
+        min-height: 320px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -116,7 +117,7 @@
         height: 30px;
         cursor: pointer;
         font-size: 18px;
-        line-height: 1;
+        /* line-height: 1; */
         transition: all 0.3s;
         z-index: 10;
     }
@@ -171,7 +172,7 @@
     .page-title {
         color: #212529;
         text-align: start;
-        margin-bottom: 40px;
+        margin-bottom: 4rem;
         font-weight: 700;
     }
 
@@ -257,17 +258,17 @@
 
             <form id="castingForm ">
                 <div class="row px-lg-3">
-                    <div class="col-lg-7">
+                    <div class="col-lg-6">
                         <h4 class="section-title">Personal Information</h4>
 
                         <div class="input-wrapper">
                             <input type="text" class="form-control-custom" id="fullname" placeholder="Full Name *"
                                 required>
                         </div>
-
                         <div class="input-wrapper">
-                            <input type="date" class="form-control-custom" id="dob"
-                                placeholder="Date of Birth *" required>
+                            <input type="text" class="form-control-custom" id="dob"
+                                placeholder="Date of Birth *" onfocus="(this.type='date')"
+                                onblur="if(!this.value)this.type='text'" required>
                         </div>
 
                         <div class="input-wrapper">
@@ -333,7 +334,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-5">
+                    <div class="col-lg-6">
                         <h4 class="section-title">Upload Media</h4>
 
                         <div class="mb-4">

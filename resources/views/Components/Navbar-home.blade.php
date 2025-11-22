@@ -1,6 +1,6 @@
 <style>
     .navbar-expand-lg {
-        padding-inline: 5rem;
+        padding-right: 5rem;
     }
 
     .navbar-title-text {
@@ -41,14 +41,13 @@
     }
 
     .offcanvas-body .nav-link:hover {
-        background-color: rgba(255, 255, 255, 0.1);
         color: white !important;
     }
 
     .offcanvas-body .nav-link.active {
         color: white !important;
         font-weight: 800;
-        background-color: rgba(255, 255, 255, 0.15);
+        font-family: 'TCB', sans-serif;
     }
 
     .offcanvas-header {
@@ -97,8 +96,9 @@
             <span class="text-uppercase fw-bold navbar-title-text">ASOSIASI CASTING INDONESIA</span>
         </a>
 
-        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <button class="navbar-toggler d-lg-none" style="outline: none; border: none;" type="button"
+            data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"
+            aria-label="Toggle navigation">
             <i class="fa-solid fa-bars"></i>
         </button>
 

@@ -11,7 +11,7 @@
 
     .header-section-poster {
         padding-inline: 5.7rem;
-        padding-bottom: 2rem;
+        padding-bottom: 4rem;
         background: transparent;
     }
 
@@ -24,7 +24,7 @@
 
     .subtitle-poster {
         font-size: 1.5rem;
-        line-height: 1.6;
+        /* line-height: 1.6; */
         max-width: 800px;
         margin: 0 auto;
         text-align: center;
@@ -116,14 +116,14 @@
         font-weight: 700;
         margin-bottom: 1rem;
         font-size: 1.5rem;
-        line-height: 1.3;
+        /* line-height: 1.3; */
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     }
 
     .poster-description {
         color: rgba(255, 255, 255, 0.95);
         font-size: 1rem;
-        line-height: 1.6;
+        /* line-height: 1.6; */
         margin-bottom: 1.5rem;
         display: -webkit-box;
         -webkit-line-clamp: 3;
@@ -166,8 +166,8 @@
     .modal-content {
         border-radius: 0 !important;
         border: none !important;
-        min-height: 80vh;
-        max-height: 90vh;
+        min-height: 70vh;
+        max-height: 70vh;
     }
 
     .modal-dialog.modal-xl-custom {
@@ -216,7 +216,7 @@
 
     .modal-film-title {
         flex-shrink: 0;
-        padding: 2.5rem 3rem 1rem;
+        margin: 2.5rem 3rem 1rem;
         background: #fff;
         border-bottom: 2px solid #000;
     }
@@ -228,11 +228,12 @@
     }
 
     .modal-film-description {
-        flex: 1;
+        min-height: 420px;
+        max-height: 420px;
         overflow-y: auto;
         padding: 2rem 3rem;
         font-size: 1.125rem;
-        line-height: 1.8;
+        /* line-height: 1.8; */
     }
 
     .modal-film-description p {
@@ -244,7 +245,7 @@
         position: sticky;
         bottom: 0;
         flex-shrink: 0;
-        padding: 1.5rem 3rem;
+        margin: 1.5rem 3rem;
         background: #fff;
         border-top: 2px solid #333;
         box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
@@ -297,7 +298,7 @@
         }
 
         .modal-film-title {
-            padding: 2rem 2.5rem 1rem;
+            margin: 2rem 2.5rem 1rem;
         }
 
         .modal-film-title h2 {
@@ -310,7 +311,7 @@
         }
 
         .modal-film-footer {
-            padding: 1.25rem 2.5rem;
+            margin: 1.25rem 2.5rem;
         }
     }
 
@@ -327,11 +328,6 @@
 
         .modal-content {
             min-height: 70vh;
-        }
-
-        /* Stack layout untuk tablet */
-        .film-modal-row {
-            flex-direction: column;
         }
 
         .film-modal-row .col-md-5,
@@ -417,7 +413,7 @@
         }
 
         .modal-film-title {
-            padding: 1.5rem 1.5rem 1rem;
+            margin: 1.5rem 1.5rem 1rem;
         }
 
         .modal-film-title h2 {
@@ -430,7 +426,7 @@
         }
 
         .modal-film-footer {
-            padding: 1rem 1.5rem;
+            margin: 1rem 1.5rem;
             flex-direction: column;
             gap: 1rem;
             align-items: flex-start;
@@ -446,6 +442,14 @@
 
         .footer-value {
             font-size: 0.95rem;
+        }
+
+
+
+        .modal-film-description {
+            min-height: auto;
+            overflow-y: auto;
+            /* line-height: 1.8; */
         }
     }
 
@@ -476,6 +480,7 @@
         }
 
         .modal-film-description {
+            max-height: 150px;
             font-size: 0.9rem;
             padding: 1rem 1.5rem;
         }
@@ -483,12 +488,16 @@
         .subtitle-poster {
             text-align: justify;
         }
+
+        .img-wrapper {
+            height: 150px;
+        }
     }
 </style>
 
 <div class="container-fluid p-0">
     <div class="film-poster-header">
-        <div class="header-section-poster pt-lg-0 pt-3">
+        <div class="header-section-poster pt-lg-0">
             <div class="row align-items-center p-0">
                 <div class="col-lg-2 col-md-3 mb-lg-0 mb-3">
                     <h2 class="section-title mb-0">Film</h2>
@@ -514,7 +523,7 @@
                             <img src="{{ $item['image'] }}" alt="{{ $item['Nama_Film'] }}">
                         </div>
                         <div class="poster-info-overlay">
-                            <h5 class="poster-title">{{ $item['Nama_Film'] }}</h5>
+                            <h4 class="poster-title border-bottom">{{ $item['Nama_Film'] }}</h4>
                             <p class="poster-description">{{ $item['Deskripsi_singkat'] }}</p>
                             <a href="#" class="btn-read-more" data-bs-toggle="modal"
                                 data-bs-target="#filmModal{{ $item['id'] ?? $loop->index }}">
@@ -537,16 +546,20 @@
 
             <div class="modal-content">
                 <div class="modal-body modal-body-custom">
+                    <div class="modal-sticky-header-film d-lg-none d-flex">
+                        <button type="button" class="" data-bs-dismiss="modal" aria-label="Close"
+                            style="background: none; outline: none; border: none;"><img src="/img/Icon-x.png"
+                                alt="X" width="30" height="30"></button>
+                    </div>
                     <div class="row g-0 h-100 film-modal-row">
-
-                        <div class="col-md-5">
+                        <div class="col-md-5 img-wrapper">
                             <img src="{{ $item['image'] }}" alt="{{ $item['Nama_Film'] }}" class="modal-film-poster">
                         </div>
 
                         <div class="col-md-7">
                             <div class="modal-film-content">
 
-                                <div class="modal-sticky-header-film d-md-block d-none">
+                                <div class="modal-sticky-header-film d-lg-flex d-none">
                                     <button type="button" class="" data-bs-dismiss="modal" aria-label="Close"
                                         style="background: none; outline: none; border: none;"><img
                                             src="/img/Icon-x.png" alt="X" width="30" height="30"></button>

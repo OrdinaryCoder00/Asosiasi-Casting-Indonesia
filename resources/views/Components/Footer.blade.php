@@ -21,7 +21,7 @@
 
     .logo-text {
         font-size: 1.1rem;
-        line-height: 1.2;
+        /* line-height: 1.2; */
         margin-top: 5px;
     }
 
@@ -39,6 +39,11 @@
 
     .contact-item {
         margin-bottom: 10px;
+    }
+
+    .contact-item a {
+        font-size: 24px;
+
     }
 
     .contact-icon {
@@ -63,7 +68,8 @@
 
         .main-footer {
             padding-inline: 5rem;
-            padding-block: 4rem;
+            padding-bottom: 4rem;
+            padding-top: 8rem;
         }
     }
 
@@ -80,7 +86,7 @@
         <div class="row d-flex align-items-stretch row-cols-1 row-cols-md-2">
 
             <div
-                class="col-md-6 col-lg-8 d-flex flex-column gap-2 align-items-center justify-content-center
+                class="col-md-6 col-lg-6 d-flex flex-column gap-2 align-items-center justify-content-center
                             text-center text-md-start mb-4 mb-md-0 logo-col">
 
                 <div
@@ -96,7 +102,7 @@
                 </div>
             </div>
 
-            <div class="col-md-6 col-lg-4 contact-col">
+            <div class="col-md-6 col-lg-6 contact-col align-content-end">
 
                 <h3 class="text-uppercase contact-title">
                     Contact Us!
