@@ -1,13 +1,82 @@
+@props(['variant' => 'default'])
+
+@php
+    $isHomepage = request()->is('/');
+
+    $bgColor = $variant === 'light' || $isHomepage ? 'bg-light' : '';
+    $customBg = $variant === 'red' || !$isHomepage ? 'background-color: #ee0000;' : '';
+    $textColor = $variant === 'red' || !$isHomepage ? 'text-white' : '';
+
+    $menuItems = [
+        ['label' => 'HOME', 'route' => '/', 'section' => 'home'],
+        ['label' => 'ABOUT', 'route' => '/about', 'section' => 'about'],
+        ['label' => 'OUR TEAM', 'route' => '/our-team', 'section' => 'our-team'],
+        ['label' => 'POSTER', 'route' => '/poster', 'section' => 'poster'],
+        ['label' => 'CASTING SUBMISSION', 'route' => '/casting-submission', 'section' => null],
+        ['label' => 'NEWS', 'route' => '/news', 'section' => 'news'],
+        ['label' => 'CONTACT', 'route' => '/contact', 'section' => 'contact'],
+    ];
+@endphp
+
 <style>
     .navbar-expand-lg {
         padding-right: 5rem;
+    }
+
+    .navbar-universal {
+        transition: all 0.3s ease;
+    }
+
+    .navbar-universal.variant-light {
+        background-color: #f8f9fa;
+    }
+
+    .navbar-universal.variant-light .navbar-title-text {
+        color: #333;
+    }
+
+    .navbar-universal.variant-light .nav-link {
+        color: #333;
+    }
+
+    .navbar-universal.variant-light .navbar-nav .nav-link:hover {
+        color: #ee0000 !important;
+    }
+
+    .navbar-universal.variant-light .navbar-nav .nav-link.active {
+        color: #ee0000 !important;
+    }
+
+    /* Styling untuk halaman lain (merah) */
+    .navbar-universal.variant-red {
         background-color: #ee0000;
     }
 
+    .navbar-universal.variant-red .navbar-title-text {
+        color: white;
+    }
+
+    .navbar-universal.variant-red .nav-link {
+        color: #f1f1f1;
+    }
+
+    .navbar-universal.variant-red .navbar-nav .nav-link:hover {
+        color: #ffffff !important;
+    }
+
+    .navbar-universal.variant-red .navbar-nav .nav-link:focus {
+        color: #ffff !important;
+        border-radius: 6px;
+    }
+
+    .navbar-universal.variant-red .navbar-nav .nav-link.active {
+        color: #ffffff !important;
+        font-weight: 800;
+    }
+
+    /* Common styles */
     .navbar-title-text {
         font-size: 1.1rem;
-        color: white;
-
     }
 
     .nav-link {
@@ -15,17 +84,8 @@
         font-size: 0.95rem;
         text-transform: uppercase;
         padding-left: 0.5rem;
-        color: #f1f1f1;
         padding-right: 0.5rem;
-    }
-
-    .navbar-nav .nav-link:hover {
-        color: #ffffff !important;
-    }
-
-    .navbar-nav .nav-link.active {
-        color: #ffffff !important;
-        font-weight: 800;
+        transition: all 0.3s ease;
     }
 
     .navbar-toggler i {
@@ -39,6 +99,7 @@
         z-index: 1030;
     }
 
+    /* Offcanvas styling */
     .offcanvas-body .nav-link {
         padding: 0.75rem 1rem;
         color: white;
@@ -89,45 +150,45 @@
     }
 </style>
 
-<nav class="navbar navbar-expand-lg navbar-light" id="mainNavbar">
+<nav class="navbar navbar-expand-lg navbar-light navbar-universal variant-{{ $isHomepage ? 'light' : 'red' }}"
+    id="mainNavbar">
     <div class="container-fluid">
         <a class="navbar-brand d-flex align-items-center gap-2" href="/">
             <img src="/img/logo-aci.png" alt="logo-aci" width="50" height="50"
                 class="d-inline-block align-text-top me-2"
-                style="object-position: center; object-fit: contain; aspect-ratio: 1/1; filter: brightness(0) invert(1)">
+                style="object-position: center; object-fit: contain; aspect-ratio: 1/1; {{ !$isHomepage ? 'filter: brightness(0) invert(1)' : '' }}">
             <span class="text-uppercase fw-bold navbar-title-text">ASOSIASI CASTING INDONESIA</span>
         </a>
 
         <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas"
             style="border:none; outline: none;" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"
             aria-label="Toggle navigation">
-            <i class="fa-solid fa-bars text-white"></i>
+            <i class="fa-solid fa-bars {{ !$isHomepage ? 'text-white' : '' }}"></i>
         </button>
 
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav gap-xl-3">
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="/">HOME</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->is('about') ? 'active' : '' }}" href="/about">ABOUT</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->is('our-team') ? 'active' : '' }}" href="/our-team">OUR TEAM</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->is('poster') ? 'active' : '' }}" href="/poster">POSTER</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->is('casting-submission') ? 'active' : '' }}"
-                        href="{{ url('/casting-submission') }}">CASTING SUBMISSION</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->is('news') ? 'active' : '' }}" href="/news">NEWS</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->is('contact') ? 'active' : '' }}" href="/contact">CONTACT</a>
-                </li>
+                @foreach ($menuItems as $item)
+                    @php
+                        if ($isHomepage && $item['section']) {
+                            $href = '#' . $item['section'];
+                            $isActive = false;
+                        } else {
+                            if ($item['section'] && $item['route'] !== '/casting-submission') {
+                                $href = '/#' . $item['section'];
+                            } else {
+                                $href = $item['route'];
+                            }
+                            $isActive = request()->is(trim($item['route'], '/'));
+                        }
+                    @endphp
+                    <li class="nav-item">
+                        <a class="nav-link {{ $isActive ? 'active' : '' }}" href="{{ $href }}"
+                            data-section="{{ $item['section'] ?? '' }}">
+                            {{ $item['label'] }}
+                        </a>
+                    </li>
+                @endforeach
             </ul>
         </div>
     </div>
@@ -140,29 +201,27 @@
     </div>
     <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end align-items-end flex-grow-1 pe-3 gap-2">
-            <li class="nav-item">
-                <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" aria-current="page"
-                    href="{{ url('/') }}">HOME</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ request()->is('about') ? 'active' : '' }}" href="/about">ABOUT</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ request()->is('our-team') ? 'active' : '' }}" href="/our-team">OUR TEAM</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ request()->is('poster') ? 'active' : '' }}" href="/poster">POSTER</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ request()->is('casting-submission') ? 'active' : '' }}"
-                    href="{{ url('/casting-submission') }}">CASTING SUBMISSION</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ request()->is('news') ? 'active' : '' }}" href="/news">NEWS</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ request()->is('contact') ? 'active' : '' }}" href="/contact">CONTACT</a>
-            </li>
+            @foreach ($menuItems as $item)
+                @php
+                    if ($isHomepage && $item['section']) {
+                        $href = '#' . $item['section'];
+                        $isActive = false;
+                    } else {
+                        if ($item['section'] && $item['route'] !== '/casting-submission') {
+                            $href = '/#' . $item['section'];
+                        } else {
+                            $href = $item['route'];
+                        }
+                        $isActive = request()->is(trim($item['route'], '/'));
+                    }
+                @endphp
+                <li class="nav-item">
+                    <a class="nav-link {{ $isActive ? 'active' : '' }}" href="{{ $href }}"
+                        data-section="{{ $item['section'] ?? '' }}">
+                        {{ $item['label'] }}
+                    </a>
+                </li>
+            @endforeach
         </ul>
     </div>
 </div>

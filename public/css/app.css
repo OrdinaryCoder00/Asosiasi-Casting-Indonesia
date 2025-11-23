@@ -47,3 +47,15 @@
     --bs-modal-backdrop-bg: #000;
     --bs-modal-backdrop-opacity: 0.95;
 }
+
+html {
+    scroll-behavior: smooth;
+}
+
+section[id] {
+    scroll-margin-top: 80px;
+}
+
+section[id] {
+    padding-top: 20px;
+}

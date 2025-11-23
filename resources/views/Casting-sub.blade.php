@@ -253,7 +253,7 @@
     <div class="bg-white">
         <div class="form-container">
             <div class="container-fluid">
-                <h2 class="page-title pl-lg-4">CASTIN SUBMISSION</h2>
+                <h2 class="page-title pl-lg-4">CASTING SUBMISSION</h2>
             </div>
 
             <form id="castingForm ">
