@@ -13,6 +13,12 @@
         max-height: 600px;
         -ms-overflow-style: none;
         scrollbar-width: none;
+        scroll-behavior: auto;
+
+        @media (min-width: 1280px) {
+            transform: translateX(-5rem);
+            width: 104.2%;
+        }
     }
 
     .title-ourteam {
@@ -103,7 +109,6 @@
     .card-overlay p {
         color: rgba(255, 255, 255, 0.9);
         font-size: 0.9rem;
-        /* line-height: 1.4; */
         margin-bottom: 1rem;
         display: -webkit-box;
         -webkit-line-clamp: 2;
@@ -155,7 +160,6 @@
 
     .our-team-btn:focus {
         outline: none;
-
     }
 
     .collapse-icon {
@@ -165,7 +169,6 @@
     .our-team-btn[aria-expanded="false"] .collapse-icon {
         transform: rotate(180deg);
     }
-
 
     .modal-dialog.modal-xl-custom {
         max-width: 1200px;
@@ -202,6 +205,10 @@
         justify-content: flex-end;
     }
 
+    .member-modal-row {
+        height: 100%;
+    }
+
     .modal-scrollable-content {
         padding: 2.5rem;
         overflow-y: auto;
@@ -218,13 +225,33 @@
 
     .watermark-overlay {
         position: absolute;
-        bottom: 15px;
-        left: 15px;
+        bottom: 8%;
+        left: 2%;
         display: flex;
         flex-direction: column;
+        /* gap: 0.5rem; */
         align-items: flex-start;
-        color: white;
+        justify-content: center;
         z-index: 5;
+    }
+
+    .logo-img-ACI {
+        width: auto;
+        height: 80px;
+        filter: brightness(0) invert(1);
+        object-fit: contain;
+        object-position: center;
+        aspect-ratio: 1/1;
+    }
+
+    .logo-text-ACI {
+        margin-top: 5px;
+        text-align: left;
+        font-weight: 600;
+        color: white;
+        font-size: 1rem;
+        line-height: 1.2;
+        font-size: 2.2rem;
     }
 
     .portfolio-scroll-container {
@@ -256,6 +283,13 @@
         width: 100%;
         height: 280px;
         object-fit: cover;
+    }
+
+    .project {
+        border-top: 2px solid #000;
+        padding-top: 10px;
+        line-height: 21px;
+        font-size: 18px;
     }
 
     /* Responsive styles untuk tablet */
@@ -312,7 +346,6 @@
             padding: 0.875rem 1.5rem;
         }
 
-
         .modal-dialog.modal-xl-custom {
             max-width: 95%;
             margin: 0.5rem;
@@ -353,22 +386,33 @@
         }
 
         .modal-sticky-header {
-            display: none;
+            padding: 0.5rem 0.75rem;
         }
 
-
+        .modal-sticky-header button img {
+            width: 25px;
+            height: 25px;
+        }
 
         .watermark-overlay {
-            bottom: 10px;
-            left: 10px;
+            bottom: 15px;
+            left: 15px;
         }
 
-        .watermark-logo {
-            width: 40px;
+        .logo-img-ACI {
+            height: 40px;
         }
 
-        .watermark-text {
-            font-size: 0.7rem;
+        .logo-text-ACI {
+            font-size: 0.8rem;
+        }
+
+        .project {
+            font-size: 14px;
+        }
+
+        .member-modal-row {
+            height: 90%;
         }
     }
 
@@ -438,6 +482,19 @@
         .modal-description {
             font-size: 14px !important;
         }
+
+        .watermark-overlay {
+            bottom: 10px;
+            left: 10px;
+        }
+
+        .logo-img-ACI {
+            height: 35px;
+        }
+
+        .logo-text-ACI {
+            font-size: 0.7rem;
+        }
     }
 </style>
 
@@ -459,7 +516,6 @@
                 <p class="subtitle-ourteam mb-0">of the Indonesian film board
                     that is certified</p>
                 <p class="subtitle-ourteam mb-0"> and works globally to collaborate with filmmakers.</p>
-
             </div>
 
             <div class="col-12 col-md-auto text-center text-md-end d-none d-lg-block">
@@ -473,10 +529,9 @@
     </div>
 
     <div class="collapse show bg-white" id="teamCollapse">
-
-        <div class="scrollable-cards-container">
+        <div class="scrollable-cards-container" id="teamCarousel">
             @foreach ($team as $data)
-                <div class="card-col">
+                <div class="card-col" data-original="true">
                     <div class="team-card" data-card-id="{{ $data['id'] }}">
                         <div class="team-card-image-wrapper">
                             <img src="{{ $data['image'] }}" alt="{{ $data['nama'] }}">
@@ -493,7 +548,6 @@
                 </div>
             @endforeach
         </div>
-
     </div>
 </div>
 
@@ -501,7 +555,6 @@
 @foreach ($team as $data)
     <div class="modal fade" id="teamModal{{ $data['id'] }}" tabindex="-1"
         aria-labelledby="teamModalLabel{{ $data['id'] }}" aria-hidden="true">
-
         <div class="modal-dialog modal-xl modal-xl-custom modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-body modal-body-custom ">
@@ -511,10 +564,18 @@
                             <img src="/img/Icon-x.png" alt="X" width="30" height="30">
                         </button>
                     </div>
-                    <div class="row g-0 h-100">
-
+                    <div class="row g-0 member-modal-row">
                         <div class="col-12 col-md-5 position-relative d-lg-block d-none ">
                             <img src="{{ $data['image'] }}" alt="{{ $data['nama'] }}" class="modal-left-image">
+
+                            <div class="watermark-overlay">
+                                <img src="/img/logo-aci.png" alt="logo-footer" class="logo-img-ACI">
+                                <h3 class="text-uppercase logo-text-ACI">
+                                    ASOSIASI<br>
+                                    CASTING<br>
+                                    INDONESIA
+                                </h3>
+                            </div>
                         </div>
 
                         <div class="col-12 col-md-7 modal-right-container">
@@ -547,9 +608,9 @@
                                     </div>
                                 </div>
 
-                                <div style="border-top:2px solid #000; padding-top: 10px;font-size: 18px;">
+                                <div class="project">
                                     @if (isset($data['proyek_selesai']) && count($data['proyek_selesai']) > 0)
-                                        <p class="completed-projects-list">
+                                        <p>
                                             {{ implode(', ', $data['proyek_selesai']) }}
                                         </p>
                                     @else
@@ -567,6 +628,7 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+
         const collapseElement = document.getElementById('teamCollapse');
         const button = document.querySelector('[data-bs-target="#teamCollapse"]');
         const icon = button.querySelector('.collapse-icon');
@@ -584,6 +646,7 @@
         updateIcon();
         collapseElement.addEventListener('show.bs.collapse', updateIcon);
         collapseElement.addEventListener('hide.bs.collapse', updateIcon);
+
 
         const teamCards = document.querySelectorAll('.team-card');
         const modals = document.querySelectorAll('.modal');
@@ -603,5 +666,84 @@
                 }, 150);
             });
         });
+
+
+        const carousel = document.getElementById('teamCarousel');
+        const originalCards = carousel.querySelectorAll('[data-original="true"]');
+
+        if (originalCards.length > 0) {
+            let isRepositioning = false;
+            let cardWidth = 0;
+            let gapWidth = 24;
+
+            function setupInfiniteLoop() {
+                originalCards.forEach(card => {
+                    const cloneEnd = card.cloneNode(true);
+                    cloneEnd.removeAttribute('data-original');
+                    cloneEnd.setAttribute('data-clone', 'end');
+                    carousel.appendChild(cloneEnd);
+                });
+
+                const reverseCards = Array.from(originalCards).reverse();
+                reverseCards.forEach(card => {
+                    const cloneStart = card.cloneNode(true);
+                    cloneStart.removeAttribute('data-original');
+                    cloneStart.setAttribute('data-clone', 'start');
+                    carousel.insertBefore(cloneStart, carousel.firstChild);
+                });
+
+                const firstCard = carousel.querySelector('.card-col');
+                if (firstCard) {
+                    cardWidth = firstCard.offsetWidth + gapWidth;
+                }
+                const initialOffset = originalCards.length * cardWidth;
+                carousel.scrollLeft = initialOffset;
+            }
+
+            function handleScroll() {
+                if (isRepositioning) return;
+
+                const scrollLeft = carousel.scrollLeft;
+                const scrollWidth = carousel.scrollWidth;
+                const clientWidth = carousel.clientWidth;
+                const maxScroll = scrollWidth - clientWidth;
+
+                const originalSetWidth = originalCards.length * cardWidth;
+                const threshold = cardWidth * 0.5;
+
+                if (scrollLeft >= originalSetWidth * 2 - threshold) {
+                    isRepositioning = true;
+                    carousel.scrollLeft = originalSetWidth + (scrollLeft - (originalSetWidth * 2));
+                    setTimeout(() => {
+                        isRepositioning = false;
+                    }, 50);
+                } else if (scrollLeft <= threshold) {
+                    isRepositioning = true;
+                    carousel.scrollLeft = originalSetWidth + scrollLeft;
+                    setTimeout(() => {
+                        isRepositioning = false;
+                    }, 50);
+                }
+            }
+
+            setupInfiniteLoop();
+
+            let scrollTimeout;
+            carousel.addEventListener('scroll', function() {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(handleScroll, 10);
+            });
+
+            let resizeTimeout;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    const firstCard = carousel.querySelector('.card-col');
+                    if (firstCard) {
+                        cardWidth = firstCard.offsetWidth + gapWidth;
+                    }
+                }, 200);
+            });
+        }
     });
 </script>

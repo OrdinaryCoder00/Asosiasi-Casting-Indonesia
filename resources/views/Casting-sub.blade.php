@@ -1,7 +1,6 @@
 <style>
     .form-container {
-        padding-block: 4rem;
-        padding-inline: 5rem;
+        padding: 5rem;
         width: 100%;
     }
 
@@ -11,7 +10,6 @@
         padding: .375rem .75rem;
         font-size: 1rem;
         font-weight: 400;
-        /* line-height: 1.5; */
         color: #212529;
         background-color: #fff;
         background-clip: padding-box;
@@ -234,7 +232,7 @@
 
     @media (max-width: 576px) {
         .form-container {
-            padding-inline: 1rem;
+            padding-inline: 1.8rem;
             padding-block: 2rem;
         }
 
@@ -252,152 +250,156 @@
 <x-layout.layout>
     <div class="bg-white">
         <div class="form-container">
-            <div class="container-fluid">
+            <div class="">
                 <h2 class="page-title pl-lg-4">CASTING SUBMISSION</h2>
             </div>
 
             <form id="castingForm ">
                 <div class="row px-lg-3">
                     <div class="col-lg-6">
-                        <h4 class="section-title">Personal Information</h4>
+                        <div style="padding-right: 1rem;">
+                            <h4 class="section-title">Personal Information</h4>
 
-                        <div class="input-wrapper">
-                            <input type="text" class="form-control-custom" id="fullname" placeholder="Full Name *"
-                                required>
-                        </div>
-                        <div class="input-wrapper">
-                            <input type="text" class="form-control-custom" id="dob"
-                                placeholder="Date of Birth *" onfocus="(this.type='date')"
-                                onblur="if(!this.value)this.type='text'" required>
-                        </div>
+                            <div class="input-wrapper">
+                                <input type="text" class="form-control-custom" id="fullname"
+                                    placeholder="Full Name *" required>
+                            </div>
+                            <div class="input-wrapper">
+                                <input type="text" class="form-control-custom" id="dob"
+                                    placeholder="Date of Birth *" onfocus="(this.type='date')"
+                                    onblur="if(!this.value)this.type='text'" required>
+                            </div>
 
-                        <div class="input-wrapper">
-                            <input type="text" class="form-control-custom" id="gender"
-                                placeholder="Gender * (Laki-laki/Perempuan)" required>
-                        </div>
+                            <div class="input-wrapper">
+                                <input type="text" class="form-control-custom" id="gender"
+                                    placeholder="Gender * (Laki-laki/Perempuan)" required>
+                            </div>
 
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="input-wrapper">
-                                    <input type="number" class="form-control-custom" id="height"
-                                        placeholder="Height (cm) *" required>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="input-wrapper">
+                                        <input type="number" class="form-control-custom" id="height"
+                                            placeholder="Height (cm) *" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="input-wrapper">
+                                        <input type="number" class="form-control-custom" id="weight"
+                                            placeholder="Weight (kg) *" required>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="input-wrapper">
-                                    <input type="number" class="form-control-custom" id="weight"
-                                        placeholder="Weight (kg) *" required>
-                                </div>
+
+                            <div class="input-wrapper">
+                                <input type="tel" class="form-control-custom" id="phone"
+                                    placeholder="Phone Number *" required>
                             </div>
-                        </div>
 
-                        <div class="input-wrapper">
-                            <input type="tel" class="form-control-custom" id="phone"
-                                placeholder="Phone Number *" required>
-                        </div>
+                            <div class="input-wrapper">
+                                <input type="email" class="form-control-custom" id="email"
+                                    placeholder="Email Address *" required>
+                            </div>
 
-                        <div class="input-wrapper">
-                            <input type="email" class="form-control-custom" id="email"
-                                placeholder="Email Address *" required>
-                        </div>
+                            <div class="input-wrapper">
+                                <input type="text" class="form-control-custom" id="city"
+                                    placeholder="City/Domicile *" required>
+                            </div>
 
-                        <div class="input-wrapper">
-                            <input type="text" class="form-control-custom" id="city"
-                                placeholder="City/Domicile *" required>
-                        </div>
+                            <div class="input-wrapper">
+                                <input type="url" class="form-control-custom" id="portfolio"
+                                    placeholder="Instagram or Portfolio Link (Optional)">
+                            </div>
 
-                        <div class="input-wrapper">
-                            <input type="url" class="form-control-custom" id="portfolio"
-                                placeholder="Instagram or Portfolio Link (Optional)">
-                        </div>
+                            <h4 class="section-title mt-4">Acting / Casting Information</h4>
 
-                        <h4 class="section-title mt-4">Acting / Casting Information</h4>
+                            <div class="input-wrapper">
+                                <input type="text" class="form-control-custom" id="projects"
+                                    placeholder="Previous Projects (Optional - Sebutkan proyek-proyek sebelumnya)">
+                            </div>
 
-                        <div class="input-wrapper">
-                            <input type="text" class="form-control-custom" id="projects"
-                                placeholder="Previous Projects (Optional - Sebutkan proyek-proyek sebelumnya)">
-                        </div>
+                            <div class="input-wrapper">
+                                <input type="text" class="form-control-custom" id="skills"
+                                    placeholder="Skills * (ex: singing, dancing, martial arts)" required>
+                            </div>
 
-                        <div class="input-wrapper">
-                            <input type="text" class="form-control-custom" id="skills"
-                                placeholder="Skills * (ex: singing, dancing, martial arts)" required>
-                        </div>
+                            <div class="input-wrapper">
+                                <input type="text" class="form-control-custom" id="languages"
+                                    placeholder="Language(s) Spoken * (ex: Indonesian, English)" required>
+                            </div>
 
-                        <div class="input-wrapper">
-                            <input type="text" class="form-control-custom" id="languages"
-                                placeholder="Language(s) Spoken * (ex: Indonesian, English)" required>
-                        </div>
-
-                        <div class="input-wrapper">
-                            <input type="text" class="form-control-custom" id="category"
-                                placeholder="Talent Category * (Actor/Model/Extra/Voice Actor/Other)" required>
+                            <div class="input-wrapper">
+                                <input type="text" class="form-control-custom" id="category"
+                                    placeholder="Talent Category * (Actor/Model/Extra/Voice Actor/Other)" required>
+                            </div>
                         </div>
                     </div>
 
                     <div class="col-lg-6">
-                        <h4 class="section-title">Upload Media</h4>
+                        <div style="padding-left: 1rem;">
+                            <h4 class="section-title">Upload Media</h4>
 
-                        <div class="mb-4">
-                            <h6 class="fw-bold mb-3">Composite Photo (JPG/PNG) *</h6>
-                            <div class="upload-area" id="photoUploadArea">
-                                <div class="upload-icon">
-                                    <i class="fa-solid fa-cloud-arrow-up" style="font-size: 32px;"></i>
+                            <div class="mb-4">
+                                <h6 class="fw-bold mb-3">Composite Photo (JPG/PNG) *</h6>
+                                <div class="upload-area" id="photoUploadArea">
+                                    <div class="upload-icon">
+                                        <i class="fa-solid fa-cloud-arrow-up" style="font-size: 32px;"></i>
+                                    </div>
+                                    <div class="d-flex flex-column mb-1">
+                                        <span class="">Choose a file or drag & drop it here.</span>
+                                        <span class="text-muted small">Composite Photo, PDF (max 2MB)</span>
+                                    </div>
+                                    <button type="button" class="btn-choose">Browse Files</button>
+                                    <input type="file" id="photoInput" accept="image/jpeg,image/png" hidden>
                                 </div>
-                                <div class="d-flex flex-column mb-1">
-                                    <span class="">Choose a file or drag & drop it here.</span>
-                                    <span class="text-muted small">Composite Photo, PDF (max 2MB)</span>
+                                <div id="photoPreview" class="preview-container" style="display:none;">
+                                    <button type="button" class="remove-file" onclick="removePhoto()">×</button>
+                                    <img id="photoImg" class="preview-image" alt="Preview">
+                                    <div id="photoInfo" class="file-info"></div>
                                 </div>
-                                <button type="button" class="btn-choose">Browse Files</button>
-                                <input type="file" id="photoInput" accept="image/jpeg,image/png" hidden>
                             </div>
-                            <div id="photoPreview" class="preview-container" style="display:none;">
-                                <button type="button" class="remove-file" onclick="removePhoto()">×</button>
-                                <img id="photoImg" class="preview-image" alt="Preview">
-                                <div id="photoInfo" class="file-info"></div>
-                            </div>
-                        </div>
 
-                        <div class="mb-4">
-                            <h6 class="fw-bold mb-3">Video Casting (MP4) *</h6>
-                            <div class="upload-area" id="videoUploadArea">
-                                <div class="upload-icon">
-                                    <i class="fa-solid fa-cloud-arrow-up" style="font-size: 32px;"></i>
+                            <div class="mb-4">
+                                <h6 class="fw-bold mb-3">Video Casting (MP4) *</h6>
+                                <div class="upload-area" id="videoUploadArea">
+                                    <div class="upload-icon">
+                                        <i class="fa-solid fa-cloud-arrow-up" style="font-size: 32px;"></i>
+                                    </div>
+                                    <div class="d-flex flex-column mb-1">
+                                        <span class="">Choose a file or drag & drop it here.</span>
+                                        <span class="text-muted small">Video Casting, MP4 (max 5MB)</span>
+                                    </div>
+                                    <button type="button" class="btn-choose">Browse Files</button>
+                                    <input type="file" id="videoInput" accept="video/mp4" hidden>
                                 </div>
-                                <div class="d-flex flex-column mb-1">
-                                    <span class="">Choose a file or drag & drop it here.</span>
-                                    <span class="text-muted small">Video Casting, MP4 (max 5MB)</span>
+                                <div id="videoPreview" class="preview-container" style="display:none;">
+                                    <button type="button" class="remove-file" onclick="removeVideo()">×</button>
+                                    <video id="videoPlayer" class="preview-video" controls></video>
+                                    <div id="videoInfo" class="file-info"></div>
                                 </div>
-                                <button type="button" class="btn-choose">Browse Files</button>
-                                <input type="file" id="videoInput" accept="video/mp4" hidden>
                             </div>
-                            <div id="videoPreview" class="preview-container" style="display:none;">
-                                <button type="button" class="remove-file" onclick="removeVideo()">×</button>
-                                <video id="videoPlayer" class="preview-video" controls></video>
-                                <div id="videoInfo" class="file-info"></div>
-                            </div>
-                        </div>
 
-                        <div class="mb-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="confirmInfo" required>
-                                <label class="form-check-label" for="confirmInfo">
-                                    I confirm that all information provided is true.
-                                </label>
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="confirmInfo" required>
+                                    <label class="form-check-label" for="confirmInfo">
+                                        I confirm that all information provided is true.
+                                    </label>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="mb-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="confirmPermission" required>
-                                <label class="form-check-label" for="confirmPermission">
-                                    I give permission for ACI to store and use my data for casting purposes.
-                                </label>
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="confirmPermission" required>
+                                    <label class="form-check-label" for="confirmPermission">
+                                        I give permission for ACI to store and use my data for casting purposes.
+                                    </label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="">
-                            <button type="submit" class="btn-submit py-2 px-3">
-                                Submit
-                            </button>
+                            <div class="">
+                                <button type="submit" class="btn-submit py-2 px-3">
+                                    Submit
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -27,6 +27,7 @@
         transition: all 0.3s ease;
     }
 
+    /* Styling untuk homepage (putih) */
     .navbar-universal.variant-light {
         background-color: #f8f9fa;
     }
@@ -45,6 +46,7 @@
 
     .navbar-universal.variant-light .navbar-nav .nav-link.active {
         color: #ee0000 !important;
+        font-weight: 800;
     }
 
     /* Styling untuk halaman lain (merah) */
@@ -181,10 +183,14 @@
                             }
                             $isActive = request()->is(trim($item['route'], '/'));
                         }
+
+                        if ($isHomepage && $item['route'] === '/casting-submission') {
+                            $isActive = true;
+                        }
                     @endphp
                     <li class="nav-item">
                         <a class="nav-link {{ $isActive ? 'active' : '' }}" href="{{ $href }}"
-                            data-section="{{ $item['section'] ?? '' }}">
+                            data-section="{{ $item['section'] ?? '' }}" data-route="{{ $item['route'] }}">
                             {{ $item['label'] }}
                         </a>
                     </li>
@@ -214,10 +220,14 @@
                         }
                         $isActive = request()->is(trim($item['route'], '/'));
                     }
+
+                    if ($isHomepage && $item['route'] === '/casting-submission') {
+                        $isActive = true;
+                    }
                 @endphp
                 <li class="nav-item">
                     <a class="nav-link {{ $isActive ? 'active' : '' }}" href="{{ $href }}"
-                        data-section="{{ $item['section'] ?? '' }}">
+                        data-section="{{ $item['section'] ?? '' }}" data-route="{{ $item['route'] }}">
                         {{ $item['label'] }}
                     </a>
                 </li>

@@ -4,6 +4,11 @@
         color: white;
     }
 
+    .logo-content {
+        width: 100%;
+        height: 100%;
+    }
+
     .logo-col {
         padding-right: 15px;
     }
@@ -20,14 +25,13 @@
     }
 
     .logo-text {
-        font-size: 1.1rem;
-        /* line-height: 1.2; */
         margin-top: 5px;
+        text-align: left;
+        font-weight: 600;
     }
 
     .contact-col {
         padding-left: 30px;
-
     }
 
     .contact-title {
@@ -43,7 +47,6 @@
 
     .contact-item a {
         font-size: 24px;
-
     }
 
     .contact-icon {
@@ -75,9 +78,20 @@
 
     @media (max-width: 538px) {
         .main-footer {
-            padding-inline: 1rem;
+            padding-inline: 1.5rem;
             padding-block: 2rem;
         }
+
+        .contact-col {
+            padding-left: 0px;
+            padding-inline: 12px;
+        }
+
+        .contact-item a {
+            font-size: 18px;
+        }
+
+
     }
 </style>
 
@@ -89,12 +103,10 @@
                 class="col-md-6 col-lg-6 d-flex flex-column gap-2 align-items-center justify-content-center
                             text-center text-md-start mb-4 mb-md-0 logo-col">
 
-                <div
-                    class="w-100 h-100 d-flex flex-column gap-2 align-items-md-start align-items-lg-start justify-content-center logo-content">
+                <div class=" d-flex flex-column gap-2 align-items-start justify-content-center logo-content">
 
-                    <img src="/img/logo-aci.png" alt="logo-footer"
-                        class="align-self-center align-self-md-start align-self-lg-start logo-img">
-                    <h3 class="logo-tzext">
+                    <img src="/img/logo-aci.png" alt="logo-footer" class=" align-self-start logo-img">
+                    <h3 class="text-uppercase logo-text">
                         ASOSIASI<br>
                         CASTING<br>
                         INDONESIA

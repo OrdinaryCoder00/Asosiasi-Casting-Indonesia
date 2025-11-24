@@ -59,7 +59,7 @@
 
                     if (targetSection) {
                         const navbarHeight = document.getElementById('mainNavbar').offsetHeight;
-                        const targetPosition = targetSection.offsetTop - navbarHeight - 20;
+                        const targetPosition = targetSection.offsetTop - navbarHeight;
 
                         window.scrollTo({
                             top: targetPosition,
@@ -90,6 +90,12 @@
                 });
 
                 document.querySelectorAll('.nav-link').forEach(link => {
+                    const linkRoute = link.getAttribute('data-route');
+
+                    if (linkRoute === '/casting-submission') {
+                        return;
+                    }
+
                     link.classList.remove('active');
 
                     if (link.getAttribute('href') === '#' + currentSection) {
@@ -97,6 +103,7 @@
                     }
                 });
             });
+
 
             const homeLink = document.querySelector('a[href="#home"]');
             if (homeLink && window.scrollY < 100) {

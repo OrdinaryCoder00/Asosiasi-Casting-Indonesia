@@ -25,7 +25,6 @@
 
     .section-description {
         font-size: 1.5rem;
-        /* line-height: 1.6; */
     }
 
     .news-btn {
@@ -256,14 +255,12 @@
         font-size: 2rem;
         font-weight: 700;
         margin-bottom: 1rem;
-        /* line-height: 1.3; */
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
 
     .main-news-description {
         color: rgba(255, 255, 255, 0.95);
         font-size: 1.5rem;
-        /* line-height: 1.25; */
         margin-bottom: 1.5rem;
         display: -webkit-box;
         -webkit-line-clamp: 3;
@@ -271,6 +268,7 @@
         overflow: hidden;
     }
 
+    /* Desktop Grid View */
     .small-news-grid {
         max-height: 720px;
         overflow-y: auto;
@@ -327,13 +325,13 @@
         font-size: 1.5rem;
         font-weight: 600;
         margin-bottom: 0.5rem;
-        /* line-height: 1.3; */
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
     }
 
+    /* Modal Styles */
     .modal-content {
         border-radius: 0 !important;
         border: none !important;
@@ -348,7 +346,7 @@
     .modal-body-custom {
         padding: 0;
         max-height: 100%;
-        overflow-y: hidden;
+        overflow: hidden;
     }
 
     .modal-news-content {
@@ -356,6 +354,7 @@
         flex-direction: column;
         height: 100%;
         min-height: 700px;
+        overflow: auto;
     }
 
     .modal-news-poster {
@@ -403,11 +402,10 @@
     }
 
     .modal-news-description {
-        max-height: 300px;
+        max-height: 35%;
         overflow-y: auto;
         margin: 1.5rem 3rem;
         font-size: 18px;
-        /* line-height: 1.6; */
     }
 
     .modal-news-description::-webkit-scrollbar {
@@ -495,8 +493,8 @@
 
         .modal-news-description {
             font-size: 16px;
-            overflow-y: auto;
         }
+
     }
 
     @media (max-width: 768px) {
@@ -515,7 +513,6 @@
         .section-description {
             font-size: 1rem;
         }
-
 
         .main-news-overlay {
             padding: 1.5rem;
@@ -537,19 +534,43 @@
             overflow: hidden;
         }
 
-        .modal-news-description {
-            overflow-y: auto;
-            margin: 1.5rem 3rem;
-            font-size: 18px;
-            /* line-height: 1.6; */
-        }
-
         .main-news-card {
             height: 320px;
         }
 
+        /* CAROUSEL MODE - Mobile */
+        .small-news-grid {
+            max-height: none;
+            overflow-y: visible;
+            overflow-x: auto;
+            padding-right: 0;
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .small-news-grid::-webkit-scrollbar {
+            display: none;
+        }
+
+        .small-news-grid .row {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 1rem;
+            margin: 0;
+        }
+
+        .small-news-grid .row>div {
+            flex: 0 0 85%;
+            max-width: 85%;
+            padding: 0;
+            scroll-snap-align: start;
+        }
+
         .small-news-card {
             height: 320px;
+            margin-bottom: 0;
         }
 
         .filter-sheet {
@@ -580,15 +601,29 @@
         /* Modal Responsive */
         .modal-dialog.modal-xl-custom {
             margin: 1rem;
-            overflow-y: hidden;
+            max-width: 95%;
         }
 
         .modal-content {
-            height: 70vh;
+            height: auto;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-body-custom {
+            overflow-y: auto;
+            flex: 1;
         }
 
         .modal-news-content {
             min-height: auto;
+            flex: 1;
+        }
+
+        .modal-news-poster {
+            height: 250px;
+            object-fit: cover;
         }
 
         .modal-news-title {
@@ -600,27 +635,21 @@
         }
 
         .modal-news-description {
-            margin: 1.5rem;
+            margin: 1rem 1.5rem;
             font-size: 14px;
+            max-height: none;
+            flex: 1;
             overflow-y: auto;
         }
 
         .modal-news-footer {
             margin: 1rem 1.5rem;
+            padding-bottom: 1rem;
         }
 
         .modal-news-meta {
             flex-direction: column;
             align-items: flex-start;
-        }
-
-        .modal-news-description {
-            margin: 1rem 1.5rem;
-            font-size: 14px;
-            max-height: 25%;
-            overflow-y: auto;
-            overflow-x: hidden;
-
         }
 
         .modal-sticky-header-news {
@@ -629,27 +658,30 @@
     }
 
     @media (max-width: 576px) {
+
+        .news-section {
+            padding-inline: 0.7rem;
+        }
+
+        .news-header {
+            padding-inline: 0.7rem;
+        }
+
         .news-content {
             padding-block: 2rem;
         }
 
-        .news-header {
-            padding-inline: 1rem;
+        .section-title {
+            font-size: 1.5rem;
+        }
+
+        .filter-sheet-content {
+            padding: 0rem;
+            padding-top: 2rem;
         }
 
         .news-wrapper {
             padding-inline: 1rem;
-        }
-
-        .modal-news-poster {
-            height: 200px;
-            object-fit: cover;
-            object-position: center;
-        }
-
-        .modal-body-custom .col-md-7 {
-            display: flex;
-            flex-direction: column;
         }
 
         .news-btn {
@@ -662,7 +694,7 @@
             padding-block: 2px;
             gap: 4px;
             width: 80px;
-            justify-content: center
+            justify-content: center;
         }
 
         .img-filter {
@@ -670,8 +702,27 @@
             height: 14px;
         }
 
+        /* CAROUSEL - Smaller cards on extra small screens */
+        .small-news-grid .row>div {
+            flex: 0 0 90%;
+            max-width: 90%;
+        }
+
+        .small-news-card {
+            height: 280px;
+        }
+
+        .modal-news-poster {
+            height: 200px;
+        }
+
+        .modal-news-description {
+            margin: 1rem 1.5rem;
+            padding-bottom: 2rem;
+        }
+
         .modal-news-footer {
-            padding-bottom: 12px;
+            padding-bottom: 1.5rem;
         }
     }
 </style>
@@ -748,8 +799,8 @@
                     <div class="news-header d-block d-lg-none">
                         <div class="row align-items-center mb-4">
                             <div class="d-flex justify-content-between">
-                                <h2 class="">News</h2>
-                                <button class="news-btn " type="button" onclick="toggleFilter()">
+                                <h2 class="section-title mb-0">News</h2>
+                                <button class="news-btn" type="button" onclick="toggleFilter()">
                                     <img src="/svg/filter.svg" alt="icon-filter" class="img-filter">
                                     <span>Filter</span>
                                 </button>
@@ -761,13 +812,12 @@
                                     capturing movements and moments within the Indonesian film industry
                                 </p>
                             </div>
-
                         </div>
                     </div>
 
                     <div class="row news-wrapper">
                         @if ($mainNews)
-                            <div class="col-lg-5 mb-4 mb-lg-0">
+                            <div class="col-lg-5 mb-lg-4 mb-lg-0">
                                 <div class="main-news-card" data-bs-toggle="modal"
                                     data-bs-target="#newsModal{{ $mainNews['id'] ?? 0 }}">
                                     <img src="{{ $mainNews['image'] }}" alt="{{ $mainNews['title'] }}">
@@ -792,7 +842,6 @@
                                                 <div class="small-news-overlay">
                                                     <h5 class="small-news-title text-uppercase">{{ $item['title'] }}
                                                     </h5>
-
                                                     <span
                                                         style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
                                                         {{ $item['description'] }}
@@ -818,7 +867,7 @@
         <div class="modal-dialog modal-xl modal-xl-custom modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-body modal-body-custom">
-                    <div class="modal-sticky-header d-flex d-lg-none ">
+                    <div class="modal-sticky-header d-flex d-lg-none">
                         <button type="button" data-bs-dismiss="modal" aria-label="Close"
                             style="background: none; outline: none; border: none;">
                             <img src="/img/Icon-x.png" alt="X" width="30" height="30">
@@ -891,4 +940,50 @@
 
         element.classList.add('active');
     }
+
+    // Mobile carousel snap effect enhancement
+    document.addEventListener('DOMContentLoaded', function() {
+        const newsGrid = document.querySelector('.small-news-grid');
+
+        if (newsGrid && window.innerWidth <= 768) {
+            // Add smooth scrolling behavior
+            newsGrid.style.scrollBehavior = 'smooth';
+
+            // Optional: Add scroll indicators
+            const cards = newsGrid.querySelectorAll('.small-news-card');
+            let currentIndex = 0;
+
+            // You can add swipe gesture detection here if needed
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            newsGrid.addEventListener('touchstart', function(e) {
+                touchStartX = e.changedTouches[0].screenX;
+            }, {
+                passive: true
+            });
+
+            newsGrid.addEventListener('touchend', function(e) {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, {
+                passive: true
+            });
+
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const diff = touchStartX - touchEndX;
+
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0 && currentIndex < cards.length - 1) {
+                        // Swipe left
+                        currentIndex++;
+                    } else if (diff < 0 && currentIndex > 0) {
+                        // Swipe right
+                        currentIndex--;
+                    }
+                }
+            }
+        }
+    });
 </script>

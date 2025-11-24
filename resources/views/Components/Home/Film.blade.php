@@ -15,7 +15,7 @@
         background: transparent;
     }
 
-    .section-title {
+    .section-title-film {
         font-size: 2.5rem;
         font-weight: 700;
         text-transform: uppercase;
@@ -24,12 +24,10 @@
 
     .subtitle-poster {
         font-size: 1.5rem;
-        /* line-height: 1.6; */
         max-width: 800px;
         margin: 0 auto;
         text-align: center;
     }
-
 
     .poster-scroll-container {
         display: flex;
@@ -40,8 +38,12 @@
         max-height: 850px;
         -ms-overflow-style: none;
         scrollbar-width: none;
-        /* Padding kiri untuk membuat gambar pertama terpotong setengah */
-        /* transform: translateX(-10px) */
+        scroll-behavior: auto;
+
+        @media (min-width: 1280px) {
+            transform: translateX(-5rem);
+            width: 104.2%;
+        }
     }
 
     .poster-scroll-container::-webkit-scrollbar {
@@ -116,14 +118,12 @@
         font-weight: 700;
         margin-bottom: 1rem;
         font-size: 1.5rem;
-        /* line-height: 1.3; */
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     }
 
     .poster-description {
         color: rgba(255, 255, 255, 0.95);
         font-size: 1rem;
-        /* line-height: 1.6; */
         margin-bottom: 1.5rem;
         display: -webkit-box;
         -webkit-line-clamp: 3;
@@ -233,7 +233,6 @@
         overflow-y: auto;
         padding: 2rem 3rem;
         font-size: 1.125rem;
-        /* line-height: 1.8; */
     }
 
     .modal-film-description p {
@@ -293,12 +292,8 @@
             height: 600px;
         }
 
-        .section-title {
+        .section-title-film {
             font-size: 2rem;
-        }
-
-        .modal-film-title {
-            margin: 2rem 2.5rem 1rem;
         }
 
         .modal-film-title h2 {
@@ -349,14 +344,16 @@
     @media (max-width: 768px) {
         .film-poster-header {
             min-height: 200px;
-            padding: 1.5rem 0;
+            padding: 2rem 0;
         }
 
         .header-section-poster {
-            padding-inline: 1rem;
+            padding-inline: 2rem;
+            padding-bottom: 1.5rem;
+
         }
 
-        .section-title {
+        .section-title-film {
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
         }
@@ -402,6 +399,11 @@
             max-width: calc(100% - 1rem);
         }
 
+        .film-modal-row {
+            height: 90%;
+        }
+
+
         .modal-content {
             min-height: auto;
             max-height: calc(100vh - 1rem);
@@ -423,12 +425,13 @@
         .modal-film-description {
             padding: 1.25rem 1.5rem;
             font-size: 0.95rem;
+            min-height: 90%;
+            overflow-y: auto;
         }
 
         .modal-film-footer {
             margin: 1rem 1.5rem;
             flex-direction: column;
-            gap: 1rem;
             align-items: flex-start;
         }
 
@@ -445,17 +448,9 @@
         }
 
 
-
-        .modal-film-description {
-            min-height: auto;
-            overflow-y: auto;
-            /* line-height: 1.8; */
-        }
     }
 
     @media (max-width: 480px) {
-
-
         .poster-card-col {
             flex: 0 0 280px;
             min-width: 280px;
@@ -467,8 +462,16 @@
         }
 
         .modal-film-poster {
-            height: 200px;
-            max-height: 200px;
+            display: none;
+        }
+
+        .modal-sticky-header-film {
+            padding: 0.5rem 0.75rem;
+        }
+
+        .modal-sticky-header-film button img {
+            width: 25px;
+            height: 25px;
         }
 
         .poster-scroll-container {
@@ -480,7 +483,7 @@
         }
 
         .modal-film-description {
-            max-height: 150px;
+            min-height: 25rem;
             font-size: 0.9rem;
             padding: 1rem 1.5rem;
         }
@@ -511,13 +514,14 @@
                 </div>
 
                 <div class="col-lg-2 col-md-3 text-md-end d-none d-lg-block">
-                    <h2 class="section-title mb-0">Poster</h2>
+                    <h2 class="section-title-film mb-0">Poster</h2>
                 </div>
             </div>
         </div>
-        <div class="poster-scroll-container">
+        <div class="poster-scroll-container" id="filmPosterCarousel">
+            <!-- Original cards akan di-clone oleh JavaScript untuk infinite loop -->
             @foreach ($film as $item)
-                <div class="poster-card-col">
+                <div class="poster-card-col" data-original="true">
                     <div class="poster-card" data-card-id="{{ $item['id'] ?? $loop->index }}">
                         <div class="poster-card-image-wrapper">
                             <img src="{{ $item['image'] }}" alt="{{ $item['Nama_Film'] }}">
@@ -551,8 +555,8 @@
                             style="background: none; outline: none; border: none;"><img src="/img/Icon-x.png"
                                 alt="X" width="30" height="30"></button>
                     </div>
-                    <div class="row g-0 h-100 film-modal-row">
-                        <div class="col-md-5 img-wrapper">
+                    <div class="row g-0 h-lg-100 film-modal-row ">
+                        <div class="col-md-5 img-wrapper d-none d-md-block">
                             <img src="{{ $item['image'] }}" alt="{{ $item['Nama_Film'] }}" class="modal-film-poster">
                         </div>
 
@@ -618,5 +622,85 @@
                 }, 150);
             });
         });
+
+        const carousel = document.getElementById('filmPosterCarousel');
+        const originalCards = carousel.querySelectorAll('[data-original="true"]');
+
+        if (originalCards.length > 0) {
+            let isRepositioning = false;
+            let cardWidth = 0;
+            let gapWidth = 32;
+
+            function setupInfiniteLoop() {
+                originalCards.forEach(card => {
+                    const cloneEnd = card.cloneNode(true);
+                    cloneEnd.removeAttribute('data-original');
+                    cloneEnd.setAttribute('data-clone', 'end');
+                    carousel.appendChild(cloneEnd);
+                });
+
+                const reverseCards = Array.from(originalCards).reverse();
+                reverseCards.forEach(card => {
+                    const cloneStart = card.cloneNode(true);
+                    cloneStart.removeAttribute('data-original');
+                    cloneStart.setAttribute('data-clone', 'start');
+                    carousel.insertBefore(cloneStart, carousel.firstChild);
+                });
+
+                const firstCard = carousel.querySelector('.poster-card-col');
+                if (firstCard) {
+                    cardWidth = firstCard.offsetWidth + gapWidth;
+                }
+                const initialOffset = originalCards.length * cardWidth;
+                carousel.scrollLeft = initialOffset;
+            }
+
+            function handleScroll() {
+                if (isRepositioning) return;
+
+                const scrollLeft = carousel.scrollLeft;
+                const scrollWidth = carousel.scrollWidth;
+                const clientWidth = carousel.clientWidth;
+                const maxScroll = scrollWidth - clientWidth;
+
+                const originalSetWidth = originalCards.length * cardWidth;
+                const threshold = cardWidth * 0.5;
+                if (scrollLeft >= originalSetWidth * 2 - threshold) {
+                    isRepositioning = true;
+                    carousel.scrollLeft = originalSetWidth + (scrollLeft - (originalSetWidth * 2));
+                    setTimeout(() => {
+                        isRepositioning = false;
+                    }, 50);
+                } else if (scrollLeft <= threshold) {
+                    isRepositioning = true;
+                    carousel.scrollLeft = originalSetWidth + scrollLeft;
+                    setTimeout(() => {
+                        isRepositioning = false;
+                    }, 50);
+                }
+            }
+
+            setupInfiniteLoop();
+
+            let scrollTimeout;
+            carousel.addEventListener('scroll', function() {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(handleScroll, 10);
+            });
+
+            let resizeTimeout;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    const firstCard = carousel.querySelector('.poster-card-col');
+                    if (firstCard) {
+                        const styles = window.getComputedStyle(carousel);
+                        const gap = parseFloat(styles.gap) || 32;
+                        gapWidth = gap;
+                        cardWidth = firstCard.offsetWidth + gapWidth;
+                    }
+                }, 200);
+            });
+        }
     });
 </script>

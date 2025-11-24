@@ -1,6 +1,6 @@
 <style>
     .banner {
-        height: 68vh;
+        height: 94vh;
         min-height: 400px;
         overflow: hidden;
         display: flex;
@@ -12,9 +12,9 @@
     .banner-img {
         position: absolute;
         bottom: 0;
-        right: 9vw;
+        left: 3%;
         width: 100%;
-        height: 750px;
+        height: 110%;
         object-fit: contain;
         object-position: bottom;
         z-index: 1;
@@ -62,8 +62,7 @@
         .banner-img {
             object-fit: contain;
             object-position: bottom;
-            right: 0vw;
-
+            left: 0%;
         }
 
         .wrap {
