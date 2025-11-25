@@ -1,45 +1,94 @@
 <style>
     .banner {
-        height: 100vh;
+        height: 94vh;
+        min-height: 400px;
         overflow: hidden;
         display: flex;
         align-items: flex-end;
         position: relative;
+        padding: 0 5rem 2rem 5rem;
     }
 
     .banner-img {
         position: absolute;
-        left: 0;
+        bottom: 0;
+        left: 3%;
         width: 100%;
-        height: 100%;
-        object-fit: cover;
+        height: 110%;
+        object-fit: contain;
+        object-position: bottom;
         z-index: 1;
     }
 
     .wrap {
+        position: absolute;
+        bottom: 0;
+        left: 4vw;
         z-index: 2;
-        margin-left: 2%;
-        margin-bottom: 2%;
-        width: 84%;
         color: white;
+        padding: 0px;
+        width: 100%;
     }
 
     .title {
         font-family: 'Lemon Milk', sans-serif;
-        font-size: 24vw;
-        font-weight: 300;
+        font-size: clamp(5rem, 22vw, 24rem);
+        font-weight: 500;
         margin: 0;
+        /* line-height: 1; */
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        padding-left: 1rem;
     }
 
-    @media (max-width: 768px) {
-        .wrap {
-            margin-left: 5%;
-            margin-bottom: 20%;
-            width: 90%;
+    @media (max-width: 1024px) {
+        .banner {
+            padding: 0 3rem 2rem 3rem;
+            height: 70vh;
         }
 
         .title {
-            font-size: 8vh;
+            font-size: clamp(3rem, 15vw, 12rem);
+        }
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+        .banner {
+            height: 60vh;
+            min-height: 350px;
+            padding: 0 2rem 1.5rem 2rem;
+        }
+
+        .banner-img {
+            object-fit: contain;
+            object-position: bottom;
+            left: 0%;
+        }
+
+        .wrap {
+            position: absolute;
+            bottom: 0;
+            left: 4vw;
+            z-index: 2;
+            color: white;
+            padding: 0px;
+            width: 100%;
+        }
+
+        .title {
+            font-size: clamp(2.5rem, 12vw, 8rem);
+        }
+    }
+
+    /* Small Mobile */
+    @media (max-width: 480px) {
+        .banner {
+            height: 00vh;
+        }
+
+        .title {
+            /* font-size: clamp(2rem, 10vw, 6rem); */
+            font-size: 5.5rem;
         }
     }
 </style>

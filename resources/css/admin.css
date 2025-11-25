@@ -1,0 +1,7 @@
+.filament-modal__content .trix-content,
+.filament-modal__content .ck-content,
+.filament-modal__content .prose {
+    overflow-x: hidden;
+    word-wrap: break-word;
+    white-space: normal;
+}

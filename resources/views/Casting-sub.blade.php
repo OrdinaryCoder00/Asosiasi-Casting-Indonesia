@@ -253,296 +253,274 @@
             <div class="">
                 <h2 class="page-title pl-lg-4">CASTING SUBMISSION</h2>
             </div>
+                <form id="castingForm" method="POST" action="{{ route('casting.submit') }}" enctype="multipart/form-data">
+                    @csrf
+                    <div class="row px-lg-3">
+                        <div class="col-lg-6">
+                            <div style="padding-right: 1rem;">
+                                <h4 class="section-title">Personal Information</h4>
 
-            <form id="castingForm ">
-                <div class="row px-lg-3">
-                    <div class="col-lg-6">
-                        <div style="padding-right: 1rem;">
-                            <h4 class="section-title">Personal Information</h4>
+                                <div class="input-wrapper">
+                                    <input type="text" class="form-control-custom" id="fullname" name="fullname"
+                                        placeholder="Full Name *" required>
+                                </div>
 
-                            <div class="input-wrapper">
-                                <input type="text" class="form-control-custom" id="fullname"
-                                    placeholder="Full Name *" required>
-                            </div>
-                            <div class="input-wrapper">
-                                <input type="text" class="form-control-custom" id="dob"
-                                    placeholder="Date of Birth *" onfocus="(this.type='date')"
-                                    onblur="if(!this.value)this.type='text'" required>
-                            </div>
+                                <div class="input-wrapper">
+                                    <input type="text" class="form-control-custom" id="dob" name="dob"
+                                        placeholder="Date of Birth *" onfocus="(this.type='date')"
+                                        onblur="if(!this.value)this.type='text'" required>
+                                </div>
 
-                            <div class="input-wrapper">
-                                <input type="text" class="form-control-custom" id="gender"
-                                    placeholder="Gender * (Laki-laki/Perempuan)" required>
-                            </div>
+                                <div class="input-wrapper">
+                                    <select name="gender" class="form-control-custom" id="gender" required>
+                                        <option value="" disabled selected>Gender * (Laki-laki/Perempuan)</option>
+                                        <option value="male">Laki-laki</option>
+                                        <option value="female">Perempuan</option>
+                                    </select>
+                                </div>
 
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="input-wrapper">
-                                        <input type="number" class="form-control-custom" id="height"
-                                            placeholder="Height (cm) *" required>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="input-wrapper">
+                                            <input type="number" class="form-control-custom" id="height" name="height"
+                                                placeholder="Height (cm) *" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="input-wrapper">
+                                            <input type="number" class="form-control-custom" id="weight" name="weight"
+                                                placeholder="Weight (kg) *" required>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="input-wrapper">
-                                        <input type="number" class="form-control-custom" id="weight"
-                                            placeholder="Weight (kg) *" required>
-                                    </div>
+
+                                <div class="input-wrapper">
+                                    <input type="tel" class="form-control-custom" id="phone" name="phone"
+                                        placeholder="Phone Number *" required>
+                                </div>
+
+                                <div class="input-wrapper">
+                                    <input type="email" class="form-control-custom" id="email" name="email"
+                                        placeholder="Email Address *" required>
+                                </div>
+
+                                <div class="input-wrapper">
+                                    <input type="text" class="form-control-custom" id="city" name="city"
+                                        placeholder="City/Domicile *" required>
+                                </div>
+
+                                <div class="input-wrapper">
+                                    <input type="url" class="form-control-custom" id="portfolio" name="portfolio_link"
+                                        placeholder="Instagram or Portfolio Link (Optional)">
+                                </div>
+
+                                <h4 class="section-title mt-4">Acting / Casting Information</h4>
+
+                                <div class="input-wrapper">
+                                    <input type="text" class="form-control-custom" id="projects" name="projects"
+                                        placeholder="Previous Projects (Optional - Sebutkan proyek-proyek sebelumnya)">
+                                </div>
+
+                                <div class="input-wrapper">
+                                    <input type="text" class="form-control-custom" id="skills" name="skills"
+                                        placeholder="Skills * (ex: singing, dancing, martial arts)" required>
+                                </div>
+
+                                <div class="input-wrapper">
+                                    <input type="text" class="form-control-custom" id="languages" name="languages"
+                                        placeholder="Language(s) Spoken * (ex: Indonesian, English)" required>
+                                </div>
+                                <div class="input-wrapper">
+                                    <select name="category" id="category" class="form-control-custom" required>
+                                        <option value="">Select Category *</option>
+                                        <option value="actor">Actor</option>
+                                        <option value="model">Model</option>
+                                        <option value="extra">Extra</option>
+                                        <option value="voice-actor">Voice Actor</option>
+                                        <option value="other">Other</option>
+                                    </select>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="input-wrapper">
-                                <input type="tel" class="form-control-custom" id="phone"
-                                    placeholder="Phone Number *" required>
-                            </div>
+                        <div class="col-lg-6">
+                            <div style="padding-left: 1rem;">
+                                <h4 class="section-title">Upload Media</h4>
 
-                            <div class="input-wrapper">
-                                <input type="email" class="form-control-custom" id="email"
-                                    placeholder="Email Address *" required>
-                            </div>
+                                <div class="mb-4">
+                                    <h6 class="fw-bold mb-3">Composite Photo (JPG/PNG) *</h6>
+                                    <div class="upload-area" id="photoUploadArea">
+                                        <div class="upload-icon">
+                                            <i class="fa-solid fa-cloud-arrow-up" style="font-size: 32px;"></i>
+                                        </div>
+                                        <div class="d-flex flex-column mb-1">
+                                            <span class="">Choose a file or drag & drop it here.</span>
+                                            <span class="text-muted small">Composite Photo, JPG/PNG (max 5MB)</span>
+                                        </div>
+                                        <button type="button" class="btn-choose">Browse Files</button>
+                                        <input type="file" id="photoInput" name="photo" accept="image/jpeg,image/png" hidden>
+                                    </div>
+                                    <div id="photoPreview" class="preview-container" style="display:none;">
+                                        <button type="button" class="remove-file" onclick="removePhoto()">×</button>
+                                        <img id="photoImg" class="preview-image" alt="Preview">
+                                        <div id="photoInfo" class="file-info"></div>
+                                    </div>
+                                </div>
 
-                            <div class="input-wrapper">
-                                <input type="text" class="form-control-custom" id="city"
-                                    placeholder="City/Domicile *" required>
-                            </div>
+                                <div class="mb-4">
+                                    <h6 class="fw-bold mb-3">Video Casting (MP4) *</h6>
+                                    <div class="upload-area" id="videoUploadArea">
+                                        <div class="upload-icon">
+                                            <i class="fa-solid fa-cloud-arrow-up" style="font-size: 32px;"></i>
+                                        </div>
+                                        <div class="d-flex flex-column mb-1">
+                                            <span class="">Choose a file or drag & drop it here.</span>
+                                            <span class="text-muted small">Video Casting, MP4 (max 50MB)</span>
+                                        </div>
+                                        <button type="button" class="btn-choose">Browse Files</button>
+                                        <input type="file" id="videoInput" name="video" accept="video/mp4" hidden>
+                                    </div>
+                                    <div id="videoPreview" class="preview-container" style="display:none;">
+                                        <button type="button" class="remove-file" onclick="removeVideo()">×</button>
+                                        <video id="videoPlayer" class="preview-video" controls></video>
+                                        <div id="videoInfo" class="file-info"></div>
+                                    </div>
+                                </div>
 
-                            <div class="input-wrapper">
-                                <input type="url" class="form-control-custom" id="portfolio"
-                                    placeholder="Instagram or Portfolio Link (Optional)">
-                            </div>
-
-                            <h4 class="section-title mt-4">Acting / Casting Information</h4>
-
-                            <div class="input-wrapper">
-                                <input type="text" class="form-control-custom" id="projects"
-                                    placeholder="Previous Projects (Optional - Sebutkan proyek-proyek sebelumnya)">
-                            </div>
-
-                            <div class="input-wrapper">
-                                <input type="text" class="form-control-custom" id="skills"
-                                    placeholder="Skills * (ex: singing, dancing, martial arts)" required>
-                            </div>
-
-                            <div class="input-wrapper">
-                                <input type="text" class="form-control-custom" id="languages"
-                                    placeholder="Language(s) Spoken * (ex: Indonesian, English)" required>
-                            </div>
-
-                            <div class="input-wrapper">
-                                <input type="text" class="form-control-custom" id="category"
-                                    placeholder="Talent Category * (Actor/Model/Extra/Voice Actor/Other)" required>
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="confirmInfo" name="confirmInfo" required>
+                                        <label class="form-check-label" for="confirmInfo">
+                                            I confirm that all information provided is true.
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="confirmPermission" name="confirmPermission" required>
+                                        <label class="form-check-label" for="confirmPermission">
+                                            I give permission for ACI to store and use my data for casting purposes.
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <button type="submit" class="btn-submit py-2 px-3">
+                                        Submit
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </form>
 
-                    <div class="col-lg-6">
-                        <div style="padding-left: 1rem;">
-                            <h4 class="section-title">Upload Media</h4>
-
-                            <div class="mb-4">
-                                <h6 class="fw-bold mb-3">Composite Photo (JPG/PNG) *</h6>
-                                <div class="upload-area" id="photoUploadArea">
-                                    <div class="upload-icon">
-                                        <i class="fa-solid fa-cloud-arrow-up" style="font-size: 32px;"></i>
-                                    </div>
-                                    <div class="d-flex flex-column mb-1">
-                                        <span class="">Choose a file or drag & drop it here.</span>
-                                        <span class="text-muted small">Composite Photo, PDF (max 2MB)</span>
-                                    </div>
-                                    <button type="button" class="btn-choose">Browse Files</button>
-                                    <input type="file" id="photoInput" accept="image/jpeg,image/png" hidden>
-                                </div>
-                                <div id="photoPreview" class="preview-container" style="display:none;">
-                                    <button type="button" class="remove-file" onclick="removePhoto()">×</button>
-                                    <img id="photoImg" class="preview-image" alt="Preview">
-                                    <div id="photoInfo" class="file-info"></div>
-                                </div>
-                            </div>
-
-                            <div class="mb-4">
-                                <h6 class="fw-bold mb-3">Video Casting (MP4) *</h6>
-                                <div class="upload-area" id="videoUploadArea">
-                                    <div class="upload-icon">
-                                        <i class="fa-solid fa-cloud-arrow-up" style="font-size: 32px;"></i>
-                                    </div>
-                                    <div class="d-flex flex-column mb-1">
-                                        <span class="">Choose a file or drag & drop it here.</span>
-                                        <span class="text-muted small">Video Casting, MP4 (max 5MB)</span>
-                                    </div>
-                                    <button type="button" class="btn-choose">Browse Files</button>
-                                    <input type="file" id="videoInput" accept="video/mp4" hidden>
-                                </div>
-                                <div id="videoPreview" class="preview-container" style="display:none;">
-                                    <button type="button" class="remove-file" onclick="removeVideo()">×</button>
-                                    <video id="videoPlayer" class="preview-video" controls></video>
-                                    <div id="videoInfo" class="file-info"></div>
-                                </div>
-                            </div>
-
-                            <div class="mb-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="confirmInfo" required>
-                                    <label class="form-check-label" for="confirmInfo">
-                                        I confirm that all information provided is true.
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="mb-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="confirmPermission" required>
-                                    <label class="form-check-label" for="confirmPermission">
-                                        I give permission for ACI to store and use my data for casting purposes.
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="">
-                                <button type="submit" class="btn-submit py-2 px-3">
-                                    Submit
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
         </div>
     </div>
-    <script>
-        const photoUploadArea = document.getElementById('photoUploadArea');
-        const photoInput = document.getElementById('photoInput');
-        const photoPreview = document.getElementById('photoPreview');
-        const photoImg = document.getElementById('photoImg');
-        const photoInfo = document.getElementById('photoInfo');
 
-        photoUploadArea.addEventListener('click', () => photoInput.click());
+<script>
+    const photoUploadArea = document.getElementById('photoUploadArea');
+    const photoInput = document.getElementById('photoInput');
+    const photoPreview = document.getElementById('photoPreview');
+    const photoImg = document.getElementById('photoImg');
+    const photoInfo = document.getElementById('photoInfo');
 
-        photoUploadArea.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            photoUploadArea.classList.add('dragover');
-        });
+    photoUploadArea.addEventListener('click', () => photoInput.click());
+    photoUploadArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        photoUploadArea.classList.add('dragover');
+    });
+    photoUploadArea.addEventListener('dragleave', () => photoUploadArea.classList.remove('dragover'));
+    photoUploadArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        photoUploadArea.classList.remove('dragover');
+        if (e.dataTransfer.files.length > 0) handlePhotoUpload(e.dataTransfer.files[0]);
+    });
+    photoInput.addEventListener('change', (e) => {
+        if (e.target.files.length > 0) handlePhotoUpload(e.target.files[0]);
+    });
 
-        photoUploadArea.addEventListener('dragleave', () => {
-            photoUploadArea.classList.remove('dragover');
-        });
-
-        photoUploadArea.addEventListener('drop', (e) => {
-            e.preventDefault();
-            photoUploadArea.classList.remove('dragover');
-            const files = e.dataTransfer.files;
-            if (files.length > 0) {
-                handlePhotoUpload(files[0]);
-            }
-        });
-
-        photoInput.addEventListener('change', (e) => {
-            if (e.target.files.length > 0) {
-                handlePhotoUpload(e.target.files[0]);
-            }
-        });
-
-        function handlePhotoUpload(file) {
-            if (!file.type.match('image/jpeg') && !file.type.match('image/png')) {
-                alert('Hanya file JPG atau PNG yang diperbolehkan!');
-                return;
-            }
-
-            if (file.size > 5 * 1024 * 1024) {
-                alert('Ukuran file maksimal 5MB!');
-                return;
-            }
-
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                photoImg.src = e.target.result;
-                photoUploadArea.style.display = 'none';
-                photoPreview.style.display = 'block';
-                photoInfo.innerHTML =
-                    `<strong>${file.name}</strong><br>Size: ${(file.size / 1024 / 1024).toFixed(2)} MB`;
-            };
-            reader.readAsDataURL(file);
-        }
-
-        function removePhoto() {
+    function handlePhotoUpload(file) {
+        if (!file.type.match('image/jpeg') && !file.type.match('image/png')) {
+            alert('Hanya file JPG atau PNG yang diperbolehkan!');
             photoInput.value = '';
-            photoUploadArea.style.display = 'block';
-            photoPreview.style.display = 'none';
-            photoImg.src = '';
+            return;
         }
-
-        const videoUploadArea = document.getElementById('videoUploadArea');
-        const videoInput = document.getElementById('videoInput');
-        const videoPreview = document.getElementById('videoPreview');
-        const videoPlayer = document.getElementById('videoPlayer');
-        const videoInfo = document.getElementById('videoInfo');
-
-        videoUploadArea.addEventListener('click', () => videoInput.click());
-
-        videoUploadArea.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            videoUploadArea.classList.add('dragover');
-        });
-
-        videoUploadArea.addEventListener('dragleave', () => {
-            videoUploadArea.classList.remove('dragover');
-        });
-
-        videoUploadArea.addEventListener('drop', (e) => {
-            e.preventDefault();
-            videoUploadArea.classList.remove('dragover');
-            const files = e.dataTransfer.files;
-            if (files.length > 0) {
-                handleVideoUpload(files[0]);
-            }
-        });
-
-        videoInput.addEventListener('change', (e) => {
-            if (e.target.files.length > 0) {
-                handleVideoUpload(e.target.files[0]);
-            }
-        });
-
-        function handleVideoUpload(file) {
-            if (!file.type.match('video/mp4')) {
-                alert('Hanya file MP4 yang diperbolehkan!');
-                return;
-            }
-
-            if (file.size > 50 * 1024 * 1024) {
-                alert('Ukuran file maksimal 50MB!');
-                return;
-            }
-
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                videoPlayer.src = e.target.result;
-                videoUploadArea.style.display = 'none';
-                videoPreview.style.display = 'block';
-                videoInfo.innerHTML =
-                    `<strong>${file.name}</strong><br>Size: ${(file.size / 1024 / 1024).toFixed(2)} MB`;
-            };
-            reader.readAsDataURL(file);
+        if (file.size > 5 * 1024 * 1024) {
+            alert('Ukuran file maksimal 5MB!');
+            photoInput.value = '';
+            return;
         }
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            photoImg.src = e.target.result;
+            photoUploadArea.style.display = 'none';
+            photoPreview.style.display = 'block';
+            photoInfo.innerHTML = `<strong>${file.name}</strong><br>Size: ${(file.size / 1024 / 1024).toFixed(2)} MB`;
+        };
+        reader.readAsDataURL(file);
+    }
+    function removePhoto() {
+        photoInput.value = '';
+        photoUploadArea.style.display = 'block';
+        photoPreview.style.display = 'none';
+        photoImg.src = '';
+    }
 
-        function removeVideo() {
+    const videoUploadArea = document.getElementById('videoUploadArea');
+    const videoInput = document.getElementById('videoInput');
+    const videoPreview = document.getElementById('videoPreview');
+    const videoPlayer = document.getElementById('videoPlayer');
+    const videoInfo = document.getElementById('videoInfo');
+
+    videoUploadArea.addEventListener('click', () => videoInput.click());
+    videoUploadArea.addEventListener('dragover', (e) => { e.preventDefault(); videoUploadArea.classList.add('dragover'); });
+    videoUploadArea.addEventListener('dragleave', () => videoUploadArea.classList.remove('dragover'));
+    videoUploadArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        videoUploadArea.classList.remove('dragover');
+        if (e.dataTransfer.files.length > 0) handleVideoUpload(e.dataTransfer.files[0]);
+    });
+    videoInput.addEventListener('change', (e) => {
+        if (e.target.files.length > 0) handleVideoUpload(e.target.files[0]);
+    });
+
+    function handleVideoUpload(file) {
+        if (!file.type.match('video/mp4')) {
+            alert('Hanya file MP4 yang diperbolehkan!');
             videoInput.value = '';
-            videoUploadArea.style.display = 'block';
-            videoPreview.style.display = 'none';
-            videoPlayer.src = '';
+            return;
         }
+        if (file.size > 50 * 1024 * 1024) {
+            alert('Ukuran file maksimal 50MB!');
+            videoInput.value = '';
+            return;
+        }
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            videoPlayer.src = e.target.result;
+            videoUploadArea.style.display = 'none';
+            videoPreview.style.display = 'block';
+            videoInfo.innerHTML = `<strong>${file.name}</strong><br>Size: ${(file.size / 1024 / 1024).toFixed(2)} MB`;
+        };
+        reader.readAsDataURL(file);
+    }
+    function removeVideo() {
+        videoInput.value = '';
+        videoUploadArea.style.display = 'block';
+        videoPreview.style.display = 'none';
+        videoPlayer.src = '';
+    }
 
-        document.getElementById('castingForm').addEventListener('submit', (e) => {
+    document.getElementById('castingForm').addEventListener('submit', (e) => {
+        if (!photoInput.files.length) {
             e.preventDefault();
-
-            if (!photoInput.files.length) {
-                alert('Silakan upload foto composite!');
-                return;
-            }
-
-            if (!videoInput.files.length) {
-                alert('Silakan upload video casting!');
-                return;
-            }
-
-            alert('Form berhasil disubmit! Data Anda akan kami proses.');
-        });
-    </script>
+            alert('Silakan upload foto composite!');
+            return;
+        }
+        if (!videoInput.files.length) {
+            e.preventDefault();
+            alert('Silakan upload video casting!');
+            return;
+        }
+    });
+</script>
 </x-layout.layout>

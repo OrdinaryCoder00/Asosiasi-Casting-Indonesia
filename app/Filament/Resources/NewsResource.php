@@ -12,11 +12,13 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\RichEditor;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Illuminate\Support\Str;
+
 
 class NewsResource extends Resource
 {
@@ -48,9 +50,40 @@ class NewsResource extends Resource
                     ->label('Excerpt / Ringkasan')
                     ->rows(3),
 
-                Textarea::make('content')
+                
+
+                RichEditor::make('content')
                     ->label('Isi News')
-                    ->rows(10),
+                    ->required()
+                    ->toolbarButtons([
+                        'bold', 'italic', 'underline', 'strike',
+                        'blockquote', 'link', 'image',
+                        'orderedList', 'bulletList', 'codeBlock',
+                        'h1', 'h2', 'h3',
+                    ])
+                    ->afterStateUpdated(function ($state, $set) {
+                        // Izinkan tag penting
+                        $allowedTags = '<p><br><h1><h2><h3><b><strong><i><em><u><ul><ol><li>';
+
+                        // Hapus tag yang tidak diinginkan
+                        $cleanContent = strip_tags($state, $allowedTags);
+
+                        // Ganti &nbsp; jadi spasi biasa
+                        $cleanContent = str_replace('&nbsp;', ' ', $cleanContent);
+
+                        // Normalisasi line breaks
+                        $cleanContent = preg_replace("/(\r\n|\r|\n)+/", "\n", $cleanContent);
+
+                        // Bersihkan spasi berlebih
+                        $cleanContent = preg_replace('/[ \t]{2,}/', ' ', $cleanContent);
+
+                        // Tambahkan <br> di akhir paragraf jika tidak ada
+                        $cleanContent = preg_replace('/<p>(.*?)<\/p>/i', '<p>$1</p>', $cleanContent);
+
+                        $set('content', trim($cleanContent));
+                    })
+                    ->maxLength(10000),
+
 
                 TextInput::make('author')
                     ->label('Penulis')

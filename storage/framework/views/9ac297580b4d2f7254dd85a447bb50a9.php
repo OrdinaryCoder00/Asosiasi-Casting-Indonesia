@@ -4,9 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
-
-    <title>Laravel</title>
+    <title>ACI</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -15,7 +13,6 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
-
 
     <!-- Icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -29,7 +26,7 @@
         @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
         * {
-            font-family: 'Inter', sans-serif;
+            font-family: 'TCM', sans-serif;
         }
 
         body {
@@ -39,27 +36,29 @@
 </head>
 
 <body class="antialiased">
-    <?php if (isset($component)) { $__componentOriginal49a931dfd920b9ebcc8382452462cef9 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginal49a931dfd920b9ebcc8382452462cef9 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.navbar-home','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
-<?php $component->withName('navbar-home'); ?>
+    <?php if (isset($component)) { $__componentOriginala591787d01fe92c5706972626cdf7231 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginala591787d01fe92c5706972626cdf7231 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.navbar','data' => ['variant' => 'light']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('navbar'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
-<?php $component->withAttributes([]); ?>
+<?php $component->withAttributes(['variant' => 'light']); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
-<?php if (isset($__attributesOriginal49a931dfd920b9ebcc8382452462cef9)): ?>
-<?php $attributes = $__attributesOriginal49a931dfd920b9ebcc8382452462cef9; ?>
-<?php unset($__attributesOriginal49a931dfd920b9ebcc8382452462cef9); ?>
+<?php if (isset($__attributesOriginala591787d01fe92c5706972626cdf7231)): ?>
+<?php $attributes = $__attributesOriginala591787d01fe92c5706972626cdf7231; ?>
+<?php unset($__attributesOriginala591787d01fe92c5706972626cdf7231); ?>
 <?php endif; ?>
-<?php if (isset($__componentOriginal49a931dfd920b9ebcc8382452462cef9)): ?>
-<?php $component = $__componentOriginal49a931dfd920b9ebcc8382452462cef9; ?>
-<?php unset($__componentOriginal49a931dfd920b9ebcc8382452462cef9); ?>
+<?php if (isset($__componentOriginala591787d01fe92c5706972626cdf7231)): ?>
+<?php $component = $__componentOriginala591787d01fe92c5706972626cdf7231; ?>
+<?php unset($__componentOriginala591787d01fe92c5706972626cdf7231); ?>
 <?php endif; ?>
+
     <?php echo e($slot); ?>
+
 
     <?php if (isset($component)) { $__componentOriginal8a8716efb3c62a45938aca52e78e0322 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal8a8716efb3c62a45938aca52e78e0322 = $attributes; } ?>
@@ -82,11 +81,75 @@
 <?php unset($__componentOriginal8a8716efb3c62a45938aca52e78e0322); ?>
 <?php endif; ?>
 
-    
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
     </script>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+
+                    if (targetSection) {
+                        const navbarHeight = document.getElementById('mainNavbar').offsetHeight;
+                        const targetPosition = targetSection.offsetTop - navbarHeight;
+
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+
+                        const offcanvasElement = document.getElementById('offcanvasNavbar');
+                        const offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvasElement);
+                        if (offcanvasInstance) {
+                            offcanvasInstance.hide();
+                        }
+                    }
+                });
+            });
+
+            window.addEventListener('scroll', function() {
+                let currentSection = '';
+                const sections = document.querySelectorAll('section[id]');
+                const navbarHeight = document.getElementById('mainNavbar').offsetHeight;
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - navbarHeight - 100;
+                    const sectionBottom = sectionTop + section.offsetHeight;
+
+                    if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    const linkRoute = link.getAttribute('data-route');
+
+                    if (linkRoute === '/casting-submission') {
+                        return;
+                    }
+
+                    link.classList.remove('active');
+
+                    if (link.getAttribute('href') === '#' + currentSection) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+
+            const homeLink = document.querySelector('a[href="#home"]');
+            if (homeLink && window.scrollY < 100) {
+                homeLink.classList.add('active');
+            }
+        });
+    </script>
 </body>
 
 </html>

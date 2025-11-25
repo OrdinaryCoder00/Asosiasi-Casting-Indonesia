@@ -728,8 +728,12 @@
 </style>
 
 @php
-    $mainNews = $news[0] ?? null;
-    $otherNews = array_slice($news, 1);
+    $news = collect($news);
+    $mainNews = $news->first();
+    $otherNews = $news->skip(1);
+
+use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 @endphp
 
 <div class="container-fluid p-0">
@@ -749,16 +753,16 @@
                         <div class="filter-group">
                             <div class="filter-group-title">
                                 <img src="/svg/filter.svg" alt="icon-filter" class="img-filter">
-                                filter
+                                Filter
                             </div>
 
-                            <div class="filter-item" onclick="filterNews('latest', this)">
+                            <div class="filter-item" onclick="filterNews('regular', this)">
                                 <div class="filter-item-content">
                                     <div class="filter-item-label">Latest News</div>
                                 </div>
                             </div>
 
-                            <div class="filter-item" onclick="filterNews('announcements', this)">
+                            <div class="filter-item" onclick="filterNews('announcement', this)">
                                 <div class="filter-item-content">
                                     <div class="filter-item-label">Announcements</div>
                                 </div>
@@ -779,14 +783,12 @@
                             <div class="col-lg-2 col-md-3 mb-3 mb-md-0 title-news">
                                 <h2 class="section-title mb-0">News</h2>
                             </div>
-
                             <div class="col-lg-8 col-md-6 mb-3 mb-md-0">
                                 <p class="section-description mb-0 text-md-center">
                                     Featuring the latest news, updates, and collaborations from ACI
                                     capturing movements and moments within the Indonesian film industry
                                 </p>
                             </div>
-
                             <div class="col-lg-2 col-md-3 text-md-end">
                                 <button class="news-btn" type="button" onclick="toggleFilter()">
                                     <img src="/svg/filter.svg" alt="icon-filter" class="img-filter">
@@ -796,61 +798,36 @@
                         </div>
                     </div>
 
-                    <div class="news-header d-block d-lg-none">
-                        <div class="row align-items-center mb-4">
-                            <div class="d-flex justify-content-between">
-                                <h2 class="section-title mb-0">News</h2>
-                                <button class="news-btn" type="button" onclick="toggleFilter()">
-                                    <img src="/svg/filter.svg" alt="icon-filter" class="img-filter">
-                                    <span>Filter</span>
-                                </button>
-                            </div>
-
-                            <div class="mt-2">
-                                <p class="section-description mb-0" style="text-align: justify;">
-                                    Featuring the latest news, updates, and collaborations from ACI
-                                    capturing movements and moments within the Indonesian film industry
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="row news-wrapper">
                         @if ($mainNews)
-                            <div class="col-lg-5 mb-lg-4 mb-lg-0">
-                                <div class="main-news-card" data-bs-toggle="modal"
-                                    data-bs-target="#newsModal{{ $mainNews['id'] ?? 0 }}">
-                                    <img src="{{ $mainNews['image'] }}" alt="{{ $mainNews['title'] }}">
+                            <div class="col-lg-5 mb-lg-4 mb-lg-0 main-news-card-wrapper" data-category="{{ $mainNews->category }}">
+                                <div class="main-news-card" data-bs-toggle="modal" data-bs-target="#newsModal{{ $mainNews->id }}">
+                                    <img src="{{ $mainNews->image ? Storage::url($mainNews->image) : 'https://via.placeholder.com/400x300' }}" alt="{{ $mainNews->title }}">
                                     <div class="main-news-overlay">
-                                        <h3 class="main-news-title text-uppercase">{{ $mainNews['title'] }}</h3>
-                                        @if (isset($mainNews['description']))
-                                            <p class="main-news-description">{{ $mainNews['description'] }}</p>
+                                        <h3 class="main-news-title text-uppercase">{{ $mainNews->title }}</h3>
+                                        @if ($mainNews->excerpt)
+                                            <p class="main-news-description">{{ $mainNews->excerpt }}</p>
                                         @endif
                                     </div>
                                 </div>
                             </div>
                         @endif
 
-                        <div class="col-lg-7">
-                            <div class="small-news-grid">
-                                <div class="row g-3">
-                                    @foreach ($otherNews as $item)
-                                        <div class="col-md-6 col-12">
-                                            <div class="small-news-card" data-bs-toggle="modal"
-                                                data-bs-target="#newsModal{{ $item['id'] ?? $loop->index + 1 }}">
-                                                <img src="{{ $item['image'] }}" alt="{{ $item['title'] }}">
-                                                <div class="small-news-overlay">
-                                                    <h5 class="small-news-title text-uppercase">{{ $item['title'] }}
-                                                    </h5>
-                                                    <span
-                                                        style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
-                                                        {{ $item['description'] }}
-                                                    </span>
-                                                </div>
+                        <div class="col-lg-7 small-news-grid">
+                            <div class="row g-3">
+                                @foreach ($otherNews as $item)
+                                    <div class="col-md-6 col-12 small-news-card-wrapper" data-category="{{ $item->category }}">
+                                        <div class="small-news-card" data-bs-toggle="modal" data-bs-target="#newsModal{{ $item->id }}">
+                                            <img src="{{ $item->image ? Storage::url($item->image) : 'https://via.placeholder.com/400x300' }}" alt="{{ $item->title }}">
+                                            <div class="small-news-overlay">
+                                                <h5 class="small-news-title text-uppercase">{{ $item->title }}</h5>
+                                                <span style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                                                    {{ $item->excerpt }}
+                                                </span>
                                             </div>
                                         </div>
-                                    @endforeach
-                                </div>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -861,129 +838,71 @@
 </div>
 
 @foreach ($news as $item)
-    <div class="modal fade" id="newsModal{{ $item['id'] ?? $loop->index }}" tabindex="-1"
-        aria-labelledby="newsModalLabel{{ $item['id'] ?? $loop->index }}" aria-hidden="true">
-
-        <div class="modal-dialog modal-xl modal-xl-custom modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-body modal-body-custom">
-                    <div class="modal-sticky-header d-flex d-lg-none">
-                        <button type="button" data-bs-dismiss="modal" aria-label="Close"
-                            style="background: none; outline: none; border: none;">
-                            <img src="/img/Icon-x.png" alt="X" width="30" height="30">
-                        </button>
+<div class="modal fade" id="newsModal{{ $item->id }}" tabindex="-1" aria-labelledby="newsModalLabel{{ $item->id }}" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-xl-custom modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body modal-body-custom">
+                <div class="row g-0 h-100">
+                    <div class="col-md-5">
+                        <img src="{{ $item->image ? Storage::url($item->image) : 'https://via.placeholder.com/400x600' }}" 
+                             alt="{{ $item->title }}" 
+                             class="modal-news-poster">
                     </div>
-                    <div class="row g-0 h-100">
-
-                        <div class="col-md-5">
-                            <img src="{{ $item['image'] ?? 'https://via.placeholder.com/400x600' }}"
-                                alt="{{ $item['title'] }}" class="modal-news-poster">
-                        </div>
-
-                        <div class="col-md-7">
-                            <div class="modal-news-content">
-
-                                <div class="modal-sticky-header-news">
-                                    <button type="button" data-bs-dismiss="modal" aria-label="Close">
-                                        <img src="/img/Icon-x.png" alt="Close" width="30" height="30">
-                                    </button>
-                                </div>
-
-                                <div class="modal-news-title">
-                                    <h2>{{ $item['title'] ?? 'No title available.' }}</h2>
-                                </div>
-
-                                <div class="modal-news-description">
-                                    <p>{{ $item['description'] ?? 'No description available.' }}</p>
-
-                                    @if (isset($item['content']))
-                                        <p>{{ $item['content'] }}</p>
-                                    @endif
-                                </div>
-
-                                <div class="modal-news-footer">
-                                    <div class="modal-news-meta">
-                                        <div class="meta-item">
-                                            <span class="meta-label">Published By</span>
-                                            <p class="meta-value">
-                                                {{ $item['published_by'] ?? 'Unknown' }}
-                                            </p>
-                                        </div>
+                    <div class="col-md-7">
+                        <div class="modal-news-content">
+                            <div class="modal-sticky-header-news">
+                                <button type="button" data-bs-dismiss="modal" aria-label="Close">
+                                    <img src="/img/Icon-x.png" alt="Close" width="30" height="30">
+                                </button>
+                            </div>
+                            <div class="modal-news-title">
+                                <h2>{{ $item->title }}</h2>
+                            </div>
+                            <div class="modal-news-description">
+                                <p>{!! $item->content ?? 'No content available.' !!}</p>
+                            </div>
+                            <div class="modal-news-footer">
+                                <div class="modal-news-meta">
+                                    <div class="meta-item">
+                                        <span class="meta-label">Published By</span>
+                                        <p class="meta-value">{{ $item->author ?? 'Unknown' }}</p>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="meta-label">Published Date</span>
+                                        <p class="meta-value">
+                                            {{ $item->published_at ? \Carbon\Carbon::parse($item->published_at)->format('d M Y') : '-' }}
+                                        </p>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 @endforeach
 
 <script>
-    function toggleFilter() {
-        const filterSheet = document.getElementById('filterSheet');
-        const filterOverlay = document.getElementById('filterOverlay');
+function toggleFilter() {
+    const filterSheet = document.getElementById('filterSheet');
+    const filterOverlay = document.getElementById('filterOverlay');
+    filterSheet.classList.toggle('show');
+    filterOverlay.classList.toggle('show');
+}
 
-        filterSheet.classList.toggle('show');
-        filterOverlay.classList.toggle('show');
-    }
+function filterNews(type, element) {
+    document.querySelectorAll('.filter-item').forEach(item => item.classList.remove('active'));
+    element.classList.add('active');
 
-    function filterNews(type, element) {
-        console.log('Filter selected:', type);
-
-        document.querySelectorAll('.filter-item').forEach(item => {
-            item.classList.remove('active');
-        });
-
-        element.classList.add('active');
-    }
-
-    // Mobile carousel snap effect enhancement
-    document.addEventListener('DOMContentLoaded', function() {
-        const newsGrid = document.querySelector('.small-news-grid');
-
-        if (newsGrid && window.innerWidth <= 768) {
-            // Add smooth scrolling behavior
-            newsGrid.style.scrollBehavior = 'smooth';
-
-            // Optional: Add scroll indicators
-            const cards = newsGrid.querySelectorAll('.small-news-card');
-            let currentIndex = 0;
-
-            // You can add swipe gesture detection here if needed
-            let touchStartX = 0;
-            let touchEndX = 0;
-
-            newsGrid.addEventListener('touchstart', function(e) {
-                touchStartX = e.changedTouches[0].screenX;
-            }, {
-                passive: true
-            });
-
-            newsGrid.addEventListener('touchend', function(e) {
-                touchEndX = e.changedTouches[0].screenX;
-                handleSwipe();
-            }, {
-                passive: true
-            });
-
-            function handleSwipe() {
-                const swipeThreshold = 50;
-                const diff = touchStartX - touchEndX;
-
-                if (Math.abs(diff) > swipeThreshold) {
-                    if (diff > 0 && currentIndex < cards.length - 1) {
-                        // Swipe left
-                        currentIndex++;
-                    } else if (diff < 0 && currentIndex > 0) {
-                        // Swipe right
-                        currentIndex--;
-                    }
-                }
-            }
+    // Filter cards
+    document.querySelectorAll('.main-news-card-wrapper, .small-news-card-wrapper').forEach(card => {
+        if(type === 'all' || card.dataset.category === type) {
+            card.style.display = '';
+        } else {
+            card.style.display = 'none';
         }
     });
+}
 </script>

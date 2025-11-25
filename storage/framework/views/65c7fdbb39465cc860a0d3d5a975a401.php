@@ -28,7 +28,9 @@
 <?php $component = $__componentOriginaldb13849e583e54092285257e44118968; ?>
 <?php unset($__componentOriginaldb13849e583e54092285257e44118968); ?>
 <?php endif; ?>
-    <?php if (isset($component)) { $__componentOriginala0ea4e16a04f51850bead0acb0e4d3dc = $component; } ?>
+
+    <section id="our-team">
+        <?php if (isset($component)) { $__componentOriginala0ea4e16a04f51850bead0acb0e4d3dc = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginala0ea4e16a04f51850bead0acb0e4d3dc = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.home.ourteam','data' => ['team' => $team]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('home.ourteam'); ?>
@@ -48,7 +50,10 @@
 <?php $component = $__componentOriginala0ea4e16a04f51850bead0acb0e4d3dc; ?>
 <?php unset($__componentOriginala0ea4e16a04f51850bead0acb0e4d3dc); ?>
 <?php endif; ?>
-    <?php if (isset($component)) { $__componentOriginal8d673b1dc7224966d02fe5c661d4fa80 = $component; } ?>
+    </section>
+
+    <section id="poster">
+        <?php if (isset($component)) { $__componentOriginal8d673b1dc7224966d02fe5c661d4fa80 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal8d673b1dc7224966d02fe5c661d4fa80 = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.home.film','data' => ['film' => $film]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('home.film'); ?>
@@ -68,7 +73,10 @@
 <?php $component = $__componentOriginal8d673b1dc7224966d02fe5c661d4fa80; ?>
 <?php unset($__componentOriginal8d673b1dc7224966d02fe5c661d4fa80); ?>
 <?php endif; ?>
-    <?php if (isset($component)) { $__componentOriginalf4c0f5c1d8a42fca2761abaf3335da25 = $component; } ?>
+    </section>
+
+    <section id="news">
+        <?php if (isset($component)) { $__componentOriginalf4c0f5c1d8a42fca2761abaf3335da25 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalf4c0f5c1d8a42fca2761abaf3335da25 = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.home.news','data' => ['news' => $news]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('home.news'); ?>
@@ -88,6 +96,7 @@
 <?php $component = $__componentOriginalf4c0f5c1d8a42fca2761abaf3335da25; ?>
 <?php unset($__componentOriginalf4c0f5c1d8a42fca2761abaf3335da25); ?>
 <?php endif; ?>
+    </section>
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginale22f0df36dcc7fbeae13936940d29552)): ?>

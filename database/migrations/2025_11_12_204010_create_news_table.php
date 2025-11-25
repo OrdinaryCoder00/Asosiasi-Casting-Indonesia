@@ -12,13 +12,13 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug')->unique();
-            $table->string('excerpt')->nullable();
+            $table->text('excerpt')->nullable();
             $table->longText('content')->nullable();
             $table->string('author')->nullable();
             $table->string('image')->nullable();
             $table->date('published_date')->nullable();
-            $table->timestamp('published_at')->nullable();
-            $table->enum('category', ['regular', 'announcement', 'highlight'])->default('regular');
+            $table->dateTime('published_at')->nullable();
+            $table->string('category')->default('regular');
             $table->timestamps();
         });
     }

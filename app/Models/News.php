@@ -14,7 +14,7 @@ class News extends Model
         'content',
         'author',
         'image',
-        'published_date',
+        'published_at',
         'category',
     ];
 

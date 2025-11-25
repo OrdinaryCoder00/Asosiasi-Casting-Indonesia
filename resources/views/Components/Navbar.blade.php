@@ -9,7 +9,6 @@
 
     $menuItems = [
         ['label' => 'HOME', 'route' => '/', 'section' => 'home'],
-        ['label' => 'ABOUT', 'route' => '/about', 'section' => 'about'],
         ['label' => 'OUR TEAM', 'route' => '/our-team', 'section' => 'our-team'],
         ['label' => 'POSTER', 'route' => '/poster', 'section' => 'poster'],
         ['label' => 'CASTING SUBMISSION', 'route' => '/casting-submission', 'section' => null],

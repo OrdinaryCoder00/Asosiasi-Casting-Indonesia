@@ -60,12 +60,6 @@ class CastingSubmissionController extends Controller
         $submission->confirmed_permission = true;
 
         $submission->save();
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Submission berhasil!',
-            'data'    => $submission
-        ]);
     }
 
     public function adminIndex()
