@@ -20,6 +20,14 @@
         font-size: 20px
     }
 
+    .form-right {
+        padding-right: 1rem;
+    }
+
+    .form-left {
+        padding-left: 1rem;
+    }
+
     .form-control-custom:focus {
         border-bottom: 2px solid #6c757d;
         box-shadow: none;
@@ -60,7 +68,7 @@
         cursor: pointer;
         background: #f8f9fa;
         margin-bottom: 20px;
-        min-height: 320px;
+        min-height: 330px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -132,6 +140,7 @@
         border-radius: 5px;
         font-size: 14px;
     }
+
 
     .section-title {
         color: #212529;
@@ -228,6 +237,14 @@
         .upload-icon {
             font-size: 36px;
         }
+
+        .form-right {
+            padding-right: 0rem;
+        }
+
+        .form-left {
+            padding-left: 0rem;
+        }
     }
 
     @media (max-width: 576px) {
@@ -255,9 +272,9 @@
             </div>
 
             <form id="castingForm ">
-                <div class="row px-lg-3">
+                <div class="row">
                     <div class="col-lg-6">
-                        <div style="padding-right: 1rem;">
+                        <div class="form-right" style="">
                             <h4 class="section-title">Personal Information</h4>
 
                             <div class="input-wrapper">
@@ -310,7 +327,7 @@
                                     placeholder="Instagram or Portfolio Link (Optional)">
                             </div>
 
-                            <h4 class="section-title mt-4">Acting / Casting Information</h4>
+                            <h4 class="section-title mt-5">Acting / Casting Information</h4>
 
                             <div class="input-wrapper">
                                 <input type="text" class="form-control-custom" id="projects"
@@ -335,11 +352,11 @@
                     </div>
 
                     <div class="col-lg-6">
-                        <div style="padding-left: 1rem;">
-                            <h4 class="section-title">Upload Media</h4>
+                        <div class="form-left">
+                            <h4 class="section-title mt-lg-0 mt-4">Upload Media</h4>
 
                             <div class="mb-4">
-                                <h6 class="fw-bold mb-3">Composite Photo (JPG/PNG) *</h6>
+                                <h6 class="fw-bold mb-3" style="color: slategray">Composite Photo (JPG/PNG) *</h6>
                                 <div class="upload-area" id="photoUploadArea">
                                     <div class="upload-icon">
                                         <i class="fa-solid fa-cloud-arrow-up" style="font-size: 32px;"></i>
@@ -359,7 +376,7 @@
                             </div>
 
                             <div class="mb-4">
-                                <h6 class="fw-bold mb-3">Video Casting (MP4) *</h6>
+                                <h6 class="fw-bold mb-3" style="color: slategray">Video Casting (MP4) *</h6>
                                 <div class="upload-area" id="videoUploadArea">
                                     <div class="upload-icon">
                                         <i class="fa-solid fa-cloud-arrow-up" style="font-size: 32px;"></i>

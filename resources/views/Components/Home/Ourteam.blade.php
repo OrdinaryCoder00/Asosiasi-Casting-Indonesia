@@ -500,7 +500,7 @@
 
 <div class="container-fluid p-0">
     <div class="header-section">
-        <div class="row p-3 p-md-3">
+        <div class="row px-3 py-2 py-lg-2">
             <div class="col-12">
                 <h2 class="title-ourteam">
                     ASOSIASI CASTING INDONESIA
@@ -508,7 +508,7 @@
             </div>
         </div>
 
-        <div class="row align-items-center justify-content-between p-3 pt-0 p-md-3 pt-md-0">
+        <div class="row align-content-end justify-content-between p-3 pt-0 p-md-3">
             <div class="col-12 col-lg-4 mb-3 mb-md-0">
                 <p class="subtitle-ourteam mb-0">
                     ACI casting director & associates is a member
@@ -518,7 +518,7 @@
                 <p class="subtitle-ourteam mb-0"> and works globally to collaborate with filmmakers.</p>
             </div>
 
-            <div class="col-12 col-md-auto text-center text-md-end d-none d-lg-block">
+            <div class="col-12 col-md-auto text-center text-md-end d-none d-lg-flex align-items-end">
                 <button class="our-team-btn" type="button" data-bs-toggle="collapse" data-bs-target="#teamCollapse"
                     aria-expanded="true" aria-controls="teamCollapse">
                     <i class="fas fa-chevron-up collapse-icon"></i>

@@ -147,7 +147,7 @@
         }
 
         .navbar-expand-lg {
-            padding-inline: 1rem;
+            padding-inline: 0.2rem;
         }
     }
 </style>

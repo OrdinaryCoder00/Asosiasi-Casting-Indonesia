@@ -503,7 +503,7 @@
         <div class="header-section-poster pt-lg-0">
             <div class="row align-items-center p-0">
                 <div class="col-lg-2 col-md-3 mb-lg-0 mb-3">
-                    <h2 class="section-title mb-0">Film</h2>
+                    <h2 class="section-title mb-0">Filmography</h2>
                 </div>
 
                 <div class="col-lg-8 col-md-6">

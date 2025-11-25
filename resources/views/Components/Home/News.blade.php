@@ -466,7 +466,7 @@
     @media (max-width: 992px) {
         .main-news-card {
             height: 500px;
-            margin-bottom: 2rem;
+            margin-bottom: 0.25rem;
         }
 
         .small-news-grid {
@@ -688,7 +688,7 @@
             border: 1px solid white;
             border-radius: 50px;
             font-weight: 500;
-            font-size: 16px;
+            font-size: 15px;
             cursor: pointer;
             padding-inline: 12px;
             padding-block: 2px;
@@ -798,7 +798,7 @@
 
                     <div class="news-header d-block d-lg-none">
                         <div class="row align-items-center mb-4">
-                            <div class="d-flex justify-content-between">
+                            <div class="d-flex justify-content-between align-items-center py-2">
                                 <h2 class="section-title mb-0">News</h2>
                                 <button class="news-btn" type="button" onclick="toggleFilter()">
                                     <img src="/svg/filter.svg" alt="icon-filter" class="img-filter">
@@ -817,7 +817,7 @@
 
                     <div class="row news-wrapper">
                         @if ($mainNews)
-                            <div class="col-lg-5 mb-lg-4 mb-lg-0">
+                            <div class="col-lg-5  mb-lg-0">
                                 <div class="main-news-card" data-bs-toggle="modal"
                                     data-bs-target="#newsModal{{ $mainNews['id'] ?? 0 }}">
                                     <img src="{{ $mainNews['image'] }}" alt="{{ $mainNews['title'] }}">
