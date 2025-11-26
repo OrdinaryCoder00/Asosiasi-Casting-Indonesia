@@ -142,7 +142,7 @@
 
     @media (max-width: 992px) {
         .navbar-title-text {
-            font-size: 0.8rem;
+            font-size: 1rem;
         }
 
         .navbar-expand-lg {
@@ -154,12 +154,13 @@
 <nav class="navbar navbar-expand-lg navbar-light navbar-universal variant-{{ $isHomepage ? 'light' : 'red' }}"
     id="mainNavbar">
     <div class="container-fluid">
-        <a class="navbar-brand d-flex align-items-center gap-2" href="/">
-            <img src="/img/logo-aci.png" alt="logo-aci" width="50" height="50"
-                class="d-inline-block align-text-top me-2"
+        <a class="navbar-brand d-flex align-items-center gap-1 gap-lg-2" href="/">
+            <img src="/img/logo-aci.png" alt="logo-aci" width="50" height="50" class="d-inline-block align-text-top"
                 style="object-position: center; object-fit: contain; aspect-ratio: 1/1; {{ !$isHomepage ? 'filter: brightness(0) invert(1)' : '' }}">
-            <span class="text-uppercase fw-bold navbar-title-text">ASOSIASI CASTING INDONESIA</span>
+            <span class="text-uppercase fw-bold navbar-title-text d-none d-lg-block">ASOSIASI CASTING INDONESIA</span>
         </a>
+
+        <span class="text-uppercase fw-bold navbar-title-text d-block d-lg-none">ASOSIASI CASTING INDONESIA</span>
 
         <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas"
             style="border:none; outline: none;" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"
