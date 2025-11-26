@@ -15,6 +15,14 @@ $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
 
+// Bind request instance for console commands to prevent UrlGenerator errors
+if (php_sapi_name() === 'cli' || (isset($_SERVER['argv'][0]) && strpos($_SERVER['argv'][0], 'artisan') !== false)) {
+    $app->instance('request', Illuminate\Http\Request::create(
+        env('APP_URL', 'http://localhost'),
+        'GET'
+    ));
+}
+
 /*
 |--------------------------------------------------------------------------
 | Bind Important Interfaces
