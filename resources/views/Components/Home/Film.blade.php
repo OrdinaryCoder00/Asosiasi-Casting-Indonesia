@@ -24,9 +24,10 @@
 
     .subtitle-poster {
         font-size: 1.5rem;
-        max-width: 800px;
-        margin: 0 auto;
-        text-align: center;
+        /* width: 80%; */
+        align-self: end;
+        /* margin: 0 auto; */
+        text-align: end;
     }
 
     .poster-scroll-container {
@@ -344,12 +345,14 @@
     @media (max-width: 768px) {
         .film-poster-header {
             min-height: 200px;
-            padding: 2rem 0;
+            padding: 0px;
+            padding-top: 2rem;
+            padding-bottom: 0rem;
         }
 
         .header-section-poster {
             padding-inline: 2rem;
-            padding-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
 
         }
 
@@ -501,21 +504,18 @@
 <div class="container-fluid p-0">
     <div class="film-poster-header">
         <div class="header-section-poster pt-lg-0">
-            <div class="row align-items-center p-0">
-                <div class="col-lg-2 col-md-3 mb-lg-0 mb-3">
-                    <h2 class="section-title mb-0">Filmography</h2>
+            <div class="row p-0 align-items-center">
+                <div class="col-lg-4 col-md-3 mb-lg-0 mb-3">
+                    <h2 class="section-title-film mb-0">Filmography</h2>
                 </div>
 
-                <div class="col-lg-8 col-md-6">
+                <div class="col-lg-8 col-md-9">
                     <p class="subtitle-poster">
                         This section showcases films featuring talents cast through ACI, representing
                         the creative results of collaborations between casting directors and filmmakers.
                     </p>
                 </div>
 
-                <div class="col-lg-2 col-md-3 text-md-end d-none d-lg-block">
-                    <h2 class="section-title-film mb-0">Poster</h2>
-                </div>
             </div>
         </div>
         <div class="poster-scroll-container" id="filmPosterCarousel">

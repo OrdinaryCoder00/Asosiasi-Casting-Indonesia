@@ -293,7 +293,6 @@
         position: relative;
         overflow: hidden;
         cursor: pointer;
-        margin-bottom: 1.5rem;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
@@ -661,6 +660,7 @@
 
         .news-section {
             padding-inline: 0.7rem;
+            padding-bottom: 2rem;
         }
 
         .news-header {
@@ -668,7 +668,8 @@
         }
 
         .news-content {
-            padding-block: 2rem;
+            padding-block: 0rem;
+            gap: 0rem;
         }
 
         .section-title {

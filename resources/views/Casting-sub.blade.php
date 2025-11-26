@@ -369,7 +369,8 @@
                                     <input type="file" id="photoInput" accept="image/jpeg,image/png" hidden>
                                 </div>
                                 <div id="photoPreview" class="preview-container" style="display:none;">
-                                    <button type="button" class="remove-file" onclick="removePhoto()">×</button>
+                                    <button type="button" class="remove-file mt-2"
+                                        onclick="removePhoto()">×</button>
                                     <img id="photoImg" class="preview-image" alt="Preview">
                                     <div id="photoInfo" class="file-info"></div>
                                 </div>
@@ -389,7 +390,8 @@
                                     <input type="file" id="videoInput" accept="video/mp4" hidden>
                                 </div>
                                 <div id="videoPreview" class="preview-container" style="display:none;">
-                                    <button type="button" class="remove-file" onclick="removeVideo()">×</button>
+                                    <button type="button" class="remove-file mt-2"
+                                        onclick="removeVideo()">×</button>
                                     <video id="videoPlayer" class="preview-video" controls></video>
                                     <div id="videoInfo" class="file-info"></div>
                                 </div>
@@ -483,6 +485,7 @@
             photoUploadArea.style.display = 'block';
             photoPreview.style.display = 'none';
             photoImg.src = '';
+            photoUploadArea.style.display = 'flex';
         }
 
         const videoUploadArea = document.getElementById('videoUploadArea');
@@ -544,6 +547,7 @@
             videoUploadArea.style.display = 'block';
             videoPreview.style.display = 'none';
             videoPlayer.src = '';
+            videoUploadArea.style.display = 'flex';
         }
 
         document.getElementById('castingForm').addEventListener('submit', (e) => {

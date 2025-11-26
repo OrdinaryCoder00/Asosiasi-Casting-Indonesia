@@ -326,7 +326,7 @@
             padding-inline: 1.5rem;
             min-height: auto;
             padding-top: 2rem;
-            padding-bottom: 2rem;
+            padding-bottom: 0.5rem;
         }
 
         .card-col {
@@ -500,7 +500,7 @@
 
 <div class="container-fluid p-0">
     <div class="header-section">
-        <div class="row px-3 py-2 py-lg-2">
+        <div class="row px-3 py-1 py-lg-2">
             <div class="col-12">
                 <h2 class="title-ourteam">
                     ASOSIASI CASTING INDONESIA
