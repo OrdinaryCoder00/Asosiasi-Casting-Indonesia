@@ -114,7 +114,7 @@
                 </div>
             </div>
 
-            <div class="col-md-6 col-lg-6 contact-col align-content-end">
+            <section id="contact" class="col-md-6 col-lg-6 contact-col align-content-end">
 
                 <h3 class="text-uppercase contact-title">
                     Contact Us!
@@ -135,7 +135,7 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
     </div>
 </footer>

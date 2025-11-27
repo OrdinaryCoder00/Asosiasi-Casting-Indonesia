@@ -1,6 +1,8 @@
 <x-layout.layout-home>
-    <x-home.banner />
+    <section id="home">
+        <x-home.banner />
 
+    </section>
     <section id="our-team">
         <x-home.ourteam :team="$team" />
     </section>
