@@ -359,7 +359,7 @@
     .modal-news-poster {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        /* object-fit: cover; */
         object-position: center;
     }
 
@@ -401,7 +401,7 @@
     }
 
     .modal-news-description {
-        max-height: 35%;
+        max-height: 26%;
         overflow-y: auto;
         margin: 1.5rem 3rem;
         font-size: 18px;
@@ -876,12 +876,12 @@
                     </div>
                     <div class="row g-0 h-100">
 
-                        <div class="col-md-5">
+                        <div class="col-md-6">
                             <img src="{{ $item['image'] ?? 'https://via.placeholder.com/400x600' }}"
                                 alt="{{ $item['title'] }}" class="modal-news-poster">
                         </div>
 
-                        <div class="col-md-7">
+                        <div class="col-md-6">
                             <div class="modal-news-content">
 
                                 <div class="modal-sticky-header-news">
