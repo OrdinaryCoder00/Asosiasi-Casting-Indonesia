@@ -166,8 +166,13 @@
         transition: transform 0.3s ease;
     }
 
-    .our-team-btn[aria-expanded="false"] .collapse-icon {
-        transform: rotate(180deg);
+    #teamCollapse {
+        padding-block: 4rem;
+        transition: all 0.35s ease-in-out !important;
+    }
+
+    #teamCollapse.collapsing {
+        overflow: hidden;
     }
 
     .modal-dialog.modal-xl-custom {
@@ -628,25 +633,38 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-
         const collapseElement = document.getElementById('teamCollapse');
         const button = document.querySelector('[data-bs-target="#teamCollapse"]');
         const icon = button.querySelector('.collapse-icon');
 
         function updateIcon() {
             if (collapseElement.classList.contains('show')) {
-                icon.classList.remove('fa-chevron-down');
-                icon.classList.add('fa-chevron-up');
+                icon.style.transform = 'rotate(0deg)';
+                button.setAttribute('aria-expanded', 'true');
             } else {
-                icon.classList.remove('fa-chevron-up');
-                icon.classList.add('fa-chevron-down');
+                icon.style.transform = 'rotate(180deg)';
+                button.setAttribute('aria-expanded', 'false');
             }
         }
 
         updateIcon();
-        collapseElement.addEventListener('show.bs.collapse', updateIcon);
-        collapseElement.addEventListener('hide.bs.collapse', updateIcon);
 
+        collapseElement.addEventListener('show.bs.collapse', function() {
+            icon.style.transform = 'rotate(0deg)';
+        });
+
+        collapseElement.addEventListener('hide.bs.collapse', function() {
+            icon.style.transform = 'rotate(180deg)';
+            carousel.style.pointerEvents = 'none';
+        });
+
+        collapseElement.addEventListener('hidden.bs.collapse', function() {
+            carousel.style.pointerEvents = 'auto';
+        });
+
+        collapseElement.addEventListener('shown.bs.collapse', function() {
+            carousel.style.pointerEvents = 'auto';
+        });
 
         const teamCards = document.querySelectorAll('.team-card');
         const modals = document.querySelectorAll('.modal');
@@ -666,7 +684,6 @@
                 }, 150);
             });
         });
-
 
         const carousel = document.getElementById('teamCarousel');
         const originalCards = carousel.querySelectorAll('[data-original="true"]');

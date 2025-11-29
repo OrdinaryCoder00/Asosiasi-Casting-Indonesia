@@ -353,7 +353,7 @@
 
                     <div class="col-lg-6">
                         <div class="form-left">
-                            <h4 class="section-title mt-lg-0 mt-4">Upload Media</h4>
+                            <h4 class="section-title mt-lg-0 mt-5">Upload Media</h4>
 
                             <div class="mb-4">
                                 <h6 class="fw-bold mb-3" style="color: slategray">Composite Photo (JPG/PNG) *</h6>

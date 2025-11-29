@@ -123,14 +123,14 @@
                 <div class="d-flex flex-column">
                     <div class="contact-item">
                         <i class="fas fa-envelope contact-icon"></i>
-                        <a href="mailto:asosiasicastingindonesia@gmail.com" class="contact-link">
+                        <a href="mailto:asosiasicastingindonesia@gmail.com" class="contact-link" target="_blank">
                             <span>asosiasicastingindonesia@gmail.com</span>
                         </a>
                     </div>
 
                     <div class="contact-item">
                         <i class="fas fa-phone contact-icon"></i>
-                        <a href="tel:+6281234568790" class="contact-link">
+                        <a href="https://wa.me/+6281234568790" class="contact-link" target="_blank">
                             <span>+62 812-3456-8790</span>
                         </a>
                     </div>
